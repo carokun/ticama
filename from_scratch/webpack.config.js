@@ -8,7 +8,7 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
-  entry: './reactApp/app.js',
+  entry: './reactApp/components/App.js',
   output: {
     //will override everything in the build folder
     path: path.resolve(__dirname, 'build'),
