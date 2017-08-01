@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const routes = require('./backend/routes');
 const auth = require('./backend/routes/auth');
+//const api = require('./backend/routes/api')
 
 const bodyParser = require('body-parser')
 
@@ -67,14 +68,18 @@ passport.use(new LocalStrategy(function(username, password, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+app.use('/api/', auth(passport))
+app.use('/api/', routes)
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (request, response) => {
+app.use('/', (request, response) => {
     response.sendFile(__dirname + '/public/index.html'); // For React/Redux
 });
-
-app.use('/', auth(passport));
-app.use('/', routes);
+//
+// app.use('/', auth(passport));
+// app.use('/', routes);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Backend server for Electron App running on port 3000!')
