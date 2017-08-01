@@ -42,6 +42,19 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+          <div className="field">
+            <label className="label">Year</label>
+            <div className="control">
+              <div className="select">
+                <select>
+                  <option>2018</option>
+                  <option>2019</option>
+                  <option>2020</option>
+                  <option>2021</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <Link to='/register'>
           <button className="blue-button">Register</button>
         </Link>
