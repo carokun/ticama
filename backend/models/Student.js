@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema ({
+var StudentSchema = new Schema ({
   username: {
     type: String,
     required: true
@@ -59,4 +59,4 @@ var UserSchema = new Schema ({
 })
 
 
-module.exports = mongoose.model('User', UserSchema)
+module.exports = mongoose.model('Student', StudentSchema)

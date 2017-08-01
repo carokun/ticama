@@ -5,6 +5,7 @@ export default (state = INITIAL_STATE, action) => {
         case 'user_login':
             return Object.assign({}, state, action.user);
         case 'user_login_failed':
+        console.log('failed');
             return Object.assign({}, state, { username: '', password: '' });
         default:
             return state;

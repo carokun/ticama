@@ -10,11 +10,12 @@ export const loginUser = (dispatch, username, password) => {
           if (!response.data.user) {
             dispatch({ type: 'user_login_failed' });
           } else {
-            console.log('user', response.data.user);
             dispatch({ type: 'user_login', user: response.data.user});
+
           }
         })
         .catch((err) => {
+            console.log(err);
             dispatch({ type: 'user_login_failed' });
         })
     };
