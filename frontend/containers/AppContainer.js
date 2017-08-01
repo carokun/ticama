@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import Title from '../components/Title';
+import Login from '../views/Login';
+import Register from '../views/Register';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 const AppContainer = ({ name }) => {
     return (
       <BrowserRouter>
         <div>
-          <Route path='/' render={function() {
-            return <Title name={name} />
-          }}/>
+          <Route path='/' exact component={Login}/>
+          <Route path='/register' exact component={Register}/>
         </div>
       </BrowserRouter>
     );

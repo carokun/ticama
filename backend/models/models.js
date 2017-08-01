@@ -1,20 +1,17 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema ({
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
-})
+var User = require('./User')
+var Skill = require('./Skill')
+var CompetitionExperience = require('./CompetitionExperience')
+var WorkExperience = require('./WorkExperience')
+var Competition = require('./Competition')
 
-
-var User = mongoose.model('User', UserSchema)
 
 module.exports = {
-  User: User
+  User,
+  Skill,
+  CompetitionExperience,
+  WorkExperience,
+  Competition
 };

@@ -23,7 +23,7 @@ module.exports = function(passport) {
       })
       user.save()
       .then(user => {
-        res.json({user: user});
+        res.json({success: true, user});
       })
       .catch(err => {
         res.json({ success: false, message: 'invalid registration' });
