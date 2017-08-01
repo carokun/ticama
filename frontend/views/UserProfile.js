@@ -9,10 +9,10 @@ class UserProfile extends Component {
   }
 
   render() {
-    console.log('name', this.props.username);
+    const user = this.props.user;
     return (
       <div>
-        {this.props.username}
+        {user.username}
       </div>
     )
   }
@@ -24,7 +24,7 @@ UserProfile.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.auth.username
+        user: state.auth
     };
 };
 

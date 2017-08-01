@@ -8,10 +8,8 @@ export const loginUser = (dispatch, username, password) => {
         })
         .then((response) => {
           if (!response.data.user) {
-            console.log('1', response.data);
             dispatch({ type: 'user_login_failed' });
           } else {
-            console.log('user', response.data.user);
             dispatch({ type: 'user_login', user: response.data.user});
 
           }
