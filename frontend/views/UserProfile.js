@@ -1,15 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const UserProfile = ({ username }) => {
+class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log('name', this.props.username);
     return (
       <div>
-        {username}
+        {this.props.username}
       </div>
-    );
-};
+    )
+  }
+}
 
 UserProfile.propTypes = {
     username: PropTypes.string,
