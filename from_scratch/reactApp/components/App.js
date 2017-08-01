@@ -1,4 +1,5 @@
 import React from 'react';
+console.log(React);
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './Home';
