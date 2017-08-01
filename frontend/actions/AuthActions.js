@@ -7,10 +7,11 @@ export const loginUser = (dispatch, username, password) => {
             password
         })
         .then((response) => {
-          if (!response.user) {
+          if (!response.data.user) {
             dispatch({ type: 'user_login_failed' });
           } else {
-            dispatch({ type: 'user_login', user: response.user});
+            console.log('user', response.data.user);
+            dispatch({ type: 'user_login', user: response.data.user});
           }
         })
         .catch((err) => {
@@ -21,17 +22,19 @@ export const loginUser = (dispatch, username, password) => {
 
 export const registerUser = (dispatch, username, password, repeatPassword) => {
     return (dispatch) => {
+        console.log('attempting to register');
         axios.post('/register', {
           username,
           password,
           repeatPassword
         })
         .then((response) => {
-          if (!response.success) {
+          console.log(response);
+          if (!response.data.success) {
             dispatch({ type: 'user_registration_failed' });
           } else {
-            console.log(response.user);
-            dispatch({ type: 'user_registration', user: response.user});
+            console.log(response.data.user);
+            dispatch({ type: 'user_registration', user: response.data.user});
           }
         })
         .catch((err) => {
