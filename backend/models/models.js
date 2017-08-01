@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var User = require('./User')
+var Student = require('./Student')
 var Skill = require('./Skill')
 var CompetitionExperience = require('./CompetitionExperience')
 var WorkExperience = require('./WorkExperience')
@@ -9,7 +9,7 @@ var Competition = require('./Competition')
 
 
 module.exports = {
-  User,
+  Student,
   Skill,
   CompetitionExperience,
   WorkExperience,
