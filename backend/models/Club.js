@@ -6,6 +6,10 @@ var ClubSchema = new Schema ({
     type: String,
     required: true
   },
+  name: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
   },
@@ -14,6 +18,9 @@ var ClubSchema = new Schema ({
     required: true
   },
   about: {
+    type: String
+  },
+  website: {
     type: String
   },
   pastCompetitions: [

@@ -9,6 +9,7 @@ class StudentRegister extends Component {
     this.state = {
       fname: '',
       lname: '',
+      email: '',
       username: '',
       password: '',
       password2: '',
@@ -20,19 +21,62 @@ class StudentRegister extends Component {
 
   render() {
     return (
-      <div className="login-page">
+      <div className="container is-fluid">
         <div className="login-wrapper">
           <h2>Student Registration</h2>
-          <p>First Name</p>
-          <input type="text" name="fname" value={this.state.fname} onChange={(e) => this.setState({fname: e.target.value})}/>
-          <p>Last Name</p>
-          <input type="text" name="lname" value={this.state.lname} onChange={(e) => this.setState({lname: e.target.value})}/>
-          <p>Username</p>
-          <input type="text" name="username" value={this.state.username} onChange={(e) => this.setState({usernmae: e.target.value})}/>
-          <p>Password</p>
-          <input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-          <p>Confirm Password</p>
-          <input type="password" name="password2" value={this.state.password2} onChange={(e) => this.setState({password: e.target.value})}/>
+
+          <div className="field">
+            <label className="label">Userame</label>
+            <div className="control">
+              <input className="input" type="text" name="username" value={this.state.username}
+                onChange={(e) => this.setState({username: e.target.value})}/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">First Name</label>
+            <div className="control">
+              <input className="input" type="text" name="fname" value={this.state.fname}
+                onChange={(e) => this.setState({fname: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Last Name</label>
+            <div className="control">
+              <input className="input" type="text" name="lname" value={this.state.lname}
+                onChange={(e) => this.setState({lname: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-envelope"></i>
+              </span>
+              <input className="input" type="email" placeholder="e.g. charliebrown@gmail.com" name="email"
+                value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="password"
+                value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Confirm Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="password2"
+                value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
+            </div>
+          </div>
 
           <div className="field">
             <label className="label">University</label>
@@ -75,7 +119,7 @@ class StudentRegister extends Component {
           </div>
 
           <Link to='/register'>
-          <button className="blue-button">Register</button>
+          <button className="button is-primary">Register</button>
         </Link>
       </div>
     </div>
