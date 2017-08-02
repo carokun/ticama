@@ -20,6 +20,9 @@ var ClubSchema = new Schema ({
   about: {
     type: String
   },
+  website: {
+    type: String
+  },
   pastCompetitions: [
       {
         type: Schema.ObjectId,
