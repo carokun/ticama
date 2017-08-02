@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const loginUser = (dispatch, username, password) => {
     return (dispatch) => {
-        axios.post('/login', {
+        axios.post('/api/login', {
             username,
             password
         })
@@ -10,11 +10,12 @@ export const loginUser = (dispatch, username, password) => {
           if (!response.data.user) {
             dispatch({ type: 'user_login_failed' });
           } else {
-            console.log('user', response.data.user);
             dispatch({ type: 'user_login', user: response.data.user});
+
           }
         })
         .catch((err) => {
+            console.log(err);
             dispatch({ type: 'user_login_failed' });
         })
     };
@@ -23,7 +24,7 @@ export const loginUser = (dispatch, username, password) => {
 export const registerUser = (dispatch, username, password, repeatPassword) => {
     return (dispatch) => {
         console.log('attempting to register');
-        axios.post('/register', {
+        axios.post('/api/register', {
           username,
           password,
           repeatPassword

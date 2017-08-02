@@ -14,6 +14,9 @@ class Login extends Component {
   }
 
   render() {
+    if (this.props.user._id) {
+      this.props.history.push('/user/' + this.props.user._id);
+    }
     return (
       <div className="login-page">
         <div className="login-wrapper">
@@ -25,17 +28,16 @@ class Login extends Component {
           <button onClick={() => this.props.loginUser(this.state.username, this.state.password)}>Login</button>
           <Link to='/register'>
           <button className="blue-button">Register</button>
-        </Link>
+          </Link>
       </div>
     </div>
-  )
-}
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.username,
-    password: state.auth.password
+    user: state.auth
   }
 };
 

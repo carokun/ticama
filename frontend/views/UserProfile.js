@@ -1,15 +1,22 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const UserProfile = ({ username }) => {
+class UserProfile extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const user = this.props.user;
     return (
       <div>
-        {username}
+        {user.username}
       </div>
-    );
-};
+    )
+  }
+}
 
 UserProfile.propTypes = {
     username: PropTypes.string,
@@ -17,7 +24,7 @@ UserProfile.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.auth.username
+        user: state.auth
     };
 };
 

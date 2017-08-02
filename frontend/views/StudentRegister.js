@@ -40,7 +40,7 @@ class StudentRegister extends Component {
               <div className="select">
                 <select>
                   <option>University of Pennsylvania</option>
-                  <option>University of California Berkeley</option>
+                  <option>University of California – Berkeley</option>
                 </select>
               </div>
             </div>
