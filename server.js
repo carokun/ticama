@@ -68,9 +68,8 @@ passport.use(new LocalStrategy(function(username, password, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-app.use('/api/', auth(passport))
-app.use('/api/', routes)
+app.use('/api', auth(passport))
+app.use('/api', routes)
 
 app.use(express.static(path.join(__dirname, 'public')));
 

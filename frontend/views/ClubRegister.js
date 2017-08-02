@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../actions/AuthActions'
+import { registerClub } from '../actions/AuthActions'
 
 class ClubRegister extends Component {
   constructor(props) {
@@ -11,9 +11,14 @@ class ClubRegister extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
+      repeatPassword: '',
       about: ''
     }
+  }
+
+  submit() {
+    const { username, password, repeatPassword, email, name, about, website } = this.state;
+    this.props.registerClub(username, password, repeatPassword, email, name, about, website);
   }
 
   render() {
@@ -64,8 +69,8 @@ class ClubRegister extends Component {
               <span className="icon is-small is-left">
                 <i className="fa fa-lock"></i>
               </span>
-              <input className="input" type="password" name="password2"
-                value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
+              <input className="input" type="password" name="repeatPassword"
+                value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
             </div>
           </div>
 
@@ -87,13 +92,26 @@ class ClubRegister extends Component {
             </div>
           </div>
 
-          <Link to='/register'>
-          <button className="button is-primary">Register</button>
-        </Link>
+          <button className="button is-primary" onClick={() => this.submit()}>Register</button>
+
+          <Link to='/'>
+            <button className="button is-primary">Login</button>
+          </Link>
       </div>
     </div>
   )
 }
 }
 
-export default ClubRegister;
+const mapStateToProps = () => {
+  return {
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerClub: (username, password, repeatPassword, email, name, about, website) => dispatch(registerClub(dispatch, username, password, repeatPassword, email, name, about, website))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClubRegister);

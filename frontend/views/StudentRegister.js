@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../actions/AuthActions'
+import { registerStudent } from '../actions/AuthActions'
 
 class StudentRegister extends Component {
   constructor(props) {
@@ -12,11 +12,16 @@ class StudentRegister extends Component {
       email: '',
       username: '',
       password: '',
-      password2: '',
+      repeatPassword: '',
       university: '',
       year: '',
       major: ''
     }
+  }
+
+  submit() {
+    const { username, password, repeatPassword, email, fname, lname, university, year, major } = this.state;
+    this.props.registerStudent(username, password, repeatPassword, email, fname, lname, university, year, major);
   }
 
   render() {
@@ -73,8 +78,8 @@ class StudentRegister extends Component {
               <span className="icon is-small is-left">
                 <i className="fa fa-lock"></i>
               </span>
-              <input className="input" type="password" name="password2"
-                value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
+              <input className="input" type="password" name="repeatPassword"
+                value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
             </div>
           </div>
 
@@ -118,13 +123,26 @@ class StudentRegister extends Component {
             </div>
           </div>
 
-          <Link to='/register'>
-          <button className="button is-primary">Register</button>
-        </Link>
+          <button className="button is-primary" onClick={() => this.submit()}>Register</button>
+
+          <Link to='/'>
+            <button className="button is-primary">Login</button>
+          </Link>
       </div>
     </div>
   )
 }
 }
 
-export default StudentRegister;
+const mapStateToProps = () => {
+  return {
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerStudent: (username, password, repeatPassword, email, fname, lname, university, year, major) => dispatch(registerStudent(dispatch, username, password, repeatPassword, email, fname, lname, university, year, major))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentRegister);

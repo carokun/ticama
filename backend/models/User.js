@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var StudentSchema = new Schema ({
+var UserSchema = new Schema ({
   username: {
     type: String,
     required: true
@@ -25,6 +25,15 @@ var StudentSchema = new Schema ({
   about: {
     type: String
   },
+  university: {
+    type: String
+  },
+  website: {
+    type: String
+  },
+  major: {
+    type: String
+  },
   skills: [
       {
         type: Schema.ObjectId,
@@ -46,6 +55,12 @@ var StudentSchema = new Schema ({
         ref: 'WorkExperience'
       }
   ],
+  pastCompetitions: [
+      {
+        type: Schema.ObjectId,
+        ref: 'Competition'
+      }
+  ],
   mainSkills: [
       {
         type: Schema.ObjectId,
@@ -61,8 +76,10 @@ var StudentSchema = new Schema ({
       type: Schema.ObjectId,
       ref: 'Competition'
     }
-  ]
+  ],
+  type: {
+    type: String
+  }
 })
 
-
-module.exports = mongoose.model('Student', StudentSchema)
+module.exports = mongoose.model('User', UserSchema)

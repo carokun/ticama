@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../actions/AuthActions'
+import { registerCompany } from '../actions/AuthActions'
 
 class CompanyRegister extends Component {
   constructor(props) {
@@ -11,10 +11,15 @@ class CompanyRegister extends Component {
       name: '',
       email: '',
       password: '',
-      password2: '',
+      repeatPassword: '',
       about: '',
       website: ''
     }
+  }
+
+  submit() {
+    const { username, password, repeatPassword, email, name, about, website } = this.state;
+    this.props.registerCompany(username, password, repeatPassword, email, name, about, website);
   }
 
   render() {
@@ -66,8 +71,8 @@ class CompanyRegister extends Component {
                       <span className="icon is-small is-left">
                         <i className="fa fa-lock"></i>
                       </span>
-                      <input className="input" type="password" name="password2"
-                        value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
+                      <input className="input" type="password" name="repeatPassword"
+                        value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
                       </div>
                     </div>
 
@@ -89,13 +94,26 @@ class CompanyRegister extends Component {
                       </div>
                     </div>
 
-                    <Link to='/register'>
-                    <button className="button is-primary">Register</button>
-                  </Link>
+                    <button className="button is-primary" onClick={() => this.submit()}>Register</button>
+
+                    <Link to='/'>
+                      <button className="button is-primary">Login</button>
+                    </Link>
                 </div>
               </div>
             )
           }
         }
 
-        export default CompanyRegister;
+        const mapStateToProps = () => {
+          return {
+          }
+        };
+
+        const mapDispatchToProps = (dispatch) => {
+          return {
+            registerCompany: (username, password, repeatPassword, email, name, about, website) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, name, about, website))
+          }
+        };
+
+        export default connect(mapStateToProps, mapDispatchToProps)(CompanyRegister);
