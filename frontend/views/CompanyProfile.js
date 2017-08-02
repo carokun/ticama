@@ -14,7 +14,17 @@ class CompanyProfile extends Component {
 
     return (
       <div className="container is-fluid">
-
+        <div className="tile is-ancestor">
+          <div className="tile is-2">
+            Column one
+          </div>
+          <div className="tile is-7">
+            Column two
+          </div>
+          <div className="tile is-3">
+            Column three
+          </div>
+        </div>
       </div>
     )
   }
