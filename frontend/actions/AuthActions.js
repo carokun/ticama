@@ -43,3 +43,66 @@ export const registerUser = (dispatch, username, password, repeatPassword) => {
         })
     };
 };
+
+export const registerStudent = (dispatch, username, password, repeatPassword, email, fname, lname, university, year, major) => {
+    return (dispatch) => {
+        console.log('attempting to register');
+        axios.post('/api/register/student', {
+          username, password, repeatPassword, email, fname, lname, university, year, major
+        })
+        .then((response) => {
+          console.log(response);
+          if (!response.data.success) {
+            dispatch({ type: 'user_registration_failed' });
+          } else {
+            console.log(response.data.user);
+            dispatch({ type: 'user_registration', user: response.data.user});
+          }
+        })
+        .catch((err) => {
+          dispatch({ type: 'user_registration_failed' });
+        })
+    };
+};
+
+export const registerCompany = (dispatch, username, password, repeatPassword, email, name, about, website) => {
+    return (dispatch) => {
+        console.log('attempting to register');
+        axios.post('/api/register/student', {
+          username, password, repeatPassword, email, name, about, website
+        })
+        .then((response) => {
+          console.log(response);
+          if (!response.data.success) {
+            dispatch({ type: 'user_registration_failed' });
+          } else {
+            console.log(response.data.user);
+            dispatch({ type: 'user_registration', user: response.data.user});
+          }
+        })
+        .catch((err) => {
+          dispatch({ type: 'user_registration_failed' });
+        })
+    };
+};
+
+export const registerClub = (dispatch, username, password, repeatPassword, email, name, about, website) => {
+    return (dispatch) => {
+        console.log('attempting to register');
+        axios.post('/api/register/student', {
+          username, password, repeatPassword, email, name, about, website
+        })
+        .then((response) => {
+          console.log(response);
+          if (!response.data.success) {
+            dispatch({ type: 'user_registration_failed' });
+          } else {
+            console.log(response.data.user);
+            dispatch({ type: 'user_registration', user: response.data.user});
+          }
+        })
+        .catch((err) => {
+          dispatch({ type: 'user_registration_failed' });
+        })
+    };
+};
