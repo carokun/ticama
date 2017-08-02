@@ -21,7 +21,19 @@ var CompetitionSchema = new Schema ({
   location: {
     type: String,
     required: true
-  }
+  },
+  announcements: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Announcement'
+    }
+  ],
+  submissions: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Submission'
+    }
+  ]
 })
 
 

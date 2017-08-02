@@ -38,7 +38,7 @@ module.exports = function(passport) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, fname, lname, university, year, major
+        username, password, email, fname, lname, university, year, major, type: 'student'
       })
       user.save()
       .then(user => {
@@ -59,7 +59,7 @@ module.exports = function(passport) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, name, about, website
+        username, password, email, name, about, website, type: 'company'
       })
       user.save()
       .then(user => {
@@ -80,7 +80,7 @@ module.exports = function(passport) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, name, about, website
+        username, password, email, name, about, website, type: 'club'
       })
       user.save()
       .then(user => {

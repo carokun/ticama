@@ -76,7 +76,10 @@ var UserSchema = new Schema ({
       type: Schema.ObjectId,
       ref: 'Competition'
     }
-  ]
+  ],
+  type: {
+    type: String
+  }
 })
 
 module.exports = mongoose.model('User', UserSchema)
