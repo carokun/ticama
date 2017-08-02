@@ -6,7 +6,7 @@ var ClubSchema = new Schema ({
     type: String,
     required: true
   },
-  clubName: {
+  name: {
     type: String,
     required: true,
   },

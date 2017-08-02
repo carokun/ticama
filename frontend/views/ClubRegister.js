@@ -8,7 +8,7 @@ class ClubRegister extends Component {
     super(props);
     this.state = {
       username: '',
-      clubName: '',
+      name: '',
       email: '',
       password: '',
       password2: '',
@@ -66,6 +66,17 @@ class ClubRegister extends Component {
               </span>
               <input className="input" type="password" name="password2"
                 value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Website</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-link"></i>
+              </span>
+              <input className="input" type="text" placeholder="http://www.ticama.com" name="website"
+                value={this.state.website} onChange={(e) => this.setState({website: e.target.value})}/>
             </div>
           </div>
 

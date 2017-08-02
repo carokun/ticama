@@ -9,11 +9,17 @@ var CompanySchema = new Schema ({
   email: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   password: {
     type: String,
     required: true
   },
   about: {
+    type: String
+  },
+  website: {
     type: String
   },
   pastCompetitions: [
