@@ -6,6 +6,10 @@ var ClubSchema = new Schema ({
     type: String,
     required: true
   },
+  clubName: {
+    type: String,
+    required: true,
+  },
   email: {
     type: String,
   },

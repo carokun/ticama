@@ -8,68 +8,71 @@ class ClubRegister extends Component {
     super(props);
     this.state = {
       username: '',
+      clubName: '',
       email: '',
       password: '',
       password2: '',
-      university: '',
-      year: '',
-      major: ''
+      about: ''
     }
   }
 
   render() {
     return (
-      <div className="login-page">
+      <div className="container is-fluid">
         <div className="login-wrapper">
-          <h2>Student Registration</h2>
-          <p>First Name</p>
-          <input type="text" name="fname" value={this.state.fname} onChange={(e) => this.setState({fname: e.target.value})}/>
-          <p>Last Name</p>
-          <input type="text" name="lname" value={this.state.lname} onChange={(e) => this.setState({lname: e.target.value})}/>
-          <p>Username</p>
-          <input type="text" name="username" value={this.state.username} onChange={(e) => this.setState({usernmae: e.target.value})}/>
-          <p>Password</p>
-          <input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-          <p>Confirm Password</p>
-          <input type="password" name="password2" value={this.state.password2} onChange={(e) => this.setState({password: e.target.value})}/>
+          <h2>Club Registration</h2>
 
           <div className="field">
-            <label className="label">University</label>
+            <label className="label">Userame</label>
             <div className="control">
-              <div className="select">
-                <select>
-                  <option>University of Pennsylvania</option>
-                  <option>University of California Berkeley</option>
-                </select>
-              </div>
+              <input className="input" type="text" name="username" value={this.state.username}
+                onChange={(e) => this.setState({username: e.target.value})}/>
+            </div>
+            <p className="help">For simple login purposes.</p>
+          </div>
+
+          <div className="field">
+            <label className="label">Club Name</label>
+            <div className="control">
+              <input className="input" type="text" name="clubName" value={this.state.clubName}
+                onChange={(e) => this.setState({clubName: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-envelope"></i>
+              </span>
+              <input className="input" type="email" placeholder="e.g. charliebrown@gmail.com" name="email"
+                value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="password"
+                value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Confirm Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="password2"
+                value={this.state.password2} onChange={(e) => this.setState({password2: e.target.value})}/>
             </div>
           </div>
 
           <div className="field">
-            <label className="label">Year</label>
+            <label className="label">About</label>
             <div className="control">
-              <div className="select">
-                <select>
-                  <option>2018</option>
-                  <option>2019</option>
-                  <option>2020</option>
-                  <option>2021</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="field">
-            <label className="label">Major</label>
-            <div className="control">
-              <div className="select">
-                <select>
-                  <option>Anthropology</option>
-                  <option>Computer Science</option>
-                  <option>Math</option>
-                  <option>Earth Science</option>
-                </select>
-              </div>
+              <textarea className="textarea" placeholder="e.g. We promote social good in communities."></textarea>
             </div>
           </div>
 

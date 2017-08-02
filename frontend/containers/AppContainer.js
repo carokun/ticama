@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Login from '../views/Login';
 import Register from '../views/Register';
 import StudentRegister from '../views/StudentRegister';
+import ClubRegister from '../views/ClubRegister';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -14,6 +15,8 @@ const AppContainer = ({ name }) => {
           <Route path='/' exact component={Login}/>
           <Route path='/register' exact component={Register}/>
           <Route path='/register/student' exact component={StudentRegister} />
+          <Route path='/register/club' exact component={ClubRegister} />
+
         </div>
       </BrowserRouter>
     );
