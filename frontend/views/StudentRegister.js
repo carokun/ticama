@@ -11,9 +11,10 @@ class StudentRegister extends Component {
       lname: '',
       username: '',
       password: '',
+      password2: '',
       university: '',
       year: '',
-
+      major: ''
     }
   }
 
@@ -30,7 +31,9 @@ class StudentRegister extends Component {
           <input type="text" name="username" value={this.state.username} onChange={(e) => this.setState({usernmae: e.target.value})}/>
           <p>Password</p>
           <input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-          <button onClick={() => this.props.loginUser(this.state.username, this.state.password)}>Login</button>
+          <p>Confirm Password</p>
+          <input type="password" name="password2" value={this.state.password2} onChange={(e) => this.setState({password: e.target.value})}/>
+
           <div className="field">
             <label className="label">University</label>
             <div className="control">
@@ -42,6 +45,7 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+
           <div className="field">
             <label className="label">Year</label>
             <div className="control">
@@ -55,6 +59,21 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+
+          <div className="field">
+            <label className="label">Major</label>
+            <div className="control">
+              <div className="select">
+                <select>
+                  <option>Anthropology</option>
+                  <option>Computer Science</option>
+                  <option>Math</option>
+                  <option>Earth Science</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <Link to='/register'>
           <button className="blue-button">Register</button>
         </Link>
