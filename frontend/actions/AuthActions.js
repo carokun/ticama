@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const loginUser = (dispatch, username, password) => {
     return (dispatch) => {
-        axios.post('/login', {
+        axios.post('/api/login', {
             username,
             password
         })
@@ -24,7 +24,7 @@ export const loginUser = (dispatch, username, password) => {
 export const registerUser = (dispatch, username, password, repeatPassword) => {
     return (dispatch) => {
         console.log('attempting to register');
-        axios.post('/register', {
+        axios.post('/api/register', {
           username,
           password,
           repeatPassword
