@@ -12,6 +12,9 @@ var CompanySchema = new Schema ({
   name: {
     type: String,
   },
+  logo: {
+    type: String
+  },
   password: {
     type: String,
     required: true
