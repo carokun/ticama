@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import SummaryInfo from '../components/studentDashboard/SummaryInfo.js';
 import SubmissionPortal from '../components/studentDashboard/SubmissionPortal.js';
 import Inbox from '../components/studentDashboard/Inbox.js';
+import '../assets/stylesheets/base.scss';
 
 class StudentDashboard extends Component {
   constructor(props) {
