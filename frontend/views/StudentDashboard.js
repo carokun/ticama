@@ -17,7 +17,7 @@ class StudentDashboard extends Component {
 
   render() {
     return (
-      <div className='container is-fluid' style={{padding: '60px'}}>
+      <div className='container is-fluid' style={{padding: '36px'}}>
         <div className='tile is-ancestor'>
           <div className='tile is-3 is-parent is-vertical'>
             <SummaryInfo />

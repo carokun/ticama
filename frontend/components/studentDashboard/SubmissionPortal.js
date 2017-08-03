@@ -40,7 +40,6 @@ class SummaryInfo extends Component {
         </div>
         <div className='tile is-parent'>
           <div className='tile is-child'>
-            <hr />
             <table className='table is-striped is-fullwidth'>
               <tbody>
                 <tr>
