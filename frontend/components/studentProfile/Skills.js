@@ -7,10 +7,12 @@ class Skills extends Component {
   render() {
     return(
       // we need to do tabs here for the two skill sections
-      <article className="tile is-child notification is-info">
-        <p className="title">Competition Experience</p>
-        <p className="subtitle">hehehehehhehee</p>
-      </article>
+      <div className="tile is-parent is-vertical is-3">
+        <article className="tile is-child notification">
+          <p className="title">fsdfsdf</p>
+          <p className="subtitle">Top tile</p>
+        </article>
+      </div>
     )
   }
 }

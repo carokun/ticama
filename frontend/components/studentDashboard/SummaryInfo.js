@@ -7,10 +7,7 @@ import CurrentCompetition from './CurrentCompetition.js';
 class SummaryInfo extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: ''
-    }
+
   }
 
   render() {
