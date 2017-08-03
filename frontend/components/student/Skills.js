@@ -6,6 +6,7 @@ class Skills extends Component {
   }
   render() {
     return(
+      // we need to do tabs here for the two skill sections
       <article className="tile is-child notification is-info">
         <p className="title">Competition Experience</p>
         <p className="subtitle">hehehehehhehee</p>
@@ -14,4 +15,4 @@ class Skills extends Component {
   }
 }
 
-export default CompetitionExperience;
+export default Skills;
