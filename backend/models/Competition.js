@@ -53,7 +53,7 @@ var CompetitionSchema = new Schema ({
       type: Schema.ObjectId,
       ref: 'User'
     }
-  ]
+  ],
   applications: [
     {
       type: Schema.ObjectId,
