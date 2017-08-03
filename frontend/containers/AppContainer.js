@@ -9,6 +9,7 @@ import CompanyRegister from '../views/CompanyRegister';
 import StudentProfile from '../views/StudentProfile';
 import ClubProfile from '../views/ClubProfile';
 import CompanyProfile from '../views/CompanyProfile';
+import StudentDashboard from '../views/StudentDashboard';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ const AppContainer = ({ name }) => {
           <Route path='/profile/student' exact component={StudentProfile} />
           <Route path='/profile/club' exact component={ClubProfile} />
           <Route path='/profile/company' exact component={CompanyProfile} />
+          <Route path='/dashboard/student' exact component={StudentDashboard} />
         </div>
       </BrowserRouter>
     );

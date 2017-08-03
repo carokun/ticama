@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import BasicStudent from '../components/student/BasicStudent';
-import CompetitionExperience from '../components/student/CompetitionExperience';
-import WorkExperience from '../components/student/WorkExperience';
-import Skills from '../components/student/Skills';
+import BasicStudent from '../components/studentProfile/BasicStudent';
+import CompetitionExperience from '../components/studentProfile/CompetitionExperience';
+import WorkExperience from '../components/studentProfile/WorkExperience';
+import Skills from '../components/studentProfile/Skills';
 
 class StudentProfile extends Component {
   constructor(props) {
