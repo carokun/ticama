@@ -3,7 +3,9 @@ import React, { Component } from 'react';
 class BasicStudent extends Component {
   constructor(props) {
     super(props);
+
   }
+
   render() {
     return(
       <div className="tile is-parent is-vertical is-3">
@@ -19,11 +21,7 @@ class BasicStudent extends Component {
               <p style={{padding: '5px'}}>this is a small f;kldsijflkjfl;ksdjf;lksjfblurb this is a small blurb this is a small blurb this is a small blurb this is a small blurb</p>
             </div>
           </div>
-          <div className='tile is-parent'>
-            <div className='tile is-child'>
-              <hr/>
-            </div>
-          </div>
+          <hr/>
         <div className='tile is-parent'>
           <div className='tile is-child is-2'>
             <span className="icon">
@@ -46,37 +44,33 @@ class BasicStudent extends Component {
         <div className='tile is-parent'>
           <div className='tile is-child is-2'>
             <span className="icon">
-              <i className="fa fa-cog"></i>
+              <i className="fa fa-lightbulb-o"></i>
             </span>
           </div>
           <div className='tile is-child is-10'>
             <div className='tags'>
               <span className="tag is-primary is-medium">
-                skill 1
+                interest 1
               </span>
               <span className="tag is-primary is-medium">
-                skill 2
+                interest 2
               </span>
               <span className="tag is-primary is-medium">
-                skill 3
+                interest 3
               </span>
               <span className="tag is-primary is-medium">
-                skill 4
+                interest 4
               </span>
               <span className="tag is-primary is-medium">
-                skill 5
+                interest 5
               </span>
               <span className="tag is-primary is-medium">
-                skill 6
+                interest 6
               </span>
             </div>
           </div>
         </div>
-        <div className='tile is-parent'>
-          <div className='tile is-child'>
-            <hr/>
-          </div>
-        </div>
+        <hr/>
 
         <div className='tile is-parent'>
           <div className='tile is-child is-2'>
@@ -96,6 +90,19 @@ class BasicStudent extends Component {
           </div>
           <div className='tile is-child is-10'>
             www.linkedin.com/carolineokun
+          </div>
+        </div>
+        <hr/>
+        <div className='tile is-parent'>
+          <div className='tile is-child is-2'>
+            <span className="icon">
+              <i className="fa fa-paper-plane"></i>
+            </span>
+          </div>
+          <div className='tile is-child is-10'>
+            <a style={{textDecoration: 'none'}}>
+              Resume
+            </a>
           </div>
         </div>
         </article>
