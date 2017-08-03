@@ -31,16 +31,6 @@ class StudentProfile extends Component {
             </div>
             <Skills />
           </div>
-          {/* <div className="tile is-parent">
-            <article className="tile is-child notification is-success">
-              <div className="content">
-                <p className="title">Tall tile</p>
-                <p className="subtitle">With even more content</p>
-                <div className="content">
-                </div>
-              </div>
-            </article>
-          </div> */}
         </div>
       </div>
     )
