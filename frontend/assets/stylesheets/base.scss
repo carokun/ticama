@@ -9,12 +9,25 @@ $family-serif: "Merriweather", "Georgia", serif;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
-$primary: $pink;
+$primary: $green;
 $primary-invert: $pink-invert;
 // Use the existing orange as the danger color
 $danger: #F2BE64;
 // Use the new serif family
 $family-primary: $family-serif;
 
+body {
+  background-color: #F9F7F9;
+}
+
+.tile .is-parent .is-child{
+  background-color: white;
+  // box-shadow: 0 0 0.5px 0 #dbdbdb;
+}
+
+.notification .tile {
+  background-color: white !important;
+  // box-shadow: 0 0 0.5px 0 #dbdbdb;
+}
 // 4. Import the rest of Bulma
 @import "./node_modules/bulma/bulma.sass";

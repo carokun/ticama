@@ -18,7 +18,7 @@ class Navbar extends Component {
               Discover
             </a>
             <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
-              <figure class="image is-16x16">
+              <figure className="image is-24x24">
                 <img src="http://bulma.io/images/placeholders/128x128.png"/>
               </figure>
             </a>

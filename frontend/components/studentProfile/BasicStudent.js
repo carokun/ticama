@@ -10,7 +10,7 @@ class BasicStudent extends Component {
         <figure className="image is-4by3">
           <img src="http://bulma.io/images/placeholders/640x480.png" />
         </figure>
-        <article className="tile is-parent is-vertical notification" style={{padding: '30px'}}>
+        <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
               <p style={{fontSize:'23px'}}>Matt Pearing</p>

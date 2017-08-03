@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-class SummaryInfo extends Component {
+class SubmissionPortal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +12,7 @@ class SummaryInfo extends Component {
 
   render() {
     return (
-      <div className='notification'>
+      <div className='notification' style={{backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
         <div className='tile is-parent'>
           <div className='tile is-child is-10'>
             <button className='button is-success' style={{color: 'white'}}>
@@ -38,8 +38,6 @@ class SummaryInfo extends Component {
             </button>
           </div>
         </div>
-        <div className='tile is-parent'>
-          <div className='tile is-child'>
             <table className='table is-striped is-fullwidth'>
               <tbody>
                 <tr>
@@ -59,11 +57,9 @@ class SummaryInfo extends Component {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
       </div>
     )
   }
 }
 
-export default SummaryInfo;
+export default SubmissionPortal;
