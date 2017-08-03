@@ -17,15 +17,15 @@ class StudentDashboard extends Component {
 
   render() {
     return (
-      <div className='container is-fluid'>
-        <div className='columns'>
-          <div className='column is-3 notification is-primary'>
+      <div className='container is-fluid' style={{padding: '60px'}}>
+        <div className='tile is-ancestor'>
+          <div className='tile is-3 is-parent is-vertical'>
             <SummaryInfo />
           </div>
-          <div className='column is-6'>
+          <div className='tile is-6 is-parent is-vertical'>
             <SubmissionPortal />
           </div>
-          <div className='column is-3'>
+          <div className='tile is-3 is-parent is-vertical'>
             <Inbox />
           </div>
         </div>
