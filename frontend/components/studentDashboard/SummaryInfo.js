@@ -16,12 +16,12 @@ class SummaryInfo extends Component {
   render() {
     return (
       <article className='tile is-child notification'>
-        <h1 className='title is-3'>👋🏼 Welcome Caroline!</h1>
+        <h1 className='title is-4'>👋🏼 Welcome Caroline!</h1>
         <div style={{height: '30px', width: '1px'}}></div>
-        <h3 className='subtitle is-4'>Your Current Competitions</h3>
+        <h3 className='subtitle is-5'>Your Current Competitions</h3>
         <hr/>
         <CurrentCompetition />
-        <h3 className='subtitle is-4'>Notifications</h3>
+        <h3 className='subtitle is-5'>Notifications</h3>
         <Notification />
       </article>
 
