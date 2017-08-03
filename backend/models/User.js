@@ -22,13 +22,13 @@ var UserSchema = new Schema ({
   title: {
     type: String
   },
+  image: {
+    type: String
+  },
   about: {
     type: String
   },
   university: {
-    type: String
-  },
-  website: {
     type: String
   },
   major: {
@@ -40,6 +40,9 @@ var UserSchema = new Schema ({
         ref: 'Skill'
       }
   ],
+  website: {
+    type: String
+  },
   linkedin: {
     type: String
   },
@@ -62,14 +65,15 @@ var UserSchema = new Schema ({
       }
   ],
   mainSkills: [
-      {
+    {
+      skill: {
         type: Schema.ObjectId,
         ref: 'Skill'
       },
-      {
+      description: {
         type: String,
-        ref: 'description'
       }
+    }
   ],
   currentCompetitions: [
     {
@@ -78,6 +82,9 @@ var UserSchema = new Schema ({
     }
   ],
   type: {
+    type: String
+  },
+  resume: {
     type: String
   }
 })

@@ -14,6 +14,14 @@ var CompetitionSchema = new Schema ({
     type: Date,
     required: true
   },
+  company: {
+    type: Schema.ObjectId,
+    ref: 'Company'
+  },
+  club: {
+    type: Schema.ObjectId,
+    ref: 'Club'
+  },
   description: {
     type: String,
     required: true
@@ -22,18 +30,42 @@ var CompetitionSchema = new Schema ({
     type: String,
     required: true
   },
-  announcements: [
+  notifications: [
     {
       type: Schema.ObjectId,
-      ref: 'Announcement'
+      ref: 'Notification'
     }
   ],
-  submissions: [
+  messages: [
     {
       type: Schema.ObjectId,
-      ref: 'Submission'
+      ref: 'Message'
     }
-  ]
+  ],
+  teams: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Team'
+    }
+  ],
+  individuals: [
+    {
+      type: Schema.ObjectId,
+      ref: 'User'
+    }
+  ],
+  applications: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Application'
+    }
+  ],
+  case : {
+    type: String
+  },
+  applicationQuestions: {
+    type: Array
+  }
 })
 
 

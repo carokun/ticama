@@ -6,11 +6,17 @@ var Skill = require('./Skill')
 var CompetitionExperience = require('./CompetitionExperience')
 var WorkExperience = require('./WorkExperience')
 var Competition = require('./Competition')
+var Team = require('./Team')
+var Notification = require('./Notification')
+var Submission = require('./Submission')
 
 module.exports = {
   User,
   Skill,
   CompetitionExperience,
   WorkExperience,
-  Competition
+  Competition,
+  Team,
+  Notification,
+  Submission
 };
