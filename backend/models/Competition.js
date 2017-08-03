@@ -48,6 +48,12 @@ var CompetitionSchema = new Schema ({
       ref: 'Team'
     }
   ],
+  individuals: [
+    {
+      type: Schema.ObjectId,
+      ref: 'User'
+    }
+  ]
   applications: [
     {
       type: Schema.ObjectId,

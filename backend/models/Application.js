@@ -21,7 +21,10 @@ var ApplicationSchema = new Schema ({
         type: String
       }
     }
-  ]
+  ],
+  status: {
+    type: String
+  }
 })
 
 
