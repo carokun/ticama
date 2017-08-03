@@ -19,7 +19,7 @@ class StudentDashboard extends Component {
     return (
       <div className='container is-fluid'>
         <div className='columns'>
-          <div className='column is-3'>
+          <div className='column is-3 notification is-primary'>
             <SummaryInfo />
           </div>
           <div className='column is-6'>
