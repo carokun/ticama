@@ -10,6 +10,7 @@ import StudentProfile from '../views/StudentProfile';
 import ClubProfile from '../views/ClubProfile';
 import CompanyProfile from '../views/CompanyProfile';
 import StudentDashboard from '../views/StudentDashboard';
+import Navbar from '../components/Navbar';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ const AppContainer = ({ name }) => {
     return (
       <BrowserRouter>
         <div>
+          <Route path='/' component={Navbar}/>
           <Route path='/' exact component={Login}/>
           <Route path='/register' component={Register}/>
           <Route path='/register/student' exact component={StudentRegister} />

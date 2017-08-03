@@ -23,16 +23,15 @@ class StudentProfile extends Component {
     return (
       <div className="container is-fluid">
         <div className="tile is-ancestor">
-          <div className="tile is-vertical is-8">
-            <div className="tile">
-              <BasicStudent user={this.state.user}/>
-              <div className="tile is-parent is-vertical">
-                <CompetitionExperience user={this.state.user}/>
-                <WorkExperience user={this.state.user}/>
-              </div>
-            </div>
-          </div>
           <div className="tile is-parent">
+            <BasicStudent/>
+            <div className="tile is-parent is-vertical is-6">
+              <CompetitionExperience/>
+              <WorkExperience/>
+            </div>
+            <Skills />
+          </div>
+          {/* <div className="tile is-parent">
             <article className="tile is-child notification is-success">
               <div className="content">
                 <p className="title">Tall tile</p>
@@ -41,7 +40,7 @@ class StudentProfile extends Component {
                 </div>
               </div>
             </article>
-          </div>
+          </div> */}
         </div>
       </div>
     )
