@@ -17,11 +17,68 @@ class Skills extends Component {
   renderSkillsBody() {
     if (this.state.allSkills) {
       return (
-        <div>all of dem</div>
+        <div>
+          <div className='tags'>
+            <span className="tag is-primary is-medium">
+              computer science
+            </span>
+            <span className="tag is-primary is-medium">
+              python
+            </span>
+            <span className="tag is-primary is-medium">
+              ballin
+            </span>
+            <span className="tag is-primary is-medium">
+              hustling
+            </span>
+            <span className="tag is-primary is-medium">
+              marketing
+            </span>
+            <span className="tag is-primary is-medium">
+              excel
+            </span>
+          </div>
+        </div>
       )
     } else {
       return (
-        <div>just the main ones</div>
+        <div>
+          <div>
+            <div style={{fontSize: '19px', marginBottom: '7px'}}>
+              <strong>
+                Main Skill
+              </strong>
+            </div>
+            <div>
+Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te impetus interpretaris, nam ludus imperdiet inciderint no. Dolorum philosophia definitionem ut cum, iriure integre ei sed.            </div>
+          </div>
+          <div style={{height: '30px'}}>
+
+          </div>
+          <div>
+            <div style={{fontSize: '19px', marginBottom: '7px'}}>
+              <strong>
+                Main Skill
+              </strong>
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te impetus interpretaris, nam ludus imperdiet inciderint no. Dolorum philosophia definitionem ut cum, iriure integre ei sed.
+            </div>
+          </div>
+          <div style={{height: '30px'}}>
+
+          </div>
+          <div>
+            <div style={{fontSize: '19px', marginBottom: '7px'}}>
+              <strong>
+                Main Skill
+              </strong>
+            </div>
+            <div>
+              Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te impetus interpretaris, nam ludui sed. Eius appetere ea pro. Dico viris contentiones mel ne, in nam modus luptatum consectetuer.
+            </div>
+          </div>
+        </div>
       )
     }
   }

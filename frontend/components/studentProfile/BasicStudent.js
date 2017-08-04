@@ -15,10 +15,9 @@ class BasicStudent extends Component {
           </figure>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
-            <article className='tile media is-child'>
-              <p className="title is-4">Matt Pearing</p>
-              <p className="subtitle is-6">Data Scientist</p>
-              <p>this is a small jf;lksjfblurb this is a small blurb this is a small blurb this is a small blurb this is a small blurb</p>
+            <article className='tile media is-vertical' style={{marginBottom: '10px'}}>
+              <div className="title is-4" style={{marginBottom: '10px'}}>Matt Pearing</div>
+              <div className="subtitle is-6" style={{margin: '0px'}}>Data Scientist</div>
             </article>
             <article className='tile is-parent media'>
               <div className='tile is-child is-2'>
