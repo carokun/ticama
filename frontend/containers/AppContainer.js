@@ -10,6 +10,7 @@ import StudentProfile from '../views/StudentProfile';
 import ClubProfile from '../views/ClubProfile';
 import CompanyProfile from '../views/CompanyProfile';
 import StudentDashboard from '../views/StudentDashboard';
+import StudentCompetition from '../views/StudentCompetition';
 import Navbar from '../components/Navbar';
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -28,6 +29,7 @@ const AppContainer = ({ name }) => {
           <Route path='/profile/club' exact component={ClubProfile} />
           <Route path='/profile/company' exact component={CompanyProfile} />
           <Route path='/dashboard/student' exact component={StudentDashboard} />
+          <Route path='/competition/student' exact component={StudentCompetition} />
         </div>
       </BrowserRouter>
     );
