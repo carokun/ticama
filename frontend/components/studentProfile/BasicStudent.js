@@ -13,14 +13,11 @@ class BasicStudent extends Component {
           <img src="http://bulma.io/images/placeholders/640x480.png" />
         </figure>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
-          <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              <p style={{fontSize:'23px'}}>Matt Pearing</p>
-              <p style={{fontSize:'18px'}}>Data Scientist</p>
-              <div style={{height: '5px'}}></div>
-              <p style={{padding: '5px'}}>this is a small f;kldsijflkjfl;ksdjf;lksjfblurb this is a small blurb this is a small blurb this is a small blurb this is a small blurb</p>
+              <p className="title is-4">Matt Pearing</p>
+              <p className="subtitle is-6">Data Scientist</p>
+              <p>this is a small f;kldsijflkjfl;ksdjf;lksjfblurb this is a small blurb this is a small blurb this is a small blurb this is a small blurb</p>
             </div>
-          </div>
           <hr/>
         <div className='tile is-parent'>
           <div className='tile is-child is-2'>
