@@ -32,12 +32,23 @@ class SummaryInfo extends Component {
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-5'>Your Current Competitions</h3>
         <hr/>
-        <NoCompetitions />
+        {/* toggle currentcompetition & nocompetitions using isCompeting*/}
         <CurrentCompetition />
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-5'>Notifications</h3>
         <hr/>
-        <Notification />
+        <div style={{overflow: 'scroll', height: '400px'}}>
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+          <Notification />
+        </div>
       </article>
 
     )

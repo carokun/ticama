@@ -12,7 +12,7 @@ class SubmissionPortal extends Component {
 
   render() {
     return (
-      <div className='notification' style={{backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
+      <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
         <div className='tile is-parent'>
           <div className='tile is-child is-10'>
             <button className='button is-success' style={{color: 'white'}}>
