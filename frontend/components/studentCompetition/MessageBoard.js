@@ -14,10 +14,17 @@ class MessageBoard extends Component {
   render() {
     return (
       <div className='notification tile is-child'>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <div style={{overflow: 'scroll', height: '700px'}}>
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+          <Post />
+        </div>
+
       </div>
     )
   }
