@@ -41,18 +41,47 @@ body {
   padding: 0 !important;
   margin: 0 !important;
 }
-
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   text-align: center;
+  flex-direction: column;
 }
-
 .top-spacer {
   height: 30px;
   width: 100%;
 }
+.circle {
+	width: 12px;
+	height: 12px;
+	background-color: $green;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+  display: inline-block;
+  margin-right: 3px;
+}
+.circle-big {
+  display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: #d0011b;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+  margin-left: 5px;
+  color: white;
+  text-align: center;
+  font-size: $size-4;
+}
+.white-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 2px;
+  color: #4a4a4a;
+}
+
 // 4. Import the rest of Bulma
 @import "./node_modules/bulma/bulma.sass";

@@ -19,7 +19,7 @@ class Navbar extends Component {
             </a>
             <div className="navbar-item has-dropdown is-hoverable">
 
-            <a className="navbar-link  is-active" href="/documentation/overview/start/" style={{textDecoration: 'none'}}>
+            <a className="navbar-link  is-active" href="#" style={{textDecoration: 'none'}}>
             <figure className="image is-24x24">
               <img src="http://bulma.io/images/placeholders/128x128.png"/>
             </figure>
