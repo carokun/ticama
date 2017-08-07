@@ -20,6 +20,7 @@ class StudentProfile extends Component {
 
 
   render() {
+    console.log(this.props.user);
     //all of the user variables
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.user;

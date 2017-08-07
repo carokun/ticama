@@ -16,8 +16,8 @@ class BasicStudent extends Component {
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
             <article className='tile media is-vertical' style={{marginBottom: '10px'}}>
-              <div className="title is-4" style={{marginBottom: '10px'}}>Matt Pearing</div>
-              <div className="subtitle is-6" style={{margin: '0px'}}>Data Scientist</div>
+              <div className="title is-4" style={{marginBottom: '10px'}}>{this.props.user.fname} {this.props.user.lname}</div>
+              <div className="subtitle is-6" style={{margin: '0px'}}>{this.props.user.about || 'meeee!'}</div>
             </article>
             <article className='tile is-parent media'>
               <div className='tile is-child is-2'>
@@ -27,13 +27,13 @@ class BasicStudent extends Component {
               </div>
               <div className='tile is-child is-10'>
                 <div>
-                  University of Pennsylvania
+                  {this.props.user.university}
                 </div>
                 <div>
-                  Computer Science and Economics
+                  {this.props.user.major}
                 </div>
                 <div>
-                  2020
+                  {this.props.user.year || 'UHOH :('}
                 </div>
               </div>
             </article>

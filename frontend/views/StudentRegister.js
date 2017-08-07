@@ -15,7 +15,8 @@ class StudentRegister extends Component {
       repeatPassword: '',
       university: 'University of Pennsylvania',
       year: '2018',
-      major: 'Anthropology'
+      major: 'Anthropology',
+      about: ''
     }
   }
 
@@ -82,7 +83,13 @@ class StudentRegister extends Component {
                 value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
             </div>
           </div>
-
+          <div className="field">
+            <label className="label">About</label>
+            <div className="control">
+              <input className="input" type="text" name="about" value={this.state.about} placeholder='one liner about yourself'
+                onChange={(e) => this.setState({about: e.target.value})}/>
+            </div>
+          </div>
           <div className="field">
             <label className="label">University</label>
             <div className="control">
@@ -141,7 +148,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerStudent: (username, password, repeatPassword, email, fname, lname, university, year, major) => dispatch(registerStudent(dispatch, username, password, repeatPassword, email, fname, lname, university, year, major))
+    registerStudent: (username, password, repeatPassword, email, fname, lname, university, year, major, about) => dispatch(registerStudent(dispatch, username, password, repeatPassword, email, fname, lname, university, year, major, about))
   }
 };
 

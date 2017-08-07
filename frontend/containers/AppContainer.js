@@ -11,44 +11,52 @@ import ClubProfile from '../views/ClubProfile';
 import CompanyProfile from '../views/CompanyProfile';
 import StudentDashboard from '../views/StudentDashboard';
 import StudentCompetition from '../views/StudentCompetition';
-import Navbar from '../components/Navbar';
+import Navbar from '../views/Navbar';
 import CompanyCompetition from '../views/CompanyCompetition.js';
+import axios from 'axios';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const AppContainer = ({ name }) => {
+import { authenticateUser } from '../actions/AuthActions';
+
+class AppContainer extends React.Component {
+  componentWillMount() {
+    this.props.authenticateUser();
+  }
+
+  render() {
     return (
       <BrowserRouter>
-        <div>
-          <Route path='/' component={Navbar}/>
-          <Route path='/' exact component={Login}/>
-          <Route path='/register' component={Register}/>
-          <Route path='/register/student' exact component={StudentRegister} />
-          <Route path='/register/club' exact component={ClubRegister} />
-          <Route path='/register/company' exact component={CompanyRegister} />
-          <Route path='/profile/student/:username' exact component={StudentProfile} />
-          <Route path='/profile/club' exact component={ClubProfile} />
-          <Route path='/profile/company' exact component={CompanyProfile} />
-          <Route path='/dashboard/student' exact component={StudentDashboard} />
-          <Route path='/competition/student' exact component={StudentCompetition} />
-          <Route path='/competition/company' exact component={CompanyCompetition} />
-        </div>
+          {(this.props.user._id) ? (<div>
+            <Route path='/' component={Navbar}/>
+            <Route path='/profile/student/:username' exact component={StudentProfile} />
+            <Route path='/profile/club' exact component={ClubProfile} />
+            <Route path='/profile/company' exact component={CompanyProfile} />
+            <Route path='/dashboard/student' exact component={StudentDashboard} />
+            <Route path='/competition/student' exact component={StudentCompetition} />
+            <Route path='/competition/company' exact component={CompanyCompetition} />
+          </div>)
+          : (<div>
+            <Route path='/' exact component={Login}/>
+            <Route path='/register' component={Register}/>
+            <Route path='/register/student' exact component={StudentRegister} />
+            <Route path='/register/club' exact component={ClubRegister} />
+            <Route path='/register/company' exact component={CompanyRegister} />
+          </div>)}
       </BrowserRouter>
     );
-};
-
-AppContainer.propTypes = {
-    name: PropTypes.string,
+  }
 };
 
 const mapStateToProps = (state) => {
     return {
-        name: state.name
+        user: state.user
     };
 };
 
-const mapDispatchToProps = (/* dispatch */) => {
+const mapDispatchToProps = (dispatch) => {
     return {
+      authenticateUser: () => dispatch(authenticateUser())
     };
 };
 

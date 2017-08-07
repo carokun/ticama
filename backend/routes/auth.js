@@ -9,6 +9,10 @@ module.exports = function(passport) {
     res.json({ success: true, user: req.user });
   });
 
+  router.get('/authenticate/user', function(req, res) {
+    res.json({user: req.user});
+  });
+
   router.post('/register', function(req, res) {
     var username = req.body.username;
     var password = req.body.password;
@@ -32,13 +36,13 @@ module.exports = function(passport) {
   });
 
   router.post('/register/student', function(req, res) {
-    var { username, password, repeatPassword, email, fname, lname, university, year, major } = req.body;
+    var { username, password, repeatPassword, email, fname, lname, university, year, major, about } = req.body;
     console.log('username', req.body.username);
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, fname, lname, university, year, major, type: 'student'
+        username, password, email, fname, lname, university, year, major, type: 'student', about
       })
       user.save()
       .then(user => {
