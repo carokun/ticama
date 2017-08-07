@@ -15,23 +15,23 @@ class SubmissionPortal extends Component {
       <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
         <div className='tile is-parent'>
           <div className='tile is-child is-10'>
-            <button className='button is-success' style={{color: 'white'}}>
+            <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
               <span className="icon">
                 <i className="fa fa-download"></i>
               </span>
-              <span>
+              <span className="title is-4">
                 Case
               </span>
             </button>
           </div>
           <div className='tile is-child is-2' style={{display: 'flex', justifyContent: 'flex-end'}}>
-            <button className='button is-info' style={{width: '60px'}}>
+            <button className='button is-info' style={{width: '60px', height: '50px'}}>
               <span className="icon" style={{transform: 'scale(0.75)'}}>
                 <i className="fa fa-question"></i>
               </span>
             </button>
             <span style={{width: '4px'}}> </span>
-            <button className='button is-danger' style={{width: '60px'}}>
+            <button className='button is-danger' style={{width: '60px', height: '50px'}}>
               <span className="icon" style={{transform: 'scale(0.75)'}}>
                 <i className="fa fa-upload"></i>
               </span>
