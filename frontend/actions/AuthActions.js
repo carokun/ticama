@@ -11,12 +11,29 @@ export const loginUser = (dispatch, username, password) => {
             dispatch({ type: 'user_login_failed' });
           } else {
             dispatch({ type: 'user_login', user: response.data.user});
-
+            localStorage.setItem('user', JSON.stringify(response.data.user))
           }
         })
         .catch((err) => {
             console.log(err);
             dispatch({ type: 'user_login_failed' });
+        })
+    };
+};
+
+export const authenticateUser = (dispatch) => {
+    return (dispatch) => {
+        axios.get('/api/authenticate/user')
+        .then((response) => {
+          if (!response.data.user) {
+            dispatch({ type: 'user_not_authenticated' });
+          } else {
+            dispatch({ type: 'user_authenticated', user: response.data.user});
+          }
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'user_not_authenticated', message: err });
         })
     };
 };
@@ -44,11 +61,11 @@ export const registerUser = (dispatch, username, password, repeatPassword) => {
     };
 };
 
-export const registerStudent = (dispatch, username, password, repeatPassword, email, fname, lname, university, year, major) => {
+export const registerStudent = (dispatch, username, password, repeatPassword, email, fname, lname, university, year, major,about) => {
     return (dispatch) => {
         console.log('attempting to register');
         axios.post('/api/register/student', {
-          username, password, repeatPassword, email, fname, lname, university, year, major
+          username, password, repeatPassword, email, fname, lname, university, year, major, about
         })
         .then((response) => {
           console.log(response);

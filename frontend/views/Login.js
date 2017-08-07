@@ -14,10 +14,10 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props.user);
-    if (this.props.user._id) {
-      this.props.history.push('/profile/student/' + this.props.user.username);
-    }
+    // console.log(this.props.user);
+    // if (this.props.user.username) {
+    //   this.props.history.push('/profile/student/' + this.props.user.username);
+    // }
     return (
       <div className="login-page">
         <div className="login-wrapper">
