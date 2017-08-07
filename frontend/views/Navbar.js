@@ -9,14 +9,12 @@ class Navbar extends Component {
   }
 
   componentWillMount() {
-    var currRoute = this.props.history.location.pathName;
+    var currRoute = this.props.history.location.pathname;
+    console.log(this.props.history.location);
     console.log("currRoute", currRoute);
-    if (!this.props.user.username && currRoute !== 'register') {
-      this.props.history.push('/');
-    } else {
-      // this.props.refreshUser(this.props.user._id);
+    if (currRoute === '/') {
+      this.props.history.push('/profile/student/' + this.props.user.username);
     }
-
   }
 
   checkLoginState() {

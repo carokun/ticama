@@ -24,25 +24,36 @@ class AppContainer extends React.Component {
     this.props.authenticateUser();
   }
 
+  findType() {
+    if (!this.props.user.type) {
+      return (<div>
+        <Route path='/' exact component={Login}/>
+        <Route path='/register' component={Register}/>
+        <Route path='/register/student' exact component={StudentRegister} />
+        <Route path='/register/club' exact component={ClubRegister} />
+        <Route path='/register/company' exact component={CompanyRegister} />
+      </div>);
+    } else if (this.props.user.type === 'student') {
+      return (<div>
+        <Route path='/' component={Navbar}/>
+        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/club' exact component={ClubProfile} />
+        <Route path='/profile/company' exact component={CompanyProfile} />
+        <Route path='/dashboard/student' exact component={StudentDashboard} />
+        <Route path='/competition/student' exact component={StudentCompetition} />
+        <Route path='/competition/company' exact component={CompanyCompetition} />
+      </div>);
+    } else if (this.props.user.type === 'company') {
+
+    } else if (this.props.user.type === 'club') {
+
+    }
+  }
+
   render() {
     return (
       <BrowserRouter>
-          {(this.props.user._id) ? (<div>
-            <Route path='/' component={Navbar}/>
-            <Route path='/profile/student/:username' exact component={StudentProfile} />
-            <Route path='/profile/club' exact component={ClubProfile} />
-            <Route path='/profile/company' exact component={CompanyProfile} />
-            <Route path='/dashboard/student' exact component={StudentDashboard} />
-            <Route path='/competition/student' exact component={StudentCompetition} />
-            <Route path='/competition/company' exact component={CompanyCompetition} />
-          </div>)
-          : (<div>
-            <Route path='/' exact component={Login}/>
-            <Route path='/register' component={Register}/>
-            <Route path='/register/student' exact component={StudentRegister} />
-            <Route path='/register/club' exact component={ClubRegister} />
-            <Route path='/register/company' exact component={CompanyRegister} />
-          </div>)}
+          {this.findType()}
       </BrowserRouter>
     );
   }
