@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class Message extends Component {
   render() {
     return (
-      <article className="message is-small">
+      <article className="message is-medium">
         <div className="message-header">
           <p>RE: Question #5 is too hard!</p><br/>
           <button className="delete"></button>
@@ -37,7 +37,7 @@ class Inbox extends Component {
   render() {
     return (
       <div className='notification tile is-child'>
-        <h3 className='subtitle is-4'>Inbox</h3>
+        <h3 className='subtitle is-2'>Inbox</h3>
         <hr/>
         <Message />
       </div>

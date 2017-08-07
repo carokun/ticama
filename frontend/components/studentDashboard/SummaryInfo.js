@@ -28,14 +28,14 @@ class SummaryInfo extends Component {
     return (
       <article className='tile is-child notification is-tile'>
         <div style={{height: '30px', width: '1px'}}></div>
-        <h1 className='title is-4'>👋🏼 Welcome Caroline!</h1>
+        <h1 className='title is-1'>👋🏼 Welcome Caroline!</h1>
         <div style={{height: '30px', width: '1px'}}></div>
-        <h3 className='subtitle is-5'>Your Current Competitions</h3>
+        <h3 className='subtitle is-2'>Your Current Competitions</h3>
         <hr/>
         {/* toggle currentcompetition & nocompetitions using isCompeting*/}
         <CurrentCompetition />
         <div style={{height: '30px', width: '1px'}}></div>
-        <h3 className='subtitle is-5'>Notifications</h3>
+        <h3 className='subtitle is-2'>Notifications</h3>
         <hr/>
         <div style={{overflow: 'scroll', height: '400px'}}>
           <Notification isOrganizer={false} sender={"McKinsey & Co."}/>

@@ -17,13 +17,25 @@ class Navbar extends Component {
             <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
               Discover
             </a>
-            <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
-              <figure className="image is-24x24">
-                <img src="http://bulma.io/images/placeholders/128x128.png"/>
-              </figure>
+            <div className="navbar-item has-dropdown is-hoverable">
+
+            <a className="navbar-link  is-active" href="/documentation/overview/start/" style={{textDecoration: 'none'}}>
+            <figure className="image is-24x24">
+              <img src="http://bulma.io/images/placeholders/128x128.png"/>
+            </figure>
             </a>
 
+            <div className="navbar-dropdown is-boxed">
+              <a className="navbar-item " href="#">
+                Profile
+              </a>
+              <a className="navbar-item " href="#">
+                Logout
+              </a>
+            </div>
+
           </div>
+        </div>
         </div>
       </div>
 
