@@ -4,56 +4,43 @@ class CompetitionExperience extends Component {
   constructor(props) {
     super(props);
   }
+
+  renderCompetitionExperience(item) {
+    return (
+      <tr key={item}>
+        <td className='level'>
+          <div className='level-left tile is-vertical'>
+            <div>
+              Deloitte Undergraduate Case Competition
+            </div>
+            <div>
+              2017
+            </div>
+            <div>
+              Philadelphia, PA
+            </div>
+          </div>
+          <div className='level-right' style={{marginTop: '30px'}}>
+            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+          </div>
+        </td>
+      </tr>
+    )
+  }
+
   render() {
     return(
       <article className="tile is-child notification is-vertical">
         <article className='media'>
-          <p className="title">Competition Experience</p>
+          <p className="title">Competitions</p>
         </article>
         <article className='media'>
           <table className='table is-fullwidth'>
             <tbody>
-              <tr>
-                <td className='level'>
-                  <div className='level-left tile is-vertical'>
-                    <div>
-                      Deloitte Undergraduate Case Competition
-                    </div>
-                    <div>
-                      2017
-                    </div>
-                    <div>
-                      Philadelphia, PA
-                    </div>
-                  </div>
-                  <div className='level-right' style={{marginTop: '30px'}}>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td className='level'>
-                  <div className='level-left tile is-vertical'>
-                    <div>
-                      Deloitte Undergraduate Case Competition
-                    </div>
-                    <div>
-                      2017
-                    </div>
-                    <div>
-                      Philadelphia, PA
-                    </div>
-                  </div>
-                  <div className='level-right' style={{marginTop: '30px'}}>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                    <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-                  </div>
-                </td>
-              </tr>
+              {[1, 2, 3].map((item) => this.renderCompetitionExperience(item))}
+{/*
               <tr>
                 <td className='level'>
                   <div className='level-left tile is-vertical'>
@@ -80,9 +67,10 @@ class CompetitionExperience extends Component {
                     </div>
                   </div>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
+
         </article>
 
       </article>

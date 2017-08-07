@@ -13,9 +13,9 @@ class StudentRegister extends Component {
       username: '',
       password: '',
       repeatPassword: '',
-      university: '',
-      year: '',
-      major: ''
+      university: 'University of Pennsylvania',
+      year: '2018',
+      major: 'Anthropology'
     }
   }
 
@@ -31,7 +31,7 @@ class StudentRegister extends Component {
           <h2>Student Registration</h2>
 
           <div className="field">
-            <label className="label">Userame</label>
+            <label className="label">Username</label>
             <div className="control">
               <input className="input" type="text" name="username" value={this.state.username}
                 onChange={(e) => this.setState({username: e.target.value})}/>
@@ -87,7 +87,7 @@ class StudentRegister extends Component {
             <label className="label">University</label>
             <div className="control">
               <div className="select">
-                <select>
+                <select onChange={(e) => this.setState({university: e.target.value})}>
                   <option>University of Pennsylvania</option>
                   <option>University of California – Berkeley</option>
                 </select>
@@ -99,7 +99,7 @@ class StudentRegister extends Component {
             <label className="label">Year</label>
             <div className="control">
               <div className="select">
-                <select>
+                <select onChange={(e) => this.setState({year: e.target.value})}>
                   <option>2018</option>
                   <option>2019</option>
                   <option>2020</option>
@@ -113,7 +113,7 @@ class StudentRegister extends Component {
             <label className="label">Major</label>
             <div className="control">
               <div className="select">
-                <select>
+                <select onChange={(e) => this.setState({major: e.target.value})}>
                   <option>Anthropology</option>
                   <option>Computer Science</option>
                   <option>Math</option>

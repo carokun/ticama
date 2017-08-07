@@ -12,6 +12,7 @@ import CompanyProfile from '../views/CompanyProfile';
 import StudentDashboard from '../views/StudentDashboard';
 import StudentCompetition from '../views/StudentCompetition';
 import Navbar from '../components/Navbar';
+import CompanyCompetition from '../views/CompanyCompetition.js';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
@@ -25,11 +26,12 @@ const AppContainer = ({ name }) => {
           <Route path='/register/student' exact component={StudentRegister} />
           <Route path='/register/club' exact component={ClubRegister} />
           <Route path='/register/company' exact component={CompanyRegister} />
-          <Route path='/profile/student' exact component={StudentProfile} />
+          <Route path='/profile/student/:username' exact component={StudentProfile} />
           <Route path='/profile/club' exact component={ClubProfile} />
           <Route path='/profile/company' exact component={CompanyProfile} />
           <Route path='/dashboard/student' exact component={StudentDashboard} />
           <Route path='/competition/student' exact component={StudentCompetition} />
+          <Route path='/competition/company' exact component={CompanyCompetition} />
         </div>
       </BrowserRouter>
     );

@@ -14,8 +14,9 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     if (this.props.user._id) {
-      this.props.history.push('/user/' + this.props.user._id);
+      this.props.history.push('/profile/student/' + this.props.user.username);
     }
     return (
       <div className="login-page">
@@ -37,7 +38,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth
+    user: state.user
   }
 };
 

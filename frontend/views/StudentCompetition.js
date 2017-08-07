@@ -34,7 +34,7 @@ class StudentCompetition extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth
+    user: state.user
   }
 };
 

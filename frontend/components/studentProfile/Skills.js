@@ -4,7 +4,9 @@ class Skills extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allSkills: false
+      allSkills: false,
+      newSkill: '',
+      isActive: 'modal'
     }
   }
 
@@ -84,12 +86,36 @@ Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te
   }
 
   render() {
+
     return(
       // we need to do tabs here for the two skill sections
       <div className="tile is-parent is-vertical is-3">
+        <div className={this.state.isActive || 'modal'}>
+          <div className="modal-background"></div>
+          <div className="modal-card">
+            <header className="modal-card-head">
+              <p className="modal-card-title">Skill</p>
+              <button className="delete" onClick={() => this.setState({ isActive: 'modal' })}></button>
+            </header>
+            <section className="modal-card-body">
+              <div className="field">
+                <label className="label">Name</label>
+                <div className="control">
+                  <input className="input" type="text" value={this.state.newSkill} onChange={(e) => this.setState({ newSkill: e.target.value })}/>
+                </div>
+              </div>
+            </section>
+            <footer className="modal-card-foot">
+              <a className="button is-success" onClick={() => this.props.addSkill(this.state.newSkill)}>Save changes</a>
+
+            </footer>
+          </div>
+        </div>
         <article className="tile is-child notification">
-          <p className="title">Skills</p>
-          <hr />
+          <article className='media'>
+            <p className="title">Skills</p>
+          </article>
+          <article className='tile is-vertical media'>
           <div className='tabs is-centered'>
             <ul>
               <li className={(!this.state.allSkills)?"is-active":''} style={{width: '50%'}} onClick={() => this.toggleSkills()}><a style={{textDecoration: 'none'}}>TOP</a></li>
@@ -99,7 +125,12 @@ Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te
           <div>
             {this.renderSkillsBody()}
           </div>
+          </article>
+          <article className='media'>
+            <button className='button' onClick={() => this.setState({ isActive: 'modal is-active' })}>Add Skill</button>
+          </article>
         </article>
+
       </div>
     )
   }

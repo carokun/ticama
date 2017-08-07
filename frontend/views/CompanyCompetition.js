@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class CompanyProfile extends Component {
+class CompanyCompetition extends Component {
   constructor(props) {
     super(props);
   }
@@ -41,4 +41,4 @@ const mapDispatchToProps = () => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyCompetition);
