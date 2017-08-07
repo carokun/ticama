@@ -38,16 +38,10 @@ class SummaryInfo extends Component {
         <h3 className='subtitle is-5'>Notifications</h3>
         <hr/>
         <div style={{overflow: 'scroll', height: '400px'}}>
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
-          <Notification />
+          <Notification isOrganizer={false} sender={"McKinsey & Co."}/>
+          <Notification isOrganizer={true} sender={"Ticama"}/>
+          <Notification isOrganizer={true} sender={"McKinsey & Co."}/>
+          <Notification isOrganizer={false} sender={"McKinsey & Co."}/>
         </div>
       </article>
 

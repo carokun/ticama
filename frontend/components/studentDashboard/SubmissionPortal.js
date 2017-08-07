@@ -42,17 +42,17 @@ class SubmissionPortal extends Component {
               <tbody>
                 <tr>
                   <td>
-                    kdfjslkdfj
+                    Team4_Powerpoint_V5.ppt
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    kdfjslkdfj
+                    Team4_Powerpoint_V4.ppt
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    kdfjslkdfj
+                    Team4_Powerpoint_V3.ppt
                   </td>
                 </tr>
               </tbody>
