@@ -13,7 +13,7 @@ import StudentCompetition from '../views/StudentCompetition';
 
 import CompanyNavbar from '../views/StudentNavbar';
 import CompanyRegister from '../views/CompanyRegister';
-import CompanyProfile from '../views/CompanyProfile/CompanyProfile';
+import CompanyProfile from '../views/CompanyProfile';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
 
