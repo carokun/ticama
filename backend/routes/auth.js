@@ -9,6 +9,11 @@ module.exports = function(passport) {
     res.json({ success: true, user: req.user });
   });
 
+  router.get('/logout', function(req, res) {
+    req.logout();
+    res.json({success: true});
+  });
+
   router.get('/authenticate/user', function(req, res) {
     res.json({user: req.user});
   });

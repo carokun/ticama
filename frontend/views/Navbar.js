@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { refreshUser } from '../actions/AuthActions'
+import { refreshUser, logoutUser } from '../actions/AuthActions'
 
 class Navbar extends Component {
   constructor(props) {
@@ -31,19 +31,19 @@ class Navbar extends Component {
               <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
                 Discover
               </a>
-              <div className="navbar-item has-dropdown is-hoverable">
+              <div className="navbar-item has-dropdown is-hoverable" onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
 
-              <a className="navbar-link  is-active" href="#" style={{textDecoration: 'none'}}>
-              <figure className="image is-24x24">
-                <img src="http://bulma.io/images/placeholders/128x128.png"/>
-              </figure>
-              </a>
+                <div className="navbar-link">
+                  <figure className="image is-24x24">
+                    <img src="http://bulma.io/images/placeholders/128x128.png"/>
+                  </figure>
+                </div>
 
-              <div className="navbar-dropdown is-boxed">
+              <div id="moreDropdown" className="navbar-dropdown is-boxed">
                 <a className="navbar-item " href="#">
                   Profile
                 </a>
-                <a className="navbar-item " href="#">
+                <a className="navbar-item " href="#" >
                   Logout
                 </a>
               </div>
@@ -72,7 +72,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      refreshUser: (id) => dispatch(refreshUser(dispatch, id))
+      refreshUser: (id) => dispatch(refreshUser(dispatch, id)),
+      logoutUser: () => dispatch(logoutUser(dispatch))
     };
 };
 

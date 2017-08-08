@@ -53,12 +53,13 @@ passport.deserializeUser(function(id, done) {
  */
 passport.use(new LocalStrategy(function(username, password, done) {
     //SEARCH FOR A USER WITH THE GIVEN USERNAME
-    User.findOne({ username: username }, function (err, user) {
-      //IF THERE IS AN ERROR -- AUTHENTICATION FAILS
-      if (err) {
-        console.log(err);
-        return done(err);
-      }
+    User.findOne({ username: username })
+    .populate('workExperience')
+    .populate('skills')
+    .populate('pastCompetitions')
+    .populate('mainSkills')
+    .exec()
+    .then(user => {
       //IF NO USER IS PRESENT -- AUTHENTICATION FAILS
       if (!user) {
         console.log(user);
@@ -70,7 +71,12 @@ passport.use(new LocalStrategy(function(username, password, done) {
       }
       //AUTHENTICATION HAS SUCCEEDED
       return done(null, user);
-    });
+    })
+    .catch(err => {
+      //IF THERE IS AN ERROR -- AUTHENTICATION FAILS
+      console.log(err);
+      return done(err);
+    })
   }
 ));
 

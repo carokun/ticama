@@ -122,3 +122,20 @@ export const registerClub = (dispatch, username, password, repeatPassword, email
         })
     };
 };
+
+export const logoutUser = (dispatch) => {
+    return (dispatch) => {
+        axios.get('/api/logout')
+        .then((response) => {
+          if (response.data.success) {
+            dispatch({ type: 'user_logout' });
+          } else {
+            dispatch({ type: 'user_logout_failed' });
+          }
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'user_logout_failed' });
+        })
+    };
+};
