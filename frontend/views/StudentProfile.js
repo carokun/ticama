@@ -5,6 +5,7 @@ import BasicStudent from '../components/studentProfile/BasicStudent';
 import CompetitionExperience from '../components/studentProfile/CompetitionExperience';
 import WorkExperience from '../components/studentProfile/WorkExperience';
 import Skills from '../components/studentProfile/Skills';
+import StudentProfileEdit from '../components/studentProfile/StudentProfileEdit';
 
 import { addExperience, addSkill } from '../actions/StudentActions.js';
 
@@ -14,11 +15,7 @@ class StudentProfile extends Component {
     this.state = {
 
     }
-
-
   }
-
-
   render() {
     console.log(this.props.user);
     //all of the user variables
@@ -31,6 +28,7 @@ class StudentProfile extends Component {
         <div className="tile is-ancestor">
           <div className="tile is-parent">
             <BasicStudent user={this.props.user}/>
+            <StudentProfileEdit user={this.props.user}/>
             <div className="tile is-parent is-vertical is-6">
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
               <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
