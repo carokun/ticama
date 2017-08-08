@@ -3,18 +3,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../views/Login';
 import Register from '../views/Register';
-import StudentRegister from '../views/StudentRegister';
-import ClubRegister from '../views/ClubRegister';
-import CompanyRegister from '../views/CompanyRegister';
-import StudentProfile from '../views/StudentProfile';
-import ClubProfile from '../views/ClubProfile';
-import CompanyProfile from '../views/CompanyProfile';
-import StudentDashboard from '../views/StudentDashboard';
-import StudentCompetition from '../views/StudentCompetition';
-import Navbar from '../views/Navbar';
-import CompanyCompetition from '../views/CompanyCompetition.js';
-import axios from 'axios';
 
+import StudentNavbar from '../views/StudentNavbar';
+import StudentRegister from '../views/StudentRegister';
+import StudentDiscover from '../views/StudentDiscover';
+import StudentDashboard from '../views/StudentDashboard';
+import StudentProfile from '../views/StudentProfile';
+import StudentCompetition from '../views/StudentCompetition';
+
+import CompanyNavbar from '../views/StudentNavbar';
+import CompanyRegister from '../views/CompanyRegister';
+import CompanyProfile from '../views/CompanyProfile';
+import CompanyHome from '../views/CompanyHome';
+import CompanyCompetition from '../views/CompanyCompetition.js';
+
+import ClubNavbar from '../views/StudentNavbar';
+import ClubRegister from '../views/ClubRegister';
+import ClubHome from '../views/ClubHome';
+import ClubProfile from '../views/ClubProfile';
+
+import axios from 'axios';
 
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -37,29 +45,31 @@ class AppContainer extends React.Component {
       </div>);
     } else if (this.props.user.type === 'student') {
       return (<div>
-        <Route path='/' component={Navbar}/>
+        <Route path='/' component={StudentNavbar}/>
         <Route path='/profile/student/:username' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/dashboard/student' exact component={StudentDashboard} />
-        <Route path='/competition/student' exact component={StudentCompetition} />
-        <Route path='/competition/company' exact component={CompanyCompetition} />
+        <Route path='/home' exact component={StudentDashboard} />
+        <Route path='/competition/:id' exact component={StudentCompetition} />
+        <Route path='/discover' exact component={StudentDiscover} />
       </div>);
     } else if (this.props.user.type === 'company') {
       return (<div>
-        <Route path='/' component={Navbar}/>
+        <Route path='/' component={CompanyNavbar}/>
         <Route path='/profile/student/:username' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/competition' exact component={CompanyCompetition} />
+        <Route path='/competition/:id' exact component={CompanyCompetition} />
+        <Route path='/home' exact component={CompanyHome} />
       </div>);
     } else if (this.props.user.type === 'club') {
       return (<div>
-        <Route path='/' component={Navbar}/>
+        <Route path='/' component={ClubNavbar}/>
         <Route path='/profile/student/:username' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/competition' exact component={CompanyCompetition} />
+        <Route path='/competition/:id' exact component={CompanyCompetition} />
+        <Route path='/home' exact component={ClubHome} />
       </div>);
     }
   }

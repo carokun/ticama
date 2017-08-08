@@ -16,26 +16,53 @@ class StudentProfile extends Component {
 
     }
   }
-  render() {
-    console.log(this.props.user);
+
+  isOwnProfile() {
     //all of the user variables
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.user;
-      console.log(this.props.user);
 
-    return (
-      <div className="container is-fluid">
-        <div className="tile is-ancestor">
-          <div className="tile is-parent">
-            <BasicStudent user={this.props.user}/>
-            <StudentProfileEdit user={this.props.user}/>
-            <div className="tile is-parent is-vertical is-6">
-              <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-              <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
+    console.log('props', this.props);
+    if(this.props.user.username === this.props.match.params.username) {
+      alert('this is your page! 🐥 (this alert is in the isOwnProfile function of StudentProfile.js if you want to get rid of it)')
+      return (
+        <div className="container is-fluid">
+          <div className="tile is-ancestor">
+            <div className="tile is-parent">
+              <BasicStudent user={this.props.user}/>
+              <StudentProfileEdit user={this.props.user}/>
+              <div className="tile is-parent is-vertical is-6">
+                <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
+                <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
+              </div>
+              <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill}/>
             </div>
-            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill}/>
           </div>
         </div>
+      );
+    } else {
+      return (
+        <div className="container is-fluid">
+          <div className="tile is-ancestor">
+            <div className="tile is-parent">
+              <BasicStudent user={this.props.user}/>
+              <StudentProfileEdit user={this.props.user}/>
+              <div className="tile is-parent is-vertical is-6">
+                <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
+                <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
+              </div>
+              <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill}/>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        {this.isOwnProfile()}
       </div>
     )
   }

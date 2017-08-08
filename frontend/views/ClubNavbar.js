@@ -25,13 +25,13 @@ class Navbar extends Component {
         <div className='navbar' style={{height: '50px'}}>
           <div className="navbar-menu" style={{boxShadow: '0px 2px 4px rgba(219, 219, 219, 51)'}}>
             <div className="navbar-end" style={{display:'flex', justifyContent: 'flex-end'}}>
-              <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
+              <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/home')}>
                 Home
               </a>
-              <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
+              <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/discover')}>
                 Discover
               </a>
-              <div className="navbar-item has-dropdown is-hoverable" onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
+              <div className="navbar-item has-dropdown is-hoverable" >
 
                 <div className="navbar-link">
                   <figure className="image is-24x24">
@@ -40,10 +40,10 @@ class Navbar extends Component {
                 </div>
 
               <div id="moreDropdown" className="navbar-dropdown is-boxed">
-                <a className="navbar-item " href="#">
+                <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user.username)}>
                   Profile
                 </a>
-                <a className="navbar-item " href="#" >
+                <a className="navbar-item " onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
                   Logout
                 </a>
               </div>
