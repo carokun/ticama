@@ -113,9 +113,9 @@ Lorem ipsum dolor sit amet, in pri modo adipiscing. No pri dicta aliquam. Ius te
             {this.renderSkillsBody()}
           </div>
           </article>
-          <article className='media'>
+          {(this.props.edit) ? <article className='media'>
             <button className='button' onClick={() => this.setState({ isActive: 'modal is-active' })}>Add Skill</button>
-          </article>
+          </article> : ''}
         </article>
 
       </div>

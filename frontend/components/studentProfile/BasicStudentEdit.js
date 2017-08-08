@@ -24,7 +24,7 @@ class StudentProfileEdit extends Component {
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
             <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1'}}
-              onClick={() => (this.props.save(this.state))}>
+              onClick={() => (this.props.endEdit(this.state))}>
               <span className="icon">
                 <i className="fa fa-floppy-o"></i>
               </span>
