@@ -33,7 +33,7 @@ class StudentProfile extends Component {
             <BasicStudent user={this.props.user}/>
             <div className="tile is-parent is-vertical is-6">
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-              <WorkExperience workExperience={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
+              <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
             </div>
             <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill}/>
           </div>

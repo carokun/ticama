@@ -11,7 +11,6 @@ export const loginUser = (dispatch, username, password) => {
             dispatch({ type: 'user_login_failed' });
           } else {
             dispatch({ type: 'user_login', user: response.data.user});
-            localStorage.setItem('user', JSON.stringify(response.data.user))
           }
         })
         .catch((err) => {

@@ -20,26 +20,13 @@ class Skills extends Component {
     if (this.state.allSkills) {
       return (
         <div>
-          <div className='tags'>
-            <span className="tag is-primary is-medium">
-              computer science
-            </span>
-            <span className="tag is-primary is-medium">
-              python
-            </span>
-            <span className="tag is-primary is-medium">
-              ballin
-            </span>
-            <span className="tag is-primary is-medium">
-              hustling
-            </span>
-            <span className="tag is-primary is-medium">
-              marketing
-            </span>
-            <span className="tag is-primary is-medium">
-              excel
-            </span>
-          </div>
+          {this.props.skills.map(skill => {
+            return (
+              <span className="tag is-primary is-medium">
+                {skill.name}
+              </span>
+            )
+          })}
         </div>
       )
     } else {

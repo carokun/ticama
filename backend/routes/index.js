@@ -3,6 +3,7 @@ const router = express.Router();
 const models = require('../models/models');
 const WorkExperience = models.WorkExperience;
 const Skill = models.Skill;
+const Company = models.Company;
 
 // API ROUTES HERE
 
@@ -79,6 +80,40 @@ router.post('/add/skill', function(req, res) {
   })
 
 
+});
+
+router.post('/add/company', function(req, res) {
+  const { title,
+  startDate,
+  endDate,
+  company,
+  club,
+  description,
+  location,
+  applicationQuestions } = req.body;
+
+  new Company({
+    title,
+    startDate,
+    endDate,
+    company,
+    club,
+    description,
+    location,
+    notifications: [],
+    messages: [],
+    teams: [],
+    individuals: [],
+    applications: [],
+    applicationQuestions
+  })
+  .save()
+  .then(company => {
+    res.json({ success: true, company})
+  })
+  .catch(err => {
+    res.json({success: false})
+  })
 });
 
 

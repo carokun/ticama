@@ -10,8 +10,10 @@ class WorkExperience extends Component {
       newEnd: '',
       newRole: '',
       newDescription: '',
-      newLocation: ''
+      newLocation: '',
+      experiences: []
     }
+
   }
 
   renderEditButtons() {
@@ -27,6 +29,46 @@ class WorkExperience extends Component {
     else {
       return '';
     }
+  }
+
+  componentDidMount() {
+    console.log('experiences', this.props.experiences);
+  }
+
+  renderExperiences() {
+    return this.props.experiences.map(experience => (<article className='media' style={{height: '300px'}}>
+      <div style={{padding: '0px 15px', width: '100%'}}>
+        <div className='level'>
+          <div className='level-left'>
+            <div>
+              <div style={{fontSize: '19px'}}>
+                <strong>
+                  {experience.company}
+                </strong>
+              </div>
+              <div>
+                {experience.role}
+              </div>
+            </div>
+
+          </div>
+          <div className='level-right'>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
+              <div>
+                {experience.startDate} - {experience.endDate}
+              </div>
+              <div>
+                {experience.location}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          {experience.description}
+        </div>
+      </div>
+
+    </article>));
   }
 
   render() {
@@ -86,39 +128,7 @@ class WorkExperience extends Component {
         <article className='media'>
           <p className="title">Relevant Experiences</p>
         </article>
-        <article className='media' style={{height: '300px'}}>
-          <div style={{padding: '0px 15px'}}>
-            <div className='level'>
-              <div className='level-left'>
-                <div>
-                  <div style={{fontSize: '19px'}}>
-                    <strong>
-                      Google
-                    </strong>
-                  </div>
-                  <div>
-                    Product Manager
-                  </div>
-                </div>
-
-              </div>
-              <div className='level-right'>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-                  <div>
-                    June 2017 - July 2017
-                  </div>
-                  <div>
-                    San Francisco, CA
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              Eu sint tamquam intellegebat per. Autem prodesset pri at. Ut cum dicit antiopam imperdiet, at ornatus oportere aliquando nam. Sit ei utinam aliquip aliquando, mel dolorem appareat expetenda ne, ius quaeque suscipit aliquando eu. Nihil electram deterruisset at cum. Vis in alienum facilisis dissentiunt, ne mea movet quaerendum. Sed an dicit tacimates adolescens, erat dicit laudem at pri.
-            </div>
-          </div>
-
-        </article>
+        {this.renderExperiences()}
         {this.renderEditButtons()}
 
       </article>
