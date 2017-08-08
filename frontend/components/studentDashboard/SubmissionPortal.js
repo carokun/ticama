@@ -13,7 +13,12 @@ class SubmissionPortal extends Component {
   render() {
     return (
       <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
-        <div className='tile is-parent'>
+        <div className='tile is-parent is-vertical'>
+          <article className="tile is-child">
+              <p className="title is-3">McKinsey & Co. Undergraduate Case Competition</p>
+          </article>
+          </div>
+          <div className='tile is-parent'>
           <div className='tile is-child is-10'>
             <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
               <span className="icon">

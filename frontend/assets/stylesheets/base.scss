@@ -20,6 +20,11 @@ $tabs-link-active-color: $blue;
 $tabs-link-active-border-bottom-color: $blue;
 
 $table-row-hover-background-color: white;
+$table-striped-row-even-hover-background-color: $white-bis;
+
+$link: $blue;
+$link: $blue;
+$pagination-current-color: white;
 
 @import "./inputfield";
 
@@ -85,6 +90,9 @@ body {
   padding: 20px;
   border-radius: 2px;
   color: #4a4a4a;
+}
+a {
+  text-decoration: none !important;
 }
 
 // 4. Import the rest of Bulma

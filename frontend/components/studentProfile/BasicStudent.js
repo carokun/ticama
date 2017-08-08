@@ -52,22 +52,22 @@ class BasicStudent extends Component {
               </div>
               <div className='tile is-child is-10'>
                 <div className='tags'>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 1
                   </span>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 2
                   </span>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 3
                   </span>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 4
                   </span>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 5
                   </span>
-                  <span className="tag is-primary is-medium">
+                  <span className="tag is-info is-medium">
                     interest 6
                   </span>
                 </div>

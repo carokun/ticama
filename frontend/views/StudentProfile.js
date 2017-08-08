@@ -47,13 +47,7 @@ class StudentProfile extends Component {
         <div className="container is-fluid">
           <div className="tile is-ancestor">
             <div className="tile is-parent">
-              {!this.state.edit ? (
-                <div>
-                  <BasicStudent user={this.props.user} edit={this.onEdit}/>
-                </div>) :
-                <div>
-                  <StudentProfileEdit user={this.props.user} save={this.save}/>
-                </div>}
+              {this.state.edit ? <StudentProfileEdit user={this.props.user} save={this.save}/> : <BasicStudent user={this.props.user} edit={this.onEdit}/>}
               <div className="tile is-parent is-vertical is-6">
                 <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
                 <WorkExperience experiences={workExperience} isOwnProfile={username === this.props.username} addExperience={this.props.addExperience}/>
