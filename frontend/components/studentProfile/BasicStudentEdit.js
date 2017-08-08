@@ -11,9 +11,30 @@ class StudentProfileEdit extends Component {
         fname: this.props.user.fname,
         lname: this.props.user.lname,
         linkedin: this.props.user.linkedin || 'www.linkedin.com/carolineokun',
-        portfolio: this.props.user.portfolio || 'tifchang.com'
+        website: this.props.user.website || 'tifchang.com',
+        interests: this.props.user.interests || [],
+        newInterest: '',
+        resume: ''
       }
   }
+
+  save() {
+    // this.props.endEdit(this.state);
+    var { fname, lname, about, university, major, year, interests, linkedin, website, resume } = this.state;
+    this.props.updateBasicInfo(fname, lname, about, university, major, year, interests, linkedin, website, resume);
+  }
+
+  addInterest() {
+    var newInterests = this.state.interests.slice();
+    if (this.state.newInterest !== '') {
+      newInterests.push(this.state.newInterest);
+    }
+    this.setState({
+      interests: newInterests,
+      newInterest: ''
+    })
+  }
+
   render() {
     console.log(this.props.user.about);
     return(
@@ -24,7 +45,7 @@ class StudentProfileEdit extends Component {
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
             <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1'}}
-              onClick={() => (this.props.endEdit(this.state))}>
+              onClick={() => this.save()}>
               <span className="icon">
                 <i className="fa fa-floppy-o"></i>
               </span>
@@ -60,7 +81,7 @@ class StudentProfileEdit extends Component {
                   <label className="label">University</label>
                   <div className="control">
                     <div className="select">
-                      <select>
+                      <select onChange={(e) => this.setState({university: e.target.value})}>
                         <option>University of Pennsylvania - Wharton</option>
                         <option>University of Pennsylvania - Engineering</option>
                         <option>University of Pennsylvania - College</option>
@@ -73,7 +94,7 @@ class StudentProfileEdit extends Component {
                   <label className="label">Major</label>
                   <div className="control">
                     <div className="select">
-                      <select>
+                      <select onChange={(e) => this.setState({major: e.target.value})}>
                         <option>Anthropology</option>
                         <option>Aerospace</option>
                         <option>Agriculture</option>
@@ -86,7 +107,7 @@ class StudentProfileEdit extends Component {
                   <label className="label">Year</label>
                   <div className="control">
                     <div className="select">
-                      <select>
+                      <select onChange={(e) => this.setState({year: e.target.value})}>
                         <option>2018</option>
                         <option>2019</option>
                         <option>2020</option>
@@ -105,31 +126,17 @@ class StudentProfileEdit extends Component {
               </div>
               <div className='tile is-child is-10'>
                 <div className='tags'>
-                  <span className="tag is-danger is-medium">
-                    interest 1
-                     <button className="delete is-small"></button>
-                  </span>
-                  <span className="tag is-danger is-medium">
-                    interest 2
-                     <button className="delete is-small"></button>
-                  </span>
-                  <span className="tag is-danger is-medium">
-                    interest 3
-                     <button className="delete is-small"></button>
-                  </span>
-                  <span className="tag is-danger is-medium">
-                    interest 4
-                     <button className="delete is-small"></button>
-                  </span>
-                  <span className="tag is-danger is-medium">
-                    interest 5
-                     <button className="delete is-small"></button>
-                  </span>
-                  <span className="tag is-danger is-medium">
-                    interest 6
-                    <button className="delete is-small"></button>
-                  </span>
+                  {this.state.interests.map(interest => {
+                    return (
+                      <span className="tag is-danger is-medium">
+                        {interest}
+                        <button className="delete is-small"></button>
+                      </span>
+                    )
+                  })}
                 </div>
+                <input value={this.state.newInterest} onChange={(e) => this.setState({newInterest: e.target.value})} />
+                <button className='button' onClick={() => this.addInterest()}>Add</button>
               </div>
             </article>
             <article className='media tile is-vertical'>
@@ -154,8 +161,8 @@ class StudentProfileEdit extends Component {
                 </div>
                 <div className='tile is-child is-10'>
                   <div className="input-field">
-                    <input id="portfolio" type="text" className="validate" onChange={(e) => this.setState({portfolio: e.target.value})} value={this.state.portfolio}/>
-                    <label className={(this.state.portfolio.length > 0) && "active"} htmlFor="portfolio">Portfolio</label>
+                    <input id="website" type="text" className="validate" onChange={(e) => this.setState({website: e.target.value})} value={this.state.website}/>
+                    <label className={(this.state.website.length > 0) && "active"} htmlFor="website">Website</label>
                   </div>
                 </div>
               </div>

@@ -84,7 +84,7 @@ export const registerStudent = (dispatch, username, password, repeatPassword, em
 export const registerCompany = (dispatch, username, password, repeatPassword, email, name, about, website) => {
     return (dispatch) => {
         console.log('attempting to register');
-        axios.post('/api/register/student', {
+        axios.post('/api/register/company', {
           username, password, repeatPassword, email, name, about, website
         })
         .then((response) => {
@@ -105,7 +105,7 @@ export const registerCompany = (dispatch, username, password, repeatPassword, em
 export const registerClub = (dispatch, username, password, repeatPassword, email, name, about, website) => {
     return (dispatch) => {
         console.log('attempting to register');
-        axios.post('/api/register/student', {
+        axios.post('/api/register/club', {
           username, password, repeatPassword, email, name, about, website
         })
         .then((response) => {

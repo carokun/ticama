@@ -16,6 +16,15 @@ class WorkExperience extends Component {
 
   }
 
+  saveExperience() {
+    this.props.addExperience(this.state.newCompany, this.state.newStart, this.state.newEnd, this.state.newRole, this.state.newDescription, this.state.newLocation);
+    this.setState({ isActive: 'modal', newCompany: '', newStart: '', newEnd: '', newRole: '', newDescription: '', newLocation: '', experiences: [] });
+  }
+
+  cancelExperience() {
+    this.setState({ isActive: 'modal', newCompany: '', newStart: '', newEnd: '', newRole: '', newDescription: '', newLocation: '', experiences: [] });
+  }
+
   renderExperiences() {
     return this.props.experiences.map(experience => (<article className='media' style={{height: '300px'}}>
       <div style={{padding: '0px 15px', width: '100%'}}>
@@ -52,15 +61,14 @@ class WorkExperience extends Component {
     </article>));
   }
 
-  render() {
-    return(
-      <article className="tile is-child notification is-vertical">
+  modal () {
+    return (
         <div className={this.state.isActive}>
           <div className="modal-background"></div>
           <div className="modal-card">
             <header className="modal-card-head">
               <p className="modal-card-title">Experience</p>
-              <button className="delete" onClick={() => this.setState({ isActive: 'modal' })}></button>
+              <button className="delete" onClick={() => this.cancelExperience()}></button>
             </header>
             <section className="modal-card-body">
               <div className="field">
@@ -101,16 +109,22 @@ class WorkExperience extends Component {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <a className="button is-success" onClick={() => this.props.addExperience(this.state.newCompany, this.state.newStart, this.state.newEnd, this.state.newRole, this.state.newDescription, this.state.newLocation)}>Save changes</a>
-
+              <a className="button is-success" onClick={() => this.saveExperience()}>Save changes</a>
             </footer>
           </div>
         </div>
+    )
+  }
+
+  render() {
+    return(
+      <article className="tile is-child notification is-vertical">
+        {this.modal()}
         <article className='media'>
           <p className="title">Relevant Experiences</p>
         </article>
         {this.renderExperiences()}
-        {{this.props.edit} && <article className='media'>
+        {(this.props.edit) && <article className='media'>
           <button className='button' onClick={() => this.setState({ isActive: 'modal is-active' })}>
             Add Experience
           </button>

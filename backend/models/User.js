@@ -66,9 +66,8 @@ var UserSchema = new Schema ({
   ],
   mainSkills: [
     {
-      skill: {
-        type: Schema.ObjectId,
-        ref: 'Skill'
+      name: {
+        type: String,
       },
       description: {
         type: String,
@@ -86,6 +85,9 @@ var UserSchema = new Schema ({
   },
   resume: {
     type: String
+  },
+  interests : {
+    type: Array
   }
 })
 

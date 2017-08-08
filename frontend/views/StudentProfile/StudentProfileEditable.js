@@ -7,7 +7,7 @@ import WorkExperience from '../../components/studentProfile/WorkExperience';
 import Skills from '../../components/studentProfile/Skills';
 import BasicStudentEdit from '../../components/studentProfile/BasicStudentEdit';
 
-import { addExperience, addSkill } from '../../actions/StudentActions.js';
+import { addExperience, addSkill, addMainSkill, updateBasicInfo } from '../../actions/StudentActions.js';
 
 class StudentProfileEditable extends Component {
   constructor(props) {
@@ -39,13 +39,13 @@ class StudentProfileEditable extends Component {
       <div className="container is-fluid">
         <div className="tile is-ancestor">
           <div className="tile is-parent">
-            <BasicStudentEdit user={this.props.user} endEdit={this.props.endEdit}/>
+            <BasicStudentEdit user={this.props.user} updateBasicInfo={this.props.updateBasicInfo}/>
             <div className="tile is-parent is-vertical is-6">
               <button onClick={this.props.endEdit}>Save</button>
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-              <WorkExperienceEdit experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
+              <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
             </div>
-            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} edit={true}/>
+            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={true}/>
           </div>
         </div>
       </div>
@@ -62,7 +62,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addExperience: (newCompany, newStart, newEnd, newRole, newDescription, newLocation) => dispatch(addExperience(dispatch, newCompany, newStart, newEnd, newRole, newDescription, newLocation)),
-    addSkill: (skill) => dispatch(addSkill(dispatch, skill))
+    addSkill: (skill) => dispatch(addSkill(dispatch, skill)),
+    addMainSkill: (skill, description) => dispatch(addMainSkill(dispatch, skill, description)),
+    updateBasicInfo: (fname, lname, about, university, major, year, interests, linkedin, website, resume) => dispatch(updateBasicInfo(dispatch, fname, lname, about, university, major, year, interests, linkedin, website, resume))
   }
 };
 

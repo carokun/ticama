@@ -7,7 +7,7 @@ import WorkExperience from '../../components/studentProfile/WorkExperience';
 import Skills from '../../components/studentProfile/Skills';
 import StudentProfileEdit from '../../components/studentProfile/BasicStudentEdit';
 
-import { addExperience, addSkill } from '../../actions/StudentActions.js';
+import { addExperience, addSkill, addMainSkill } from '../../actions/StudentActions.js';
 
 class StudentProfilePublic extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class StudentProfilePublic extends Component {
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={false}/>
             </div>
-            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} edit={false}/>
+            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={false}/>
           </div>
         </div>
       </div>
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addExperience: (newCompany, newStart, newEnd, newRole, newDescription, newLocation) => dispatch(addExperience(dispatch, newCompany, newStart, newEnd, newRole, newDescription, newLocation)),
-    addSkill: (skill) => dispatch(addSkill(dispatch, skill))
+    addSkill: (skill) => dispatch(addSkill(dispatch, skill)),
+    addMainSkill: (skill, description) => dispatch(addMainSkill(dispatch, skill, description))
   }
 };
 

@@ -21,6 +21,12 @@ export default (state = {}, action) => {
             const newSkills = state.skills.slice();
             newSkills.push(action.skill);
             return Object.assign({}, state, { skills: newSkills });
+        case 'add_mainSkill':
+            const newMainSkills = state.mainSkills.slice();
+            newMainSkills.push(action.mainSkill);
+            return Object.assign({}, state, { mainSkills: newMainSkills });
+        case 'update_basic_info':
+            return Object.assign({}, state, action.user);
         default:
             return state;
     }

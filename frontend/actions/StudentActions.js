@@ -51,3 +51,43 @@ export const addSkill = (dispatch, skill) => {
         })
     };
 };
+
+export const addMainSkill = (dispatch, skill, description) => {
+    return (dispatch) => {
+        axios.post('/api/add/mainSkill', {
+          skill,
+          description
+        })
+        .then((response) => {
+          if (!response.data.mainSkill) {
+            dispatch({ type: 'add_mainSkill_failed' });
+          } else {
+            dispatch({ type: 'add_mainSkill', mainSkill: response.data.mainSkill });
+          }
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'add_mainSkill_failed' });
+        })
+    };
+};
+
+export const updateBasicInfo = (dispatch, fname, lname, about, university, major, year, interests, linkedin, website, resume) => {
+    return (dispatch) => {
+        axios.post('/api/updateBasicInfo', {
+          fname, lname, about, university, major, year, interests, linkedin, website, resume
+        })
+        .then((response) => {
+          console.log(response.data.user);
+          if (!response.data.user) {
+            dispatch({ type: 'update_basic_info_failed' });
+          } else {
+            dispatch({ type: 'update_basic_info', user: response.data.user });
+          }
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'update_basic_info_failed' });
+        })
+    };
+};

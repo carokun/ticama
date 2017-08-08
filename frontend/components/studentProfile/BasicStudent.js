@@ -12,13 +12,6 @@ class BasicStudent extends Component {
             <figure className="image is-4by3">
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
-            <button className="button is-info" onClick={() => this.props.edit()}
-              style={{position: 'absolute', right: '0', zIndex: '1'}}>
-              <span className="icon">
-                <i className="fa fa-pencil"></i>
-              </span>
-              <span>Edit</span>
-            </button>
           </div>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
