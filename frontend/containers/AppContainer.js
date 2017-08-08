@@ -13,7 +13,7 @@ import StudentCompetition from '../views/StudentCompetition';
 
 import CompanyNavbar from '../views/StudentNavbar';
 import CompanyRegister from '../views/CompanyRegister';
-import CompanyProfile from '../views/CompanyProfile';
+import CompanyProfile from '../views/CompanyProfile/CompanyProfile';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
 
@@ -61,6 +61,7 @@ class AppContainer extends React.Component {
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/competition/:id' exact component={CompanyCompetition} />
         <Route path='/home' exact component={CompanyHome} />
+
       </div>);
     } else if (this.props.user.type === 'club') {
       return (<div>

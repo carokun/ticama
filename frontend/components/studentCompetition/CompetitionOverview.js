@@ -12,8 +12,8 @@ class CompetitionOverview extends Component {
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              <p style={{fontSize:'23px'}}>Undergraduate Case Competition</p>
-              <p style={{fontSize:'18px'}}>McKinsey & Co</p>
+              <p className="title is-2">Undergraduate Case Competition</p>
+              <p className="subtitle is-3">McKinsey & Co</p>
             </div>
           </div>
         <div className='tile is-parent'>
@@ -88,7 +88,7 @@ class CompetitionOverview extends Component {
         <div className='tile is-parent'>
           <div className='tile is-child'>
             <button className='button is-success'>
-              Team Portal
+              Register
             </button>
           </div>
         </div>

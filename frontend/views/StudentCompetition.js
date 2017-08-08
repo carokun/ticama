@@ -15,7 +15,9 @@ class StudentCompetition extends Component {
         <nav className="breadcrumb has-bullet-separator" aria-label="breadcrumbs" style={{paddingTop: '10px'}}>
           <ul>
             <li><a href="#">Home</a></li>
-            <li className="is-active"><a href="#" aria-current="page">McKinsey & Co. Undergraduate Case Competition</a></li>
+            <li className="is-active"><a href="#" aria-current="page">
+              McKinsey & Co. Undergraduate Case Competition
+            </a></li>
           </ul>
         </nav>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>

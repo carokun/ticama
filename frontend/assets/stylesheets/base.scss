@@ -95,5 +95,11 @@ a {
   text-decoration: none !important;
 }
 
+.box {
+  margin: 10px !important;
+  border-style: none;
+  box-shadow: none !important;
+}
+
 // 4. Import the rest of Bulma
 @import "./node_modules/bulma/bulma.sass";
