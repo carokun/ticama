@@ -20,7 +20,6 @@ import CompanyCompetition from '../views/CompanyCompetition.js';
 
 import ClubNavbar from '../views/StudentNavbar';
 import ClubRegister from '../views/ClubRegister';
-import ClubHome from '../views/ClubHome';
 import ClubProfile from '../views/ClubProfile/ClubProfile';
 import ClubProfileEdit from '../views/ClubProfile/ClubProfileEdit';
 
@@ -74,7 +73,7 @@ class AppContainer extends React.Component {
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/competition/:id' exact component={CompanyCompetition} />
-        <Route path='/home' exact component={ClubHome} />
+        <Route path='/home' exact component={ClubProfile} />
       </div>);
     }
   }
