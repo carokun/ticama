@@ -1,0 +1,69 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+class SubmissionPortal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return (
+      <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
+        <div className='tile is-parent'>
+          <div className='tile is-child'>
+            <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100%', height:'50px'}}>
+              <span className="icon">
+                <i className="fa fa-download"></i>
+              </span>
+              <span style={{width: '10px'}}>
+              </span>
+              <span className="title is-4">
+                Download Final Submission
+              </span>
+            </button>
+          </div>
+        </div>
+            <table className='table is-striped is-fullwidth'>
+              <tbody>
+                <tr>
+                  <td>
+                    Team4_Powerpoint_V5.ppt
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Team4_Powerpoint_V4.ppt
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Team4_Powerpoint_V3.ppt
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className='tile is-child level'>
+              <div className='level-right'>
+                <span style={{fontSize: '18px', paddingRight: '5px'}}><strong>Final Score</strong></span>
+                <input className='input' type='text' style={{width: '70px'}}/>
+              </div>
+
+            </div>
+            <div style={{height: '20px'}}>
+
+            </div>
+            <div className='tile is-child level'>
+              <div className='level-right'>
+                <button className='button is-success'>Submit</button>
+              </div>
+            </div>
+      </div>
+    )
+  }
+}
+
+export default SubmissionPortal;
