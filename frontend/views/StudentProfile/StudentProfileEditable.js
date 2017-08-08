@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BasicStudent from '../../components/studentProfile/BasicStudent';
 import CompetitionExperience from '../../components/studentProfile/CompetitionExperience';
-import WorkExperienceEdit from '../../components/studentProfile/WorkExperienceEdit';
+import WorkExperience from '../../components/studentProfile/WorkExperience';
 import Skills from '../../components/studentProfile/Skills';
 import BasicStudentEdit from '../../components/studentProfile/BasicStudentEdit';
 
@@ -43,7 +43,7 @@ class StudentProfileEditable extends Component {
             <div className="tile is-parent is-vertical is-6">
               <button onClick={this.props.endEdit}>Save</button>
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-              <WorkExperienceEdit experiences={workExperience} addExperience={this.props.addExperience}/>
+              <WorkExperienceEdit experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
             </div>
             <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} edit={true}/>
           </div>

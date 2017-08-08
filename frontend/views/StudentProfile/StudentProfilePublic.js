@@ -18,8 +18,6 @@ class StudentProfilePublic extends Component {
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.user;
 
-      //if this.props.isOwnProfile --> show edit button that will call this.props.startEdit
-
     return (
       <div className="container is-fluid">
         <div className="tile is-ancestor">
@@ -28,7 +26,7 @@ class StudentProfilePublic extends Component {
             <div className="tile is-parent is-vertical is-6">
               {(this.props.isOwnProfile) ? <button onClick={this.props.startEdit}>Edit</button> : ''}
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-              <WorkExperience experiences={workExperience} />
+              <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={false}/>
             </div>
             <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} edit={false}/>
           </div>
