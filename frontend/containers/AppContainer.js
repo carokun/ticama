@@ -58,22 +58,22 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'company') {
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
+        <Route path='/home' exact component={CompanyProfile} />
         <Route path='/profile/student/:username' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/edit/profile' exact component={CompanyProfileEdit} />
         <Route path='/competition/:id' exact component={CompanyCompetition} />
-        <Route path='/home' exact component={CompanyHome} />
       </div>);
     } else if (this.props.user.type === 'club') {
       return (<div>
         <Route path='/' component={ClubNavbar}/>
+        <Route path='/home' exact component={ClubProfile} />
         <Route path='/profile/student/:username' exact component={StudentProfile} />
         <Route path='/edit/profile' exact component={ClubProfileEdit} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/competition/:id' exact component={CompanyCompetition} />
-        <Route path='/home' exact component={ClubProfile} />
       </div>);
     }
   }

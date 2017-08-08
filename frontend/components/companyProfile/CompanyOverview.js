@@ -8,16 +8,15 @@ class CompanyOverview extends Component {
 
   render() {
     return(
-
       <div>
+        <article>
+          <div style={{position: 'relative'}}>
+            <figure className="image is-4by3">
+              <img src="http://bulma.io/images/placeholders/640x480.png" />
+            </figure>
+          </div>
+        </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
-          <article>
-            <div style={{position: 'relative'}}>
-              <figure className="image is-4by3">
-                <img src="http://bulma.io/images/placeholders/640x480.png" />
-              </figure>
-            </div>
-          </article>
           <div className='tile is-parent is-vertical'>
               <p className="title is-2">McKinsey & Co</p>
               <p className="subtitle is-4">Consulting</p>
