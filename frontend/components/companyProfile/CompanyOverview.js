@@ -19,10 +19,9 @@ class CompanyOverview extends Component {
             </div>
           </article>
           <div className='tile is-parent is-vertical'>
-            <div className='tile is-child'>
               <p className="title is-2">McKinsey & Co</p>
               <p className="subtitle is-4">Consulting</p>
-            </div>
+          <div style={{height: '10px', width: '100%'}}></div>
           <div className='tile is-child is-12'>
             <p className="size-4">☎️ (415) 901- 3910</p>
             <p className="size-4">🔗 <a href="www.mckinsey.com">www.mckinsey.com</a></p>

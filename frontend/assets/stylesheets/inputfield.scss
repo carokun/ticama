@@ -53,13 +53,13 @@ textarea.materialize-textarea {
 
   // Focused input style
   &:focus:not([readonly]) {
-    border-bottom: 1px solid $primary;
-    box-shadow: 0 1px 0 0 $primary;
+    border-bottom: 1px solid $blue;
+    box-shadow: 0 1px 0 0 $blue;
   }
 
   // Focused label style
   &:focus:not([readonly])+label {
-    color: $primary;
+    color: $blue;
   }
 
   // Valid Input Style
@@ -197,7 +197,7 @@ textarea.materialize-textarea {
     font-size: 2rem;
     transition: color .2s;
 
-    &.active { color: $primary; }
+    &.active { color: $blue; }
   }
 
   .prefix ~ input,

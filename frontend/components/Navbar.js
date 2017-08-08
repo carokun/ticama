@@ -17,7 +17,7 @@ class Navbar extends Component {
             <a className="navbar-item" href="#" style={{textDecoration: 'none'}}>
               Discover
             </a>
-            <div className="navbar-item has-dropdown is-hoverable">
+            <div className="navbar-item has-dropdown">
 
             <a className="navbar-link  is-active" href="#" style={{textDecoration: 'none'}}>
             <figure className="image is-24x24">

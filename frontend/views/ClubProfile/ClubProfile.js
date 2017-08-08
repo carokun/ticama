@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CompetitionRecord from '../components/clubProfile/CompetitionRecord';
-import ClubOverview from '../components/clubProfile/ClubOverview';
+import CompetitionRecord from '../../components/clubProfile/CompetitionRecord';
+import ClubOverview from '../../components/clubProfile/ClubOverview';
 
 
 class ClubProfile extends Component {
@@ -17,6 +17,14 @@ class ClubProfile extends Component {
 
     return (
       <div className="container is-fluid">
+        <div className="top-spacer">
+          <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}}>
+            <span className="icon">
+              <i className="fa fa-pencil"></i>
+            </span>
+            <span>Edit</span>
+          </button>
+        </div>
           <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
             <div className='tile is-3 is-parent is-vertical'>
               <ClubOverview />

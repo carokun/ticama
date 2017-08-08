@@ -7,7 +7,7 @@ class CompetitionCard extends Component {
       <div className="card" style={{margin: '10px', boxShadow: '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 20px 0px rgba(204, 204, 204, 0.1)'}}>
         <header className="card-header">
           <p className="card-header-title">
-            <a href="#" style={{color: '#5BD3B8'}}>Competition Title</a>
+            <a>Competition Title</a>
           </p>
           <small className="card-header-icon">05/27/2017 - 05/30/2017</small>
         </header>
