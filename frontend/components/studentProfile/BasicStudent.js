@@ -3,21 +3,28 @@ import React, { Component } from 'react';
 class BasicStudent extends Component {
   constructor(props) {
     super(props);
-
   }
-
   render() {
     return(
       <div className="tile is-parent is-vertical is-3">
         <article>
-          <figure className="image is-4by3">
-            <img src="http://bulma.io/images/placeholders/640x480.png" />
-          </figure>
+          <div style={{position: 'relative'}}>
+            <figure className="image is-4by3">
+              <img src="http://bulma.io/images/placeholders/640x480.png" />
+            </figure>
+            <button className="button is-info" onClick={() => this.props.edit()}
+              style={{position: 'absolute', right: '0', zIndex: '1'}}>
+              <span className="icon">
+                <i className="fa fa-pencil"></i>
+              </span>
+              <span>Edit</span>
+            </button>
+          </div>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
             <article className='tile media is-vertical' style={{marginBottom: '10px'}}>
-              <div className="title is-4" style={{marginBottom: '10px'}}>{this.props.user.fname} {this.props.user.lname}</div>
-              <div className="subtitle is-6" style={{margin: '0px'}}>{this.props.user.about || 'meeee!'}</div>
+              <div className="title is-2" style={{marginBottom: '10px'}}>{this.props.user.fname} {this.props.user.lname}</div>
+              <div className="subtitle is-4" style={{margin: '0px'}}>{this.props.user.about || 'meeee!'}</div>
             </article>
             <article className='tile is-parent media'>
               <div className='tile is-child is-2'>

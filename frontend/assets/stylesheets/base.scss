@@ -1,7 +1,5 @@
 @import "./node_modules/bulma/sass/utilities/initial-variables";
 
-
-
 $blue: #6190E8;
 $green: #5BD3B8;
 $primary: $green;
@@ -20,6 +18,8 @@ $size-normal: $size-4;
 $border: #d8d8d8;
 $tabs-link-active-color: $blue;
 $tabs-link-active-border-bottom-color: $blue;
+
+@import "./inputfield";
 
 body {
   background-color: #F9F7F9;
