@@ -101,5 +101,12 @@ a {
   box-shadow: none !important;
 }
 
+.card {
+  border-radius: 2px;
+}
+
+#no-white {
+  background-color: #f9f7f9 !important;
+}
 // 4. Import the rest of Bulma
 @import "./node_modules/bulma/bulma.sass";

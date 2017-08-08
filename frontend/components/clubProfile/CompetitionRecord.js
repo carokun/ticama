@@ -27,7 +27,6 @@ class CompetitionRecord extends Component {
     super(props);
 
   }
-
   render() {
     return(
       <div className='tile is-parent is-vertical' style={{backgroundColor: '#F9F7F9'}}>
