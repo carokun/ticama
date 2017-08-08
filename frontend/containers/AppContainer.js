@@ -15,6 +15,8 @@ import Navbar from '../views/Navbar';
 import CompanyCompetition from '../views/CompanyCompetition.js';
 import axios from 'axios';
 import CompanyCompetitionSubmissions from '../views/CompanyCompetitionSubmissions.js';
+import CompanyCompetitionApplications from '../views/CompanyCompetitionApplications.js';
+
 
 
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -45,6 +47,7 @@ class AppContainer extends React.Component {
         <Route path='/competition/student' exact component={StudentCompetition} />
         <Route path='/competition/company' exact component={CompanyCompetition} />
         <Route path='/competition/company/submissions' exact component={CompanyCompetitionSubmissions} />
+        <Route path='/competition/company/applications' exact component={CompanyCompetitionApplications} />
       </div>);
     } else if (this.props.user.type === 'company') {
 
