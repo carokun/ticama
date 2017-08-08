@@ -14,8 +14,6 @@ import StudentCompetition from '../views/StudentCompetition';
 import Navbar from '../views/Navbar';
 import CompanyCompetition from '../views/CompanyCompetition.js';
 import axios from 'axios';
-import CompanyCompetitionSubmissions from '../views/CompanyCompetitionSubmissions.js';
-import CompanyCompetitionApplications from '../views/CompanyCompetitionApplications.js';
 
 
 
@@ -41,18 +39,28 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={Navbar}/>
         <Route path='/profile/student/:username' exact component={StudentProfile} />
-        <Route path='/profile/club' exact component={ClubProfile} />
-        <Route path='/profile/company' exact component={CompanyProfile} />
+        <Route path='/profile/club/:id' exact component={ClubProfile} />
+        <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/dashboard/student' exact component={StudentDashboard} />
         <Route path='/competition/student' exact component={StudentCompetition} />
         <Route path='/competition/company' exact component={CompanyCompetition} />
-        <Route path='/competition/company/submissions' exact component={CompanyCompetitionSubmissions} />
-        <Route path='/competition/company/applications' exact component={CompanyCompetitionApplications} />
       </div>);
     } else if (this.props.user.type === 'company') {
-
+      return (<div>
+        <Route path='/' component={Navbar}/>
+        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/club/:id' exact component={ClubProfile} />
+        <Route path='/profile/company/:id' exact component={CompanyProfile} />
+        <Route path='/competition' exact component={CompanyCompetition} />
+      </div>);
     } else if (this.props.user.type === 'club') {
-
+      return (<div>
+        <Route path='/' component={Navbar}/>
+        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/club/:id' exact component={ClubProfile} />
+        <Route path='/profile/company/:id' exact component={CompanyProfile} />
+        <Route path='/competition' exact component={CompanyCompetition} />
+      </div>);
     }
   }
 

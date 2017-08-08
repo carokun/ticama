@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import TeamApplication from '../components/companyCompetitionApplications/TeamApplication.js';
-import Teams from '../components/companyCompetitionApplications/Teams.js';
+import CompetitionSummary from '../components/companyCompetition/CompetitionSummary';
+import CompetitionMessages from '../components/companyCompetition/CompetitionMessages';
 
-
-class CompanyCompetitionApplications extends Component {
+class CompanyCompetitionSummary extends Component {
   constructor(props) {
     super(props);
   }
@@ -20,9 +19,9 @@ class CompanyCompetitionApplications extends Component {
         <div className="top-spacer"></div>
         <div className="tabs">
           <ul>
-            <li><a onClick={() => this.props.setView('summary')}>Summary</a></li>
+            <li className="is-active"><a>Summary</a></li>
             <li><a onClick={() => this.props.setView('submissions')}>Submissions</a></li>
-            <li className="is-active"><a>Applications</a></li>
+            <li><a onClick={() => this.props.setView('applications')}>Applications</a></li>
           </ul>
         </div>
         <div className="tile is-ancestor">
@@ -32,11 +31,10 @@ class CompanyCompetitionApplications extends Component {
               <p>05/14/2017 – 05/16/2017</p>
               <p>123 5th Street <br/> New York, NY 19102</p>
             </article>
-
-            <TeamApplication />
+            <CompetitionSummary />
           </div>
           <div className="tile is-parent is-8">
-            <Teams />
+            <CompetitionMessages />
           </div>
         </div>
       </div>
@@ -55,4 +53,4 @@ const mapDispatchToProps = () => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyCompetitionApplications);
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyCompetitionSummary);

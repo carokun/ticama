@@ -20,9 +20,9 @@ class CompanyCompetitionSubmissions extends Component {
         <div className="top-spacer"></div>
         <div className="tabs">
           <ul>
-            <li><a>Summary</a></li>
+            <li><a onClick={() => this.props.setView('summary')}>Summary</a></li>
             <li className="is-active"><a>Submissions</a></li>
-            <li><a>Applications</a></li>
+            <li><a onClick={() => this.props.setView('applications')}>Applications</a></li>
           </ul>
         </div>
         <div className="tile is-ancestor">
