@@ -50,7 +50,7 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'student') {
       return (<div>
         <Route path='/' component={StudentNavbar}/>
-        <Route path='/profile/student/:username' exact component={StudentProfileEditable} />
+        <Route path='/profile/student/:id' exact component={StudentProfileEditable} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/home' exact component={StudentDashboard} />
