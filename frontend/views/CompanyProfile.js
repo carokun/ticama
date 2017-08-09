@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
-import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
+import CompanyProfileEdit from './CompanyProfile/CompanyProfileEdit';
+import CompanyProfilePublic from './CompanyProfile/CompanyProfilePublic';
 
-class StudentProfile extends Component {
+class CompanyProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       edit: false,
-      isOwnProfile: (this.props.user.username === this.props.match.params.username)
+      isOwnProfile: (this.props.user._id === this.props.match.params.id)
     }
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
-
   }
 
 
@@ -27,10 +26,12 @@ class StudentProfile extends Component {
   }
 
   isEditing() {
+    console.log(this.props.user._id);
+    console.log(this.props.match.params.username);
     if (this.state.edit && this.state.isOwnProfile) {
-      return <StudentProfileEditable endEdit={this.endEdit} username={this.props.match.params.username}/>
+      return <CompanyProfileEdit endEdit={this.endEdit}/>
     } else {
-      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} username={this.props.match.params.username}/>
+      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit}/>
     }
   }
 
@@ -54,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyProfile);

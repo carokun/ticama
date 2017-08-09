@@ -8,6 +8,20 @@ const User = models.User;
 
 // API ROUTES HERE
 
+router.get('/user/:username', function(req, res) {
+  User.findOne({username: req.params.username})
+  .populate('workExperience')
+  .populate('skills')
+  .populate('pastCompetitions')
+  .then((user) => {
+    console.log(user);
+    res.json({user})
+  })
+  .catch(err => {
+    res.json({err})
+  })
+})
+
 router.post('/add/experience', function(req, res) {
   console.log('here');
   console.log(req.body);

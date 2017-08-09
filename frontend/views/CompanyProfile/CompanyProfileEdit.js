@@ -15,7 +15,7 @@ class CompanyProfileEdit extends Component {
     return(
       <div className="container is-fluid">
         <div className="top-spacer">
-          <button className="button is-danger is-large" style={{float: 'right', marginTop: '10px'}}>
+          <button className="button is-danger is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.endEdit()}>
             <span className="icon">
               <i className="fa fa-floppy-o"></i>
             </span>
@@ -24,7 +24,7 @@ class CompanyProfileEdit extends Component {
         </div>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>
-            <CompanyOverviewEdit />
+            <CompanyOverviewEdit user={this.props.user} />
           </div>
           <div className='tile is-9 is-parent is-vertical'>
             {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their

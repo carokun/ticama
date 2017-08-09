@@ -5,7 +5,7 @@ import CompetitionRecord from '../../components/companyProfile/CompetitionRecord
 import CompanyOverview from '../../components/companyProfile/CompanyOverview';
 import CompetitionRecordAdmin from '../../components/companyProfile/CompetitionRecordAdmin';
 
-class CompanyProfile extends Component {
+class CompanyProfilePublic extends Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +17,7 @@ class CompanyProfile extends Component {
     return(
       <div className="container is-fluid">
         <div className="top-spacer">
-          <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}}>
+          <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.startEdit()}>
             <span className="icon">
               <i className="fa fa-pencil"></i>
             </span>
@@ -31,7 +31,7 @@ class CompanyProfile extends Component {
           <div className='tile is-9 is-parent is-vertical'>
             {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
             own profile or not. this logic also applies with club profile*/}
-            <CompetitionRecordAdmin />
+            {(this.props.isOwnProfile) ? <CompetitionRecordAdmin /> : <CompetitionRecord />}
           </div>
         </div>
       </div>
@@ -51,4 +51,4 @@ const mapDispatchToProps = () => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompanyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(CompanyProfilePublic);
