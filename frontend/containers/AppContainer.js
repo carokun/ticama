@@ -11,14 +11,14 @@ import StudentDashboard from '../views/StudentDashboard';
 import StudentProfile from '../views/StudentProfile';
 import StudentCompetition from '../views/StudentCompetition';
 
-import CompanyNavbar from '../views/StudentNavbar';
+import CompanyNavbar from '../views/CompanyNavbar';
 import CompanyRegister from '../views/CompanyRegister';
 import CompanyProfile from '../views/CompanyProfile';
 import CompanyProfileEdit from '../views/CompanyProfile/CompanyProfileEdit';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
 
-import ClubNavbar from '../views/StudentNavbar';
+import ClubNavbar from '../views/ClubNavbar';
 import ClubRegister from '../views/ClubRegister';
 import ClubProfile from '../views/ClubProfile/ClubProfile';
 import ClubProfileEdit from '../views/ClubProfile/ClubProfileEdit';
@@ -33,6 +33,8 @@ import { authenticateUser } from '../actions/AuthActions';
 class AppContainer extends React.Component {
   componentWillMount() {
     this.props.authenticateUser();
+    if (!this.props.user.type) {
+    }
   }
 
   findType() {
@@ -40,7 +42,7 @@ class AppContainer extends React.Component {
     if (!this.props.user.type) {
       return (<div>
         <Route path='/' exact component={Login}/>
-        <Route path='/register' component={Register}/>
+        <Route path='/register' exact component={Register}/>
         <Route path='/rstudent' exact component={StudentRegister} />
         <Route path='/rclub' exact component={ClubRegister} />
         <Route path='/rcompany' exact component={CompanyRegister} />
@@ -56,6 +58,7 @@ class AppContainer extends React.Component {
         <Route path='/discover' exact component={StudentDiscover} />
       </div>);
     } else if (this.props.user.type === 'company') {
+      console.log('company');
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
         <Route path='/home' exact component={CompanyProfile} />

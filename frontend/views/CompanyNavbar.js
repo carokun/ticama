@@ -10,10 +10,9 @@ class Navbar extends Component {
 
   componentWillMount() {
     var currRoute = this.props.history.location.pathname;
-    console.log(this.props.history.location);
-    console.log("currRoute", currRoute);
     if (currRoute === '/') {
-      this.props.history.push('/profile/student/' + this.props.user.username);
+      console.log('here');
+      this.props.history.push('/profile/company/' + this.props.user._id);
     }
   }
 
