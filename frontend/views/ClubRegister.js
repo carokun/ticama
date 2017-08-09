@@ -23,9 +23,8 @@ class ClubRegister extends Component {
 
   render() {
     return (
-      <div className="container is-fluid">
-        <div className="login-wrapper">
-          <h2>Club Registration</h2>
+      <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
+          <h2 className="title is-2">Club Registration</h2>
 
           <div className="field">
             <label className="label">Userame</label>
@@ -97,7 +96,6 @@ class ClubRegister extends Component {
           <Link to='/'>
             <button className="button is-primary">Login</button>
           </Link>
-      </div>
     </div>
   )
 }

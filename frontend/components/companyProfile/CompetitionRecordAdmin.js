@@ -17,12 +17,24 @@ class CompetitionCard extends Component {
             Brief Description. This is a super brief description of the competition like this should be like roughly 500 characters or so and we can truncate using elipses.
           </div>
         </div>
+        <footer className="card-footer">
+          <p className="card-footer-item">
+            <span>
+              <a>Analytics</a>
+            </span>
+          </p>
+          <p className="card-footer-item">
+            <span>
+              <a>Event Page</a>
+            </span>
+          </p>
+        </footer>
       </div>
     )
   }
 }
 
-class CompetitionRecord extends Component {
+class CompetitionRecordAdmin extends Component {
   constructor(props) {
     super(props);
 
@@ -58,4 +70,4 @@ class CompetitionRecord extends Component {
   }
 }
 
-export default CompetitionRecord;
+export default CompetitionRecordAdmin;
