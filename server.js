@@ -43,7 +43,6 @@ passport.deserializeUser(function(id, done) {
   .populate('mainSkills')
   .exec()
   .then(user => {
-    console.log('shouldnt be here');
     done(null, user);
   })
   .catch(err => {
@@ -64,7 +63,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
     .then(user => {
       //IF NO USER IS PRESENT -- AUTHENTICATION FAILS
       if (!user) {
-        console.log(user);
         return done(null, false, { message: 'Incorrect username.' });
       }
       //IF THE PASSWORDS DO NOT MATCH -- AUTHENTICATION FAILS
@@ -86,7 +84,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/api/authenticate/user', function(req, res) {
-  console.log('refreshing', req.user);
   res.json({user: req.user});
 });
 
@@ -103,5 +100,5 @@ app.use('/', (request, response) => {
 // app.use('/', routes);
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Backend server for Electron App running on port 3000!')
+  console.log('Backend server for Mirathon App running on port 3000!')
 })

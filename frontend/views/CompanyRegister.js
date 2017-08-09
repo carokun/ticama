@@ -14,13 +14,14 @@ class CompanyRegister extends Component {
       repeatPassword: '',
       about: '',
       website: '',
-      industry: ''
+      industry: '',
+      phone: ''
     }
   }
 
   submit() {
-    const { username, password, repeatPassword, email, fname, about, website, industry } = this.state;
-    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry);
+    const { username, password, repeatPassword, email, fname, about, website, industry, phone } = this.state;
+    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry, phone);
   }
 
   render() {
@@ -94,6 +95,17 @@ class CompanyRegister extends Component {
                     </div>
 
                     <div className="field">
+                      <label className="label">Website</label>
+                      <div className="control has-icons-left">
+                        <span className="icon is-small is-left">
+                          <i className="fa fa-phone"></i>
+                        </span>
+                        <input className="input" type="text" placeholder="(888)-123-4567" name="phone"
+                        value={this.state.phone} onChange={(e) => this.setState({phone: e.target.value})}/>
+                      </div>
+                    </div>
+
+                    <div className="field">
                       <label className="label">Industry</label>
                       <div className="control has-icons-left">
                         <span className="icon is-small is-left">
@@ -129,7 +141,7 @@ class CompanyRegister extends Component {
 
         const mapDispatchToProps = (dispatch) => {
           return {
-            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry))
+            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry, phone) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone))
           }
         };
 

@@ -22,27 +22,27 @@ module.exports = function(passport) {
 
 
 
-  router.post('/register', function(req, res) {
-    var username = req.body.username;
-    var password = req.body.password;
-    var repeatPassword = req.body.repeatPassword;
-
-    if (password !== repeatPassword) {
-      res.json({ success: false, message: 'passwords do not match' });
-    } else {
-      var user = new User({
-        username, password, email, fname, lname, university, year, major
-      })
-      user.save()
-      .then(user => {
-        res.json({success: true, user});
-      })
-      .catch(err => {
-        res.json({ success: false, message: 'invalid registration' });
-      })
-    }
-
-  });
+  // router.post('/register', function(req, res) {
+  //   var username = req.body.username;
+  //   var password = req.body.password;
+  //   var repeatPassword = req.body.repeatPassword;
+  //
+  //   if (password !== repeatPassword) {
+  //     res.json({ success: false, message: 'passwords do not match' });
+  //   } else {
+  //     var user = new User({
+  //       username, password, email, fname, lname, university, year, major
+  //     })
+  //     user.save()
+  //     .then(user => {
+  //       res.json({success: true, user});
+  //     })
+  //     .catch(err => {
+  //       res.json({ success: false, message: 'invalid registration' });
+  //     })
+  //   }
+  //
+  // });
 
   router.post('/register/student', function(req, res) {
     var { username, password, repeatPassword, email, fname, lname, university, year, major, about } = req.body;
@@ -66,13 +66,13 @@ module.exports = function(passport) {
   });
 
   router.post('/register/company', function(req, res) {
-    var { username, password, repeatPassword, email, fname, about, website, industry } = req.body;
+    var { username, password, repeatPassword, email, fname, about, website, industry, phone } = req.body;
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       console.log('YO from backend', req.body.fname);
       var user = new User({
-        username, password, email, fname, about, website, type: 'company', industry
+        username, password, email, fname, about, website, type: 'company', industry, phone
       })
       user.save()
       .then(user => {
