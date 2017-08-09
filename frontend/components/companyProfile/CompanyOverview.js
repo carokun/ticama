@@ -18,7 +18,7 @@ class CompanyOverview extends Component {
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
-              <p className="title is-2">{this.props.user.username}</p>
+              <p className="title is-2">{this.props.user.fname}</p>
               <p className="subtitle is-4">Consulting</p>
           <div style={{height: '10px', width: '100%'}}></div>
           <div className='tile is-child is-12'>

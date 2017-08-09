@@ -8,18 +8,19 @@ class CompanyRegister extends Component {
     super(props);
     this.state = {
       username: '',
-      name: '',
+      fname: '',
       email: '',
       password: '',
       repeatPassword: '',
       about: '',
-      website: ''
+      website: '',
+      industry: ''
     }
   }
 
   submit() {
-    const { username, password, repeatPassword, email, name, about, website } = this.state;
-    this.props.registerCompany(username, password, repeatPassword, email, name, about, website);
+    const { username, password, repeatPassword, email, fname, about, website, industry } = this.state;
+    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry);
   }
 
   render() {
@@ -35,19 +36,18 @@ class CompanyRegister extends Component {
         <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
           <h2 className="title is-2">Company Registration</h2>
           <div className="field">
-            <label className="label">Userame</label>
+            <label className="label">Username</label>
             <div className="control">
               <input className="input" type="text" name="username" value={this.state.username}
                 onChange={(e) => this.setState({username: e.target.value})}/>
               </div>
-              <p className="help">For simple login purposes.</p>
             </div>
 
             <div className="field">
               <label className="label">Company Name</label>
               <div className="control">
-                <input className="input" type="text" name="name" value={this.state.name}
-                  onChange={(e) => this.setState({name: e.target.value})}/>
+                <input className="input" type="text" name="fname" value={this.state.fname}
+                  onChange={(e) => this.setState({fname: e.target.value})}/>
                 </div>
               </div>
 
@@ -94,9 +94,20 @@ class CompanyRegister extends Component {
                     </div>
 
                     <div className="field">
+                      <label className="label">Industry</label>
+                      <div className="control has-icons-left">
+                        <span className="icon is-small is-left">
+                          <i className="fa fa-link"></i>
+                        </span>
+                        <input className="input" type="text" placeholder="finance" name="industry"
+                        value={this.state.industry} onChange={(e) => this.setState({industry: e.target.value})}/>
+                      </div>
+                    </div>
+
+                    <div className="field">
                       <label className="label">About</label>
                       <div className="control">
-                        <textarea className="textarea" placeholder="e.g. We promote social good in communities."></textarea>
+                        <textarea className="textarea" placeholder="e.g. We promote social good in communities." value={this.state.about} onChange={(e) => this.setState({about: e.target.value})}></textarea>
                       </div>
                     </div>
                     <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
@@ -118,7 +129,7 @@ class CompanyRegister extends Component {
 
         const mapDispatchToProps = (dispatch) => {
           return {
-            registerCompany: (username, password, repeatPassword, email, name, about, website) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, name, about, website))
+            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry))
           }
         };
 

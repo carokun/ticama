@@ -88,6 +88,9 @@ var UserSchema = new Schema ({
   },
   interests : {
     type: Array
+  },
+  industry: {
+    type: String
   }
 })
 

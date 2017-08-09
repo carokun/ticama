@@ -10,14 +10,17 @@ module.exports = function(passport) {
   });
 
   router.get('/logout', function(req, res) {
+    console.log('hi');
     req.logout();
-    console.log('user', req.user);
-    res.json({success: true});
+    console.log(req.user);
+    req.session.destroy(function (err) {
+      if (err) { return next(err); }
+      // The response should indicate that the user is no longer authenticated.
+      return res.send({ success: true });
+    });
   });
 
-  router.get('/authenticate/user', function(req, res) {
-    res.json({user: req.user});
-  });
+
 
   router.post('/register', function(req, res) {
     var username = req.body.username;
@@ -63,13 +66,13 @@ module.exports = function(passport) {
   });
 
   router.post('/register/company', function(req, res) {
-    var { username, password, repeatPassword, email, name, about, website } = req.body;
-    console.log('username', req.body.username);
+    var { username, password, repeatPassword, email, fname, about, website, industry } = req.body;
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
+      console.log('YO from backend', req.body.fname);
       var user = new User({
-        username, password, email, name, about, website, type: 'company'
+        username, password, email, fname, about, website, type: 'company', industry
       })
       user.save()
       .then(user => {
@@ -102,11 +105,6 @@ module.exports = function(passport) {
       })
     }
 
-  });
-
-  router.get('/logout', function(req, res) {
-    req.logout();
-    res.json({success: true});
   });
 
   router.get('/user/:id', function(req, res) {

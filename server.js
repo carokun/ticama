@@ -25,7 +25,9 @@ app.use(bodyParser.json());
 app.use(session(
   {
     secret: process.env.SECRET,
-    store: new MongoStore({mongooseConnection: mongoose.connection})
+    store: new MongoStore({mongooseConnection: mongoose.connection}),
+    saveUninitialized: false,
+    resave: false
   }
 ));
 
@@ -41,6 +43,7 @@ passport.deserializeUser(function(id, done) {
   .populate('mainSkills')
   .exec()
   .then(user => {
+    console.log('shouldnt be here');
     done(null, user);
   })
   .catch(err => {
@@ -81,6 +84,11 @@ passport.use(new LocalStrategy(function(username, password, done) {
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('/api/authenticate/user', function(req, res) {
+  console.log('refreshing', req.user);
+  res.json({user: req.user});
+});
 
 app.use('/api', auth(passport))
 app.use('/api', routes)
