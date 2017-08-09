@@ -38,7 +38,7 @@ class ClubRegister extends Component {
           <h2 className="title is-2">Club Registration</h2>
 
           <div className="field">
-            <label className="label">Userame</label>
+            <label className="label">Username</label>
             <div className="control">
               <input className="input" type="text" name="username" value={this.state.username}
                 onChange={(e) => this.setState({username: e.target.value})}/>

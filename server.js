@@ -40,7 +40,6 @@ passport.deserializeUser(function(id, done) {
   .populate('workExperience')
   .populate('skills')
   .populate('pastCompetitions')
-  .populate('mainSkills')
   .exec()
   .then(user => {
     done(null, user);
