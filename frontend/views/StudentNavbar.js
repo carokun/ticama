@@ -13,7 +13,7 @@ class Navbar extends Component {
     console.log(this.props.history.location);
     console.log("currRoute", currRoute);
     if (currRoute === '/') {
-      this.props.history.push('/profile/student/' + this.props.user.username);
+      this.props.history.push('/profile/student/' + this.props.user._id);
     }
   }
 

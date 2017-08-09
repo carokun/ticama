@@ -11,6 +11,7 @@ module.exports = function(passport) {
 
   router.get('/logout', function(req, res) {
     req.logout();
+    console.log('user', req.user);
     res.json({success: true});
   });
 
@@ -107,6 +108,20 @@ module.exports = function(passport) {
     req.logout();
     res.json({success: true});
   });
+
+  router.get('/user/:id', function(req, res) {
+    User.findById(req.params.id)
+    .populate('workExperience')
+    .populate('skills')
+    .populate('pastCompetitions')
+    .then((user) => {
+      console.log(user);
+      res.json({user})
+    })
+    .catch(err => {
+      res.json({err})
+    })
+  })
 
   return router;
 };

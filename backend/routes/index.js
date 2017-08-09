@@ -8,20 +8,6 @@ const User = models.User;
 
 // API ROUTES HEREx
 
-router.get('/user/:id', function(req, res) {
-  User.findById(req.params.id)
-  .populate('workExperience')
-  .populate('skills')
-  .populate('pastCompetitions')
-  .then((user) => {
-    console.log(user);
-    res.json({user})
-  })
-  .catch(err => {
-    res.json({err})
-  })
-})
-
 router.post('/add/experience', function(req, res) {
   console.log('here');
   console.log(req.body);

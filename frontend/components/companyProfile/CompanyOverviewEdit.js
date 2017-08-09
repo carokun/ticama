@@ -17,6 +17,10 @@ class CompanyOverviewEdit extends Component {
 
   }
 
+  save() {
+    console.log('STATTTTEEEEEE', this.state);
+  }
+
   render() {
     return(
 
@@ -27,6 +31,7 @@ class CompanyOverviewEdit extends Component {
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
           </div>
+          <button className='button' onClick={() => this.save()}>Save</button>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>

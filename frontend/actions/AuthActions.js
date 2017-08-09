@@ -128,6 +128,7 @@ export const logoutUser = (dispatch) => {
         axios.get('/api/logout')
         .then((response) => {
           if (response.data.success) {
+            console.log('success');
             dispatch({ type: 'user_logout' });
           } else {
             dispatch({ type: 'user_logout_failed' });
