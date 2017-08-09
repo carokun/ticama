@@ -23,6 +23,17 @@ class ClubRegister extends Component {
 
   render() {
     return (
+      <div>
+      <div className="container">
+        <div className="top-spacer"></div>
+
+        <nav className="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
+          <ul>
+            <Link to='/register'><li><a>Register</a></li></Link> •
+            <li className="is-active"><a aria-current="page">Club</a></li>
+          </ul>
+        </nav>
+      </div>
       <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
           <h2 className="title is-2">Club Registration</h2>
 
@@ -90,12 +101,13 @@ class ClubRegister extends Component {
               <textarea className="textarea" placeholder="e.g. We promote social good in communities."></textarea>
             </div>
           </div>
-
-          <button className="button is-primary" onClick={() => this.submit()}>Register</button>
-
-          <Link to='/'>
-            <button className="button is-primary">Login</button>
-          </Link>
+          <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
+            <Link to='/'><button className="button is-danger">Login</button></Link>
+            <div style={{width: '10px', height: '1px'}}></div>
+            <button className="button is-info" onClick={() => this.submit()}>Register</button>
+          </div>
+          <div style={{marginBottom: '60px'}}></div>
+    </div>
     </div>
   )
 }

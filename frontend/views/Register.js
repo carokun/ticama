@@ -9,16 +9,19 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        <Link to='/register/student'>
-          <button className="blue-button">Student</button>
-        </Link>
-        <Link to='/register/company'>
-          <button className="blue-button">Company</button>
-        </Link>
-        <Link to='/register/club'>
-          <button className="blue-button">Club</button>
-        </Link>
+      <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '17%', flexDirection: 'column', width: '400px'}}>
+        <h2 className="title is-1">Register</h2>
+        <div className="container" style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row', width: '400px'}}>
+          <Link to='/rstudent'>
+            <button className="button is-info">Student</button>
+          </Link>
+          <Link to='/rcompany'>
+            <button className="button is-info">Company</button>
+          </Link>
+          <Link to='/rclub'>
+            <button className="button is-info">Club</button>
+          </Link>
+        </div>
       </div>
     )
   }

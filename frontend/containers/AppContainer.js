@@ -41,9 +41,9 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' exact component={Login}/>
         <Route path='/register' component={Register}/>
-        <Route path='/register/student' exact component={StudentRegister} />
-        <Route path='/register/club' exact component={ClubRegister} />
-        <Route path='/register/company' exact component={CompanyRegister} />
+        <Route path='/rstudent' exact component={StudentRegister} />
+        <Route path='/rclub' exact component={ClubRegister} />
+        <Route path='/rcompany' exact component={CompanyRegister} />
       </div>);
     } else if (this.props.user.type === 'student') {
       return (<div>

@@ -27,10 +27,18 @@ class StudentRegister extends Component {
 
   render() {
     return (
-      <div className="container is-fluid">
-        <div className="login-wrapper">
-          <h2>Student Registration</h2>
-
+      <div>
+      <div className="container">
+        <div className="top-spacer"></div>
+        <nav className="breadcrumb has-bullet-separator" aria-label="breadcrumbs">
+          <ul>
+            <Link to='/register'><li><a>Register</a></li></Link> •
+            <li className="is-active"><a aria-current="page">Student</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
+          <h2 className="title is-2">Student Registration</h2>
           <div className="field">
             <label className="label">Username</label>
             <div className="control">
@@ -90,31 +98,34 @@ class StudentRegister extends Component {
                 onChange={(e) => this.setState({about: e.target.value})}/>
             </div>
           </div>
-          <div className="field">
-            <label className="label">University</label>
-            <div className="control">
-              <div className="select">
-                <select onChange={(e) => this.setState({university: e.target.value})}>
-                  <option>University of Pennsylvania</option>
-                  <option>University of California – Berkeley</option>
-                </select>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div className="field">
+              <label className="label">University</label>
+              <div className="control">
+                <div className="select">
+                  <select onChange={(e) => this.setState({university: e.target.value})}>
+                    <option>University of Pennsylvania</option>
+                    <option>University of California – Berkeley</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div style={{width: '10px', height: '1px'}}></div>
+            <div className="field">
+              <label className="label">Year</label>
+              <div className="control">
+                <div className="select">
+                  <select onChange={(e) => this.setState({year: e.target.value})}>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                  </select>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="field">
-            <label className="label">Year</label>
-            <div className="control">
-              <div className="select">
-                <select onChange={(e) => this.setState({year: e.target.value})}>
-                  <option>2018</option>
-                  <option>2019</option>
-                  <option>2020</option>
-                  <option>2021</option>
-                </select>
-              </div>
-            </div>
-          </div>
 
           <div className="field">
             <label className="label">Major</label>
@@ -129,13 +140,13 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
-
-          <button className="button is-primary" onClick={() => this.submit()}>Register</button>
-
-          <Link to='/'>
-            <button className="button is-primary">Login</button>
-          </Link>
-      </div>
+          <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
+            <Link to='/'><button className="button is-danger">Login</button></Link>
+            <div style={{width: '10px', height: '1px'}}></div>
+            <button className="button is-info" onClick={() => this.submit()}>Register</button>
+          </div>
+          <div style={{marginBottom: '60px'}}></div>
+    </div>
     </div>
   )
 }
