@@ -19,6 +19,7 @@ class ClubRegister extends Component {
   submit() {
     const { username, password, repeatPassword, email, name, about, website } = this.state;
     this.props.registerClub(username, password, repeatPassword, email, name, about, website);
+    this.props.history.push('/');
   }
 
   render() {
@@ -101,9 +102,23 @@ class ClubRegister extends Component {
               <textarea className="textarea" placeholder="e.g. We promote social good in communities."></textarea>
             </div>
           </div>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div className="file">
+              <label className="label">Profile Picture</label>
+              <div style={{position: 'relative'}}>
+                <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                    <span className="file-icon is-small">
+                      <i className="fa fa-upload"></i>
+                    </span>
+                    <span> Upload</span>
+                </button>
+                <input className="file-input"  type="file" name="picClub" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+              </div>
+            </div>
+          </div>
+          <div className="top-spacer"></div>
+
           <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
-            <Link to='/'><button className="button is-danger">Login</button></Link>
-            <div style={{width: '10px', height: '1px'}}></div>
             <button className="button is-info" onClick={() => this.submit()}>Register</button>
           </div>
           <div style={{marginBottom: '60px'}}></div>

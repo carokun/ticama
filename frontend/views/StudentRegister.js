@@ -23,6 +23,7 @@ class StudentRegister extends Component {
   submit() {
     const { username, password, repeatPassword, email, fname, lname, university, year, major } = this.state;
     this.props.registerStudent(username, password, repeatPassword, email, fname, lname, university, year, major);
+    this.props.history.push('/');
   }
 
   render() {
@@ -155,7 +156,7 @@ class StudentRegister extends Component {
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left'}}/>
+                <input className="file-input"  type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
             <div className="file">
@@ -167,15 +168,13 @@ class StudentRegister extends Component {
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left'}}/>
+                <input className="file-input"  type="file" name="picStudent" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
           </div>
           <div className="top-spacer"></div>
 
           <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
-            <Link to='/'><button className="button is-danger">Login</button></Link>
-            <div style={{width: '10px', height: '1px'}}></div>
             <button className="button is-info" onClick={() => this.submit()}>Register</button>
           </div>
           <div style={{marginBottom: '60px'}}></div>
