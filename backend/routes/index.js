@@ -188,7 +188,7 @@ router.post('/updateBasicInfo', function(req, res) {
     user.save()
     .then(user => {
       console.log(user);
-      res.json(user)
+      res.json({user})
     })
     .catch(err => {
       res.json(err)

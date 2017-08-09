@@ -26,7 +26,8 @@ export default (state = {}, action) => {
             newMainSkills.push(action.mainSkill);
             return Object.assign({}, state, { mainSkills: newMainSkills });
         case 'update_basic_info':
-            return Object.assign({}, state, action.user);
+            const { fname, lname, about, university, major, year, interests, linkedin, website, resume } = action.user
+            return Object.assign({}, state, { fname, lname, about, university, major, year, interests, linkedin, website, resume });
         default:
             return state;
     }

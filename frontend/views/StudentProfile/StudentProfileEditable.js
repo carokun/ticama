@@ -41,7 +41,7 @@ class StudentProfileEditable extends Component {
           <div className="tile is-parent">
             <BasicStudentEdit user={this.props.user} updateBasicInfo={this.props.updateBasicInfo}/>
             <div className="tile is-parent is-vertical is-6">
-              <button onClick={this.props.endEdit}>Save</button>
+              <button onClick={this.props.endEdit}>Done</button>
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
             </div>

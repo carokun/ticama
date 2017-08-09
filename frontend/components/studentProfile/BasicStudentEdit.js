@@ -26,9 +26,11 @@ class StudentProfileEdit extends Component {
 
   addInterest() {
     var newInterests = this.state.interests.slice();
+    console.log(newInterests);
     if (this.state.newInterest !== '') {
       newInterests.push(this.state.newInterest);
     }
+    console.log(newInterests);
     this.setState({
       interests: newInterests,
       newInterest: ''
