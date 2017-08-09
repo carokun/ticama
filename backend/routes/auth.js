@@ -11,13 +11,10 @@ module.exports = function(passport) {
 
   router.get('/logout', function(req, res) {
     req.logout();
-    console.log('user', req.user);
     res.json({success: true});
   });
 
-  router.get('/authenticate/user', function(req, res) {
-    res.json({user: req.user});
-  });
+  
 
   router.post('/register', function(req, res) {
     var username = req.body.username;

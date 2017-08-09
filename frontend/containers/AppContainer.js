@@ -36,7 +36,7 @@ class AppContainer extends React.Component {
   }
 
   findType() {
-    console.log(this.props.user);
+    console.log('APPCONTAINER', this.props.user);
     if (!this.props.user.type) {
       return (<div>
         <Route path='/' exact component={Login}/>

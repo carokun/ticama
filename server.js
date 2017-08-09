@@ -79,6 +79,11 @@ passport.use(new LocalStrategy(function(username, password, done) {
   }
 ));
 
+app.get('/api/authenticate/user', function(req, res) {
+  console.log('refreshing', req.user);
+  res.json({user: req.user});
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
