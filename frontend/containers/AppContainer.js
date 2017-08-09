@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../views/Login';
 import Register from '../views/Register';
+import Loading from '../views/Loading';
 
 import StudentNavbar from '../views/StudentNavbar';
 import StudentRegister from '../views/StudentRegister';
@@ -10,12 +11,10 @@ import StudentDiscover from '../views/StudentDiscover';
 import StudentDashboard from '../views/StudentDashboard';
 import StudentProfile from '../views/StudentProfile';
 import StudentCompetition from '../views/StudentCompetition';
-import StudentProfileEditable from '../views/StudentProfile/StudentProfileEditable';
-import StudentProfilePublic from '../views/StudentProfile/StudentProfilePublic';
 
 import CompanyNavbar from '../views/StudentNavbar';
 import CompanyRegister from '../views/CompanyRegister';
-import CompanyProfile from '../views/CompanyProfile/CompanyProfile';
+import CompanyProfile from '../views/CompanyProfile';
 import CompanyProfileEdit from '../views/CompanyProfile/CompanyProfileEdit';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
@@ -50,7 +49,8 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'student') {
       return (<div>
         <Route path='/' component={StudentNavbar}/>
-        <Route path='/profile/student/:id' exact component={StudentProfileEditable} />
+        <Route path='/loading' component={Loading}/>
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/home' exact component={StudentDashboard} />
@@ -61,7 +61,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
         <Route path='/home' exact component={CompanyProfile} />
-        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/edit/profile' exact component={CompanyProfileEdit} />
@@ -71,7 +71,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={ClubNavbar}/>
         <Route path='/home' exact component={ClubProfile} />
-        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/edit/profile' exact component={ClubProfileEdit} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
