@@ -23,6 +23,7 @@ class StudentRegister extends Component {
   submit() {
     const { username, password, repeatPassword, email, fname, lname, university, year, major } = this.state;
     this.props.registerStudent(username, password, repeatPassword, email, fname, lname, university, year, major);
+    this.props.history.push('/');
   }
 
   render() {
@@ -37,7 +38,7 @@ class StudentRegister extends Component {
           </ul>
         </nav>
       </div>
-      <div className="container" style={{display: 'flex', justifyContent: 'center', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
+      <div className="container" style={{display: 'flex', justifyContent: 'space-between', marginTop: '5%', flexDirection: 'column', width: '500px'}}>
           <h2 className="title is-2">Student Registration</h2>
           <div className="field">
             <label className="label">Username</label>
@@ -46,19 +47,21 @@ class StudentRegister extends Component {
                 onChange={(e) => this.setState({username: e.target.value})}/>
             </div>
           </div>
-
-          <div className="field">
-            <label className="label">First Name</label>
-            <div className="control">
-              <input className="input" type="text" name="fname" value={this.state.fname}
-                onChange={(e) => this.setState({fname: e.target.value})}/>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div className="field">
+              <label className="label">First Name</label>
+              <div className="control">
+                <input className="input" type="text" name="fname" value={this.state.fname}
+                  onChange={(e) => this.setState({fname: e.target.value})}/>
+              </div>
             </div>
-          </div>
-          <div className="field">
-            <label className="label">Last Name</label>
-            <div className="control">
-              <input className="input" type="text" name="lname" value={this.state.lname}
-                onChange={(e) => this.setState({lname: e.target.value})}/>
+            <div style={{width: '20px', height: '1px'}}></div>
+            <div className="field">
+              <label className="label">Last Name</label>
+              <div className="control">
+                <input className="input" type="text" name="lname" value={this.state.lname}
+                  onChange={(e) => this.setState({lname: e.target.value})}/>
+              </div>
             </div>
           </div>
           <div className="field">
@@ -71,24 +74,27 @@ class StudentRegister extends Component {
                 value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
             </div>
           </div>
-          <div className="field">
-            <label className="label">Password</label>
-            <div className="control has-icons-left">
-              <span className="icon is-small is-left">
-                <i className="fa fa-lock"></i>
-              </span>
-              <input className="input" type="password" name="password"
-                value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control has-icons-left">
+                <span className="icon is-small is-left">
+                  <i className="fa fa-lock"></i>
+                </span>
+                <input className="input" type="password" name="password"
+                  value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+              </div>
             </div>
-          </div>
-          <div className="field">
-            <label className="label">Confirm Password</label>
-            <div className="control has-icons-left">
-              <span className="icon is-small is-left">
-                <i className="fa fa-lock"></i>
-              </span>
-              <input className="input" type="password" name="repeatPassword"
-                value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
+            <div style={{width: '20px', height: '40px'}}></div>
+            <div className="field">
+              <label className="label">Confirm Password</label>
+              <div className="control has-icons-left">
+                <span className="icon is-small is-left">
+                  <i className="fa fa-lock"></i>
+                </span>
+                <input className="input" type="password" name="repeatPassword"
+                  value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
+              </div>
             </div>
           </div>
           <div className="field">
@@ -140,9 +146,35 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div className="file">
+              <label className="label">Resume</label>
+              <div style={{position: 'relative'}}>
+                <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                    <span className="file-icon is-small">
+                      <i className="fa fa-upload"></i>
+                    </span>
+                    <span> Upload</span>
+                </button>
+                <input className="file-input"  type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+              </div>
+            </div>
+            <div className="file">
+              <label className="label">Profile Picture</label>
+              <div style={{position: 'relative'}}>
+                <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                    <span className="file-icon is-small">
+                      <i className="fa fa-upload"></i>
+                    </span>
+                    <span> Upload</span>
+                </button>
+                <input className="file-input"  type="file" name="picStudent" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+              </div>
+            </div>
+          </div>
+          <div className="top-spacer"></div>
+
           <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
-            <Link to='/'><button className="button is-danger">Login</button></Link>
-            <div style={{width: '10px', height: '1px'}}></div>
             <button className="button is-info" onClick={() => this.submit()}>Register</button>
           </div>
           <div style={{marginBottom: '60px'}}></div>

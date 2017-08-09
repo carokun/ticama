@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Login from '../views/Login';
 import Register from '../views/Register';
+import Loading from '../views/Loading';
 
 import StudentNavbar from '../views/StudentNavbar';
 import StudentRegister from '../views/StudentRegister';
@@ -49,6 +50,7 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'student') {
       return (<div>
         <Route path='/' component={StudentNavbar}/>
+        <Route path='/loading' component={Loading}/>
         <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
