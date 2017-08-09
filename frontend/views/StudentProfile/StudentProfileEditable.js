@@ -21,7 +21,7 @@ class StudentProfileEditable extends Component {
 
 
   componentDidMount() {
-    axios.get('/api/user/' + this.props.username)
+    axios.get('/api/user/' + this.props.id)
     .then(response => {
       this.setState({
         user: response.data.user
@@ -30,9 +30,6 @@ class StudentProfileEditable extends Component {
   }
 
   render() {
-    console.log(this.props.username);
-
-
     if (this.state.user) {
       console.log('userrrrrr', this.state.user);
       const { username, email, fname, lname, university, year, major, competitionExperience,

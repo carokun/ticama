@@ -20,7 +20,7 @@ class StudentProfilePublic extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/user/' + this.props.username)
+    axios.get('/api/user/' + this.props.id)
     .then(response => {
       this.setState({
         user: response.data.user

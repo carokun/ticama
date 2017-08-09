@@ -6,10 +6,10 @@ const Skill = models.Skill;
 const Company = models.Company;
 const User = models.User;
 
-// API ROUTES HERE
+// API ROUTES HEREx
 
-router.get('/user/:username', function(req, res) {
-  User.findOne({username: req.params.username})
+router.get('/user/:id', function(req, res) {
+  User.findById(req.params.id)
   .populate('workExperience')
   .populate('skills')
   .populate('pastCompetitions')

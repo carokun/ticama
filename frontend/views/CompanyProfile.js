@@ -27,11 +27,11 @@ class CompanyProfile extends Component {
 
   isEditing() {
     console.log(this.props.user._id);
-    console.log(this.props.match.params.username);
+    console.log(this.props.match.params.id);
     if (this.state.edit && this.state.isOwnProfile) {
-      return <CompanyProfileEdit endEdit={this.endEdit}/>
+      return <CompanyProfileEdit endEdit={this.endEdit} id={this.props.match.params.id}/>
     } else {
-      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit}/>
+      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id}/>
     }
   }
 

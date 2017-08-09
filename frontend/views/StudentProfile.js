@@ -10,7 +10,7 @@ class StudentProfile extends Component {
     super(props);
     this.state = {
       edit: false,
-      isOwnProfile: (this.props.user.username === this.props.match.params.username)
+      isOwnProfile: (this.props.user._id === this.props.match.params.id)
     }
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
@@ -28,9 +28,9 @@ class StudentProfile extends Component {
 
   isEditing() {
     if (this.state.edit && this.state.isOwnProfile) {
-      return <StudentProfileEditable endEdit={this.endEdit} username={this.props.match.params.username}/>
+      return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id}/>
     } else {
-      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} username={this.props.match.params.username}/>
+      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id}/>
     }
   }
 
