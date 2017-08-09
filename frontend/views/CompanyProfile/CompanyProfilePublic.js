@@ -41,7 +41,7 @@ class CompanyProfilePublic extends Component {
           </div>
           <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
             <div className='tile is-3 is-parent is-vertical'>
-              <CompanyOverview />
+              <CompanyOverview user={this.state.user}/>
             </div>
             <div className='tile is-9 is-parent is-vertical'>
               {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
