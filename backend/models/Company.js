@@ -12,6 +12,9 @@ var CompanySchema = new Schema ({
   name: {
     type: String,
   },
+  phone: {
+    type: String,
+  },
   logo: {
     type: String
   },
@@ -36,7 +39,19 @@ var CompanySchema = new Schema ({
       type: Schema.ObjectId,
       ref: 'Competition'
     }
-  ]
+  ],
+  streetAddress: {
+    type: String
+  },
+  city: {
+    type: String
+  },
+  state: {
+    type: String
+  },
+  zipcode: {
+    type: Number
+  }
 })
 
 

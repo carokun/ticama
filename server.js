@@ -57,7 +57,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
     .populate('workExperience')
     .populate('skills')
     .populate('pastCompetitions')
-    .populate('mainSkills')
     .exec()
     .then(user => {
       //IF NO USER IS PRESENT -- AUTHENTICATION FAILS

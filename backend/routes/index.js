@@ -6,7 +6,21 @@ const Skill = models.Skill;
 const Company = models.Company;
 const User = models.User;
 
-// API ROUTES HERE
+// API ROUTES HEREx
+
+router.get('/user/:id', function(req, res) {
+  User.findById(req.params.id)
+  .populate('workExperience')
+  .populate('skills')
+  .populate('pastCompetitions')
+  .then((user) => {
+    console.log(user);
+    res.json({user})
+  })
+  .catch(err => {
+    res.json({err})
+  })
+})
 
 router.post('/add/experience', function(req, res) {
   console.log('here');
@@ -188,7 +202,7 @@ router.post('/updateBasicInfo', function(req, res) {
     user.save()
     .then(user => {
       console.log(user);
-      res.json(user)
+      res.json({user})
     })
     .catch(err => {
       res.json(err)

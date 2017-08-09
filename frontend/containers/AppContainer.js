@@ -13,7 +13,7 @@ import StudentCompetition from '../views/StudentCompetition';
 
 import CompanyNavbar from '../views/StudentNavbar';
 import CompanyRegister from '../views/CompanyRegister';
-import CompanyProfile from '../views/CompanyProfile/CompanyProfile';
+import CompanyProfile from '../views/CompanyProfile';
 import CompanyProfileEdit from '../views/CompanyProfile/CompanyProfileEdit';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
@@ -48,7 +48,7 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'student') {
       return (<div>
         <Route path='/' component={StudentNavbar}/>
-        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/home' exact component={StudentDashboard} />
@@ -59,7 +59,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
         <Route path='/home' exact component={CompanyProfile} />
-        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />
         <Route path='/edit/profile' exact component={CompanyProfileEdit} />
@@ -69,7 +69,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={ClubNavbar}/>
         <Route path='/home' exact component={ClubProfile} />
-        <Route path='/profile/student/:username' exact component={StudentProfile} />
+        <Route path='/profile/student/:id' exact component={StudentProfile} />
         <Route path='/edit/profile' exact component={ClubProfileEdit} />
         <Route path='/profile/club/:id' exact component={ClubProfile} />
         <Route path='/profile/company/:id' exact component={CompanyProfile} />

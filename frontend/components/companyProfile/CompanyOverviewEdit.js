@@ -6,13 +6,13 @@ class CompanyOverviewEdit extends Component {
     this.state = {
       type: 'Consulting',
       phone: '(415) 920-2019',
-      email: 'admin@admin.com',
-      website: 'www.mckinsey.com',
-      streetAddress: '401 Walnut St.',
-      city: 'Philadelphia',
-      state: 'PA',
-      zipcode: '19104',
-      description: 'heyo i like mayo'
+      email: this.props.user.email,
+      website: this.props.user.website,
+      // streetAddress: '401 Walnut St.',
+      // city: 'Philadelphia',
+      // state: 'PA',
+      // zipcode: '19104',
+      about: 'heyo i like mayo'
     }
 
   }
@@ -59,11 +59,11 @@ class CompanyOverviewEdit extends Component {
               <input id="website" type="text" className="validate" onChange={(e) => this.setState({website: e.target.value})} value={this.state.website}/>
               <label className={(this.state.website.length > 0) && "active"} htmlFor="website">Website</label>
             </div>
-            <div className="input-field" style={{display: 'inline-block'}}>
+            {/* <div className="input-field" style={{display: 'inline-block'}}>
               <input id="streetAddress" type="text" className="validate" onChange={(e) => this.setState({streetAddress: e.target.value})} value={this.state.streetAddress}/>
               <label className={(this.state.streetAddress.length > 0) && "active"} htmlFor="website">Street Address</label>
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
+            </div> */}
+            {/* <div style={{display: 'flex', flexDirection: 'row'}}>
               <div className="field">
                 <label className="label">City</label>
                 <div className="control">
@@ -88,15 +88,15 @@ class CompanyOverviewEdit extends Component {
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="input-field" style={{display: 'inline-block'}}>
+            </div> */}
+            {/* <div className="input-field" style={{display: 'inline-block'}}>
               <input id="zipcode" type="text" className="validate" onChange={(e) => this.setState({zipcode: e.target.value})} value={this.state.zipcode}/>
               <label className={(this.state.zipcode.length > 0) && "active"} htmlFor="zipcode">Zipcode</label>
-            </div>
+            </div> */}
           <hr/>
-          <div className="input-field">
-            <textarea id="description" type="text" className="materialize-textarea" onChange={(e) => this.setState({description: e.target.value})} value={this.state.description}/>
-            <label className={(this.state.description.length > 0) && "active"} htmlFor="description">Club Description</label>
+          <div className="input-field" >
+            <textarea id="about" type="text" className="materialize-textarea" onChange={(e) => this.setState({about: e.target.value})} value={this.state.about}/>
+            <label className={(this.state.about.length > 0) && "active"} htmlFor="about">Club Description</label>
           </div>
           </div>
         </div>
