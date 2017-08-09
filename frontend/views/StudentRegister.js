@@ -140,6 +140,26 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+
+          <div className="file">
+            <label className="file-label">
+              <div style={{position: 'relative'}}>
+                <button className="button is-info">
+                  <span className="file-cta">
+                    <span className="file-icon">
+                      <i className="fa fa-upload"></i>
+                    </span>
+                    <span className="file-label">
+                      Choose a file…
+                    </span>
+                  </span>
+                </button>
+                <input className="file-input"  type="file" name="resume" style={{opacity: '50', zIndex: '2', float: 'left'}}/>
+              </div>
+
+            </label>
+          </div>
+
           <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
             <Link to='/'><button className="button is-danger">Login</button></Link>
             <div style={{width: '10px', height: '1px'}}></div>
