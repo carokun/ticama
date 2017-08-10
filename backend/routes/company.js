@@ -12,16 +12,11 @@ router.post('/basic/company/info', function(req, res) {
   console.log(req.user);
   User.findById(req.user._id)
   .then(user => {
-    user.fname = req.body.fname || user.fname;
-    user.lname = req.body.lname || user.lname;
     user.about = req.body.about || user.about;
-    user.university = req.body.university || user.university;
-    user.major = req.body.major || user.major;
-    user.year = req.body.year || user.year;
-    user.interests = req.body.interests || user.interests;
-    user.linkedin = req.body.linkedin || user.linkedin;
+    user.email = req.body.email || user.email;
+    user.phone = req.body.phone || user.phone;
     user.website = req.body.website || user.website;
-    user.resume = req.body.resume || user.resume;
+    user.industry = req.body.industry || user.industry;
 
     user.save()
     .then(user => {

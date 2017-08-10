@@ -25,7 +25,7 @@ class StudentProfilePublic extends Component {
       <div className="container is-fluid">
         <div className="tile is-ancestor">
           <div className="tile is-parent">
-            <BasicStudent user={this.props.student} edit={this.onEdit}/>
+            {(this.props.user._id === this.props.id) ? <BasicStudent user={this.props.user} edit={this.onEdit}/> : <BasicStudent user={this.props.student} edit={this.onEdit}/>}
             <div className="tile is-parent is-vertical is-6">
               {(this.props.isOwnProfile) ? <button onClick={this.props.startEdit}>Edit</button> : ''}
               <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>

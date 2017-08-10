@@ -4,6 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const routes = require('./backend/routes');
 const auth = require('./backend/routes/auth');
+const company = require('./backend/routes/company');
 //const api = require('./backend/routes/api')
 
 const bodyParser = require('body-parser')
@@ -88,6 +89,7 @@ app.get('/api/authenticate/user', function(req, res) {
 
 app.use('/api', auth(passport))
 app.use('/api', routes)
+app.use('/api', company)
 
 app.use(express.static(path.join(__dirname, 'public')));
 

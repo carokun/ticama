@@ -13,8 +13,10 @@ class CompanyOverviewEdit extends Component {
 
   }
 
-  save() {``
+  save() {
     console.log('SAVING THIS', this.state);
+    var { about, email, phone, website, industry } = this.state;
+    this.props.updateBasicInfo(about, email, phone, website, industry);
   }
 
   render() {
@@ -60,6 +62,10 @@ class CompanyOverviewEdit extends Component {
             <div className="input-field" style={{display: 'inline-block'}}>
               <input id="website" type="text" className="validate" onChange={(e) => this.setState({website: e.target.value})} value={this.state.website}/>
               <label className={(this.state.website.length > 0) && "active"} htmlFor="website">Website</label>
+            </div>
+            <div className="input-field" style={{display: 'inline-block'}}>
+              <input id="phone" type="text" className="validate" onChange={(e) => this.setState({phone: e.target.value})} value={this.state.phone}/>
+              <label className={(this.state.phone.length > 0) && "active"} htmlFor="phone">Phone</label>
             </div>
           <hr/>
           <div className="input-field" >

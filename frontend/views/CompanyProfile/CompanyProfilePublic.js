@@ -28,7 +28,7 @@ class CompanyProfilePublic extends Component {
         </div>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>
-            <CompanyOverview user={this.props.company}/>
+            {(this.props.id === this.props.user._id) ? <CompanyOverview user={this.props.user}/> : <CompanyOverview user={this.props.company}/>}
           </div>
           <div className='tile is-9 is-parent is-vertical'>
             {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their

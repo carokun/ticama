@@ -12,8 +12,7 @@ class CompanyProfile extends Component {
     super(props);
     this.state = {
       edit: false,
-      company: null,
-      isOwnProfile: (this.props.match.params.id === this.props.user._id)
+      company: null
     }
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
@@ -44,10 +43,10 @@ class CompanyProfile extends Component {
   isEditing() {
     if (!this.state.company) {
 
-    } else if (this.state.edit && this.state.isOwnProfile) {
+    } else if (this.state.edit && this.props.match.params.id === this.props.user._id) {
       return <CompanyProfileEdit endEdit={this.endEdit} id={this.props.match.params.id} company={this.state.company}/>
     } else {
-      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id} company={this.state.company}/>
+      return <CompanyProfilePublic isOwnProfile={this.props.match.params.id === this.props.user._id} startEdit={this.startEdit} id={this.props.match.params.id} company={this.state.company}/>
     }
   }
 

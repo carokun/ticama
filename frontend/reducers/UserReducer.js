@@ -28,6 +28,8 @@ export default (state = {}, action) => {
         case 'update_basic_info':
             const { fname, lname, about, university, major, year, interests, linkedin, website, resume } = action.user
             return Object.assign({}, state, { fname, lname, about, university, major, year, interests, linkedin, website, resume });
+        case 'update_basic_company_info':
+            return Object.assign({}, state, { about: action.user.about, email: action.user.email, phone: action.user.phone, website: action.user.website, industry: action.user.industry });
         default:
             return state;
     }

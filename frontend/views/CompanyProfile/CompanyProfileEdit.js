@@ -5,6 +5,9 @@ import CompanyOverviewEdit from '../../components/companyProfile/CompanyOverview
 import CompetitionRecordEdit from '../../components/companyProfile/CompetitionRecordEdit';
 import axios from 'axios';
 
+import { updateBasicInfo } from '../../actions/CompanyActions.js';
+
+
 class CompanyProfileEdit extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +29,7 @@ class CompanyProfileEdit extends Component {
         </div>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>
-            <CompanyOverviewEdit user={this.props.company} />
+            <CompanyOverviewEdit user={this.props.user} updateBasicInfo={this.props.updateBasicInfo} />
           </div>
           <div className='tile is-9 is-parent is-vertical'>
             <CompetitionRecordEdit />
@@ -44,8 +47,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
+    updateBasicInfo: (about, email, phone, website, industry) => dispatch(updateBasicInfo(dispatch, about, email, phone, website, industry))
   }
 };
 

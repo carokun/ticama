@@ -26,7 +26,7 @@ class ClubProfileEdit extends Component {
           </div>
             <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
               <div className='tile is-3 is-parent is-vertical'>
-                <ClubOverviewEdit user={this.state.user}/>
+                {(this.props.user._id === this.props.id) ? <ClubOverviewEdit user={this.state.user}/> : <ClubOverviewEdit user={this.state.company}/>}
               </div>
               <div className='tile is-9 is-parent is-vertical'>
                 <CompetitionRecordEdit user={this.state.user}/>
