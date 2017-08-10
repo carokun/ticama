@@ -16,12 +16,12 @@ class ClubProfileEdit extends Component {
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
 
       return (
-        <ReactCSSTransitionGroup
-          transitionName="smallfade"
-          transitionAppear={true}
-          transitionAppearTimeout={350}
-          transitionEnter={false}
-          transitionLeave={false}>
+        // <ReactCSSTransitionGroup
+        //   transitionName="smallfade"
+        //   transitionAppear={true}
+        //   transitionAppearTimeout={350}
+        //   transitionEnter={false}
+        //   transitionLeave={false}>
         <div>
         <div className="container is-fluid">
           <div className="top-spacer">
@@ -42,7 +42,7 @@ class ClubProfileEdit extends Component {
             </div>
         </div>
       </div>
-    </ReactCSSTransitionGroup>
+    // </ReactCSSTransitionGroup>
     )
   }
 }

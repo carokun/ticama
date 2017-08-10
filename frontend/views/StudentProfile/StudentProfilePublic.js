@@ -17,6 +17,12 @@ class StudentProfilePublic extends Component {
 
   }
 
+  componentWillMount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9');
+    $(body).attr("style", 'background-color: #F9F7F9')
+  }
 
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,
@@ -31,8 +37,8 @@ class StudentProfilePublic extends Component {
         transitionLeave={false}>
       <div className="container is-fluid">
         {(this.props.isOwnProfile) &&
-          <div className="top-spacer">
-            <button onClick={this.props.startEdit} className="button is-info is-large" style={{float: 'right', marginTop: '20px', marginBottom: '20px'}}>
+          <div className="top-spacer-big">
+            <button onClick={this.props.startEdit} className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '12px', zIndex: '5'}}>
               <span className="icon">
                 <i className="fa fa-pencil"></i>
               </span>

@@ -18,20 +18,31 @@ class StudentProfileEditable extends Component {
       edit: false
     }
   }
-
+  componentWillMount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #6190E8');
+    $(body).attr("style", 'background-color: #6190E8')
+  }
+  componentWillUnmount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9');
+    $(body).attr("style", 'background-color: #F9F7F9')
+  }
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
     return (
-      <ReactCSSTransitionGroup
-        transitionName="smallfade"
-        transitionAppear={true}
-        transitionAppearTimeout={350}
-        transitionEnter={false}
-        transitionLeave={false}>
+      // <ReactCSSTransitionGroup
+      //   transitionName="smallfade"
+      //   transitionAppear={true}
+      //   transitionAppearTimeout={350}
+      //   transitionEnter={false}
+      //   transitionLeave={false}>
       <div className="container is-fluid">
-        <div className="top-spacer">
-          <button onClick={this.props.endEdit} className="button is-danger is-large" style={{float: 'right', marginTop: '20px', marginBottom: '20px'}}>
+        <div className="top-spacer-big">
+          <button className="button is-danger is-large" style={{position: 'absolute', top: '20px', right: '12px', zIndex: '5'}} onClick={() => this.props.endEdit()}>
             <span className="icon">
               <i className="fa fa-check"></i>
             </span>
@@ -49,7 +60,7 @@ class StudentProfileEditable extends Component {
           </div>
         </div>
       </div>
-    </ReactCSSTransitionGroup>
+    // </ReactCSSTransitionGroup>
     )
 
   }

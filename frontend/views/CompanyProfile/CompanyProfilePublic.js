@@ -12,6 +12,12 @@ class CompanyProfilePublic extends Component {
 
   }
 
+  componentWillMount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9');
+    $(body).attr("style", 'background-color: #F9F7F9')
+  }
 
   render() {
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.company;
@@ -19,12 +25,23 @@ class CompanyProfilePublic extends Component {
     return(
       <div className="container is-fluid">
         <div className="top-spacer">
-          {(this.props.id === this.props.user._id) && <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.startEdit()}>
-            <span className="icon">
-              <i className="fa fa-pencil"></i>
-            </span>
-            <span>Edit</span>
-          </button>}
+          {(this.props.id === this.props.user._id) &&
+            <div style={{position: 'absolute', top: '50px', right: '53px', zIndex: '5'}}>
+              <button className="button is-danger is-large" style={{marginRight: '10px'}} onClick={() => this.props.newComp()}>
+                <span className="icon">
+                  <i className="fa fa-plus"></i>
+                </span>
+                <span>New Competition</span>
+              </button>
+              <button className="button is-info is-large" onClick={() => this.props.startEdit()}>
+              <span className="icon">
+                <i className="fa fa-pencil"></i>
+              </span>
+              <span>Edit</span>
+            </button>
+            </div>
+
+        }
         </div>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>

@@ -18,6 +18,12 @@ class ClubOverviewEdit extends Component {
     $(html).attr("style", 'background-color: #6190E8');
     $(body).attr("style", 'background-color: #6190E8')
   }
+  componentWillUnmount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9');
+    $(body).attr("style", 'background-color: #F9F7F9')
+  }
   save() {
     console.log('SAVING THIS', this.state);
   }
