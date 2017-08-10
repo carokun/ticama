@@ -63,6 +63,7 @@ export const addMainSkill = (dispatch, skill, description) => {
             dispatch({ type: 'add_mainSkill_failed' });
           } else {
             dispatch({ type: 'add_mainSkill', mainSkill: response.data.mainSkill });
+            dispatch({ type: 'add_skill', name: response.data.mainSkill.name });
           }
         })
         .catch((err) => {

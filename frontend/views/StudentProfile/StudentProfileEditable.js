@@ -31,8 +31,8 @@ class StudentProfileEditable extends Component {
     $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
   }
   render() {
-    const { username, email, fname, lname, university, year, major, competitionExperience,
-      workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
+    let { username, email, fname, lname, university, year, major, competitionExperience,
+      workExperience, mainSkills, skills, currentCompetitions } = this.props.user;
     return (
       <div className="container is-fluid">
         <div className="top-spacer-big">
@@ -45,7 +45,7 @@ class StudentProfileEditable extends Component {
         </div>
         <div className="tile is-ancestor">
           <div className="tile is-parent">
-            <BasicStudentEdit user={this.props.student} updateBasicInfo={this.props.updateBasicInfo}/>
+            <BasicStudentEdit user={this.props.user} updateBasicInfo={this.props.updateBasicInfo}/>
             <div className="tile is-parent is-vertical is-6">
               <CompetitionExperience competitionExperience={competitionExperience}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>

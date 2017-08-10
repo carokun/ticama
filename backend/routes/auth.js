@@ -22,13 +22,13 @@ module.exports = function(passport) {
 
 
   router.post('/register/student', function(req, res) {
-    var { username, password, repeatPassword, email, fname, lname, university, year, major, about } = req.body;
+    var { username, password, repeatPassword, email, fname, lname, university, year, major, about, website, linkedin } = req.body;
     console.log('username', req.body.username);
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, fname, lname, university, year, major, type: 'student', about
+        username, password, email, fname, lname, university, year, major, type: 'student', about, website, linkedin
       })
       user.save()
       .then(user => {
@@ -49,7 +49,7 @@ module.exports = function(passport) {
     } else {
       console.log('YO from backend', req.body.fname);
       var user = new User({
-        username, password, email, fname, about, website, type: 'company', industry, phone
+        username, password, email, fname, about, website, type: 'company', industry, phone, approved: false
       })
       user.save()
       .then(user => {
@@ -70,7 +70,7 @@ module.exports = function(passport) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
       var user = new User({
-        username, password, email, name, about, website, type: 'club'
+        username, password, email, name, about, website, type: 'club', approved: false
       })
       user.save()
       .then(user => {

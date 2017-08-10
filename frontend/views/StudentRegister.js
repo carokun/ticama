@@ -16,13 +16,16 @@ class StudentRegister extends Component {
       university: 'University of Pennsylvania',
       year: '2018',
       major: 'Anthropology',
-      about: ''
+      about: '',
+      linkedin: '',
+      website: ''
     }
   }
 
   submit() {
-    const { username, password, repeatPassword, email, fname, lname, university, year, major } = this.state;
-    this.props.registerStudent(username, password, repeatPassword, email, fname, lname, university, year, major);
+    const { username, password, repeatPassword, email, fname, lname, university, year, major, website, linkedin, about } = this.state;
+    console.log('link there', linkedin);
+    this.props.registerStudent({username, password, repeatPassword, email, fname, lname, university, year, major, about, website, linkedin});
     this.props.history.push('/');
   }
 
@@ -146,6 +149,29 @@ class StudentRegister extends Component {
               </div>
             </div>
           </div>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+            <div className="field">
+              <label className="label">Linkedin</label>
+              <div className="control has-icons-left">
+                <span className="icon is-small is-left">
+                  <i className="fa fa-linkedin"></i>
+                </span>
+                <input className="input" type="text" name="linkedin"
+                  value={this.state.linkedin} onChange={(e) => this.setState({linkedin: e.target.value})}/>
+              </div>
+            </div>
+            <div style={{width: '20px', height: '40px'}}></div>
+            <div className="field">
+              <label className="label">Website</label>
+              <div className="control has-icons-left">
+                <span className="icon is-small is-left">
+                  <i className="fa fa-link"></i>
+                </span>
+                <input className="input" type="text" name="website"
+                  value={this.state.website} onChange={(e) => this.setState({website: e.target.value})}/>
+              </div>
+            </div>
+          </div>
           <div style={{display: 'flex', flexDirection: 'row'}}>
             <div className="file">
               <label className="label">Resume</label>
@@ -191,7 +217,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerStudent: (username, password, repeatPassword, email, fname, lname, university, year, major, about) => dispatch(registerStudent(dispatch, username, password, repeatPassword, email, fname, lname, university, year, major, about))
+    registerStudent: (student) => dispatch(registerStudent(dispatch, student))
   }
 };
 

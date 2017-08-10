@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-class StudentProfile extends Component {
+class UnapprovedCompetitions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +18,9 @@ class StudentProfile extends Component {
     .then(response => {
       this.setState({
         competitions: response.data.competitions
+        .filter(competition => {
+          return !competition.approved
+        })
         .map(competition => {
           console.log(JSON.stringify(competition));
           return JSON.stringify(competition);
@@ -30,7 +33,7 @@ class StudentProfile extends Component {
     return (
       <div>
         {this.state.competitions.map((competition) =>
-        <div style={{margin: '30px'}} onClick={() => this.props.history.push('/competition/student')}>
+        <div style={{margin: '30px'}}>
           {competition}
         </div>)}
       </div>
@@ -40,4 +43,4 @@ class StudentProfile extends Component {
 
 
 
-export default StudentProfile;
+export default UnapprovedCompetitions;

@@ -3,8 +3,9 @@ const router = express.Router();
 const models = require('../models/models');
 const WorkExperience = models.WorkExperience;
 const Skill = models.Skill;
-const Company = models.Company;
 const User = models.User;
+const Competition = models.Competition;
+
 
 // API ROUTES HEREx
 
@@ -198,6 +199,115 @@ router.post('/updateBasicInfo', function(req, res) {
     res.json(err)
   })
 });
+
+router.get('/companies', function(req, res) {
+  if (req.user.type !== 'admin') {
+    res.json({message: 'this is not allowed!!!!!'})
+  } else {
+    User.find()
+    .populate('workExperience')
+    .populate('skills')
+    .populate('pastCompetitions')
+    .exec()
+    .then(users => {
+      const companies = users.filter((user) => {
+        return user.type === 'company'
+      })
+      res.json({companies})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+})
+
+router.get('/clubs', function(req, res) {
+  if (req.user.type !== 'admin') {
+    res.json({message: 'this is not allowed!!!!!'})
+  } else {
+    User.find()
+    .populate('workExperience')
+    .populate('skills')
+    .populate('pastCompetitions')
+    .exec()
+    .then(users => {
+      const clubs = users.filter((user) => {
+        return user.type === 'club'
+      })
+      res.json({clubs})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+})
+
+
+router.get('/competitions', function(req, res) {
+  if (req.user.type !== 'admin') {
+    Competition.find()
+    .exec()
+    .then(competitions => {
+      res.json({
+        competitions: competitions
+        .filter(competition => {
+          return competition.approved
+        })
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  } else {
+    Competition.find()
+    .exec()
+    .then(competitions => {
+      res.json({competitions})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+})
+
+router.post('/add/competition', function(req, res) {
+  if (req.user.type !== 'admin') {
+    res.json({message: 'this is not allowed!!!!!'})
+  } else {
+    const {title,
+    startDate,
+    endDate,
+    company,
+    club,
+    description,
+    location,
+    caseFile,
+    applicationQuestions} = req.body;
+
+    new Competition({
+      title,
+      startDate,
+      endDate,
+      company,
+      club,
+      description,
+      location,
+      caseFile,
+      applicationQuestions,
+      approved: true
+    })
+    .save()
+    .then(competition => {
+      res.json({
+        competition
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+})
 
 
 module.exports = router;

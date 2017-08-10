@@ -5,6 +5,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
 import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
+import StudentProfilePrivate from './StudentProfile/StudentProfilePrivate';
+
 
 import axios from 'axios';
 
@@ -13,7 +15,6 @@ class StudentProfile extends Component {
     super(props);
     this.state = {
       edit: false,
-      isOwnProfile: (this.props.user._id === this.props.match.params.id),
       student: null
     }
     this.startEdit = this.startEdit.bind(this);
@@ -45,10 +46,14 @@ class StudentProfile extends Component {
   isEditing() {
     if (!this.state.student) {
       return <div></div>;
-    } else if (this.state.edit && this.state.isOwnProfile) {
-      return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id} student={this.state.student}/>
+    } else if (this.state.edit && (this.props.user._id === this.props.match.params.id)) {
+      console.log('editing');
+      return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id}/>
+    } else if (this.props.user._id === this.props.match.params.id) {
+      console.log('not editing');
+      return <StudentProfilePrivate startEdit={this.startEdit} id={this.props.match.params.id}/>
     } else {
-      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id} student={this.state.student}/>
+      return <StudentProfilePublic id={this.props.match.params.id} student={this.state.student}/>
     }
   }
 
