@@ -23,6 +23,11 @@ import ClubNavbar from '../views/ClubNavbar';
 import ClubRegister from '../views/ClubRegister';
 import ClubProfile from '../views/ClubProfile';
 
+import UnapprovedCompany from '../views/AdminViews/UnapprovedCompany.js'
+import UnapprovedClubs from '../views/AdminViews/UnapprovedClubs.js'
+import UnapprovedCompetitions from '../views/AdminViews/UnapprovedCompetitions.js'
+import AddCompetition from '../views/AdminViews/AddCompetition.js'
+
 import ErrorScreen from '../components/ErrorScreen.js';
 
 import axios from 'axios';
@@ -90,6 +95,22 @@ class AppContainer extends React.Component {
           <Route path='/profile/company/:id' exact component={CompanyProfile} />
           <Route path='/competition/:id' exact component={CompanyCompetition} />
           <Route path='/discover' exact component={StudentDiscover} />
+          <Route path='/error' exact component={ErrorScreen} />
+        </Switch>
+      </div>);
+    } else if (this.props.user.type === 'admin') {
+      return (<div>
+        <Route path='/' component={ClubNavbar}/>
+        <Switch>
+          <Route path='/profile/student/:id' exact component={StudentProfile} />
+          <Route path='/profile/club/:id' exact component={ClubProfile} />
+          <Route path='/profile/company/:id' exact component={CompanyProfile} />
+          <Route path='/competition/:id' exact component={CompanyCompetition} />
+          <Route path='/discover' exact component={StudentDiscover} />
+          <Route path='/unapproved/companies' exact component={UnapprovedCompany} />
+          <Route path='/unapproved/clubs' exact component={UnapprovedClubs} />
+          <Route path='/unapproved/competitions' exact component={UnapprovedCompetitions} />
+          <Route path='/add/competition' exact component={AddCompetition} />
           <Route path='/error' exact component={ErrorScreen} />
         </Switch>
       </div>);

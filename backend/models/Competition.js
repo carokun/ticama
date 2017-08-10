@@ -60,11 +60,14 @@ var CompetitionSchema = new Schema ({
       ref: 'Application'
     }
   ],
-  case : {
+  caseFile : {
     type: String
   },
   applicationQuestions: {
     type: Array
+  },
+  approved: {
+    type: Boolean
   }
 })
 

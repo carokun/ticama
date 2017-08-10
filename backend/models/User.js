@@ -94,6 +94,12 @@ var UserSchema = new Schema ({
   },
   phone: {
     type: String
+  },
+  approved: {
+    type: Boolean
+  },
+  year: {
+    type: String
   }
 })
 

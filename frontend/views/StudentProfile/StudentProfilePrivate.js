@@ -20,7 +20,7 @@ class StudentProfilePublic extends Component {
 
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,
-      workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
+      workExperience, mainSkills, skills, currentCompetitions } = this.props.user;
 
     return (
       <ReactCSSTransitionGroup
@@ -30,11 +30,19 @@ class StudentProfilePublic extends Component {
         transitionEnter={false}
         transitionLeave={false}>
       <div className="container is-fluid">
+        <div className="top-spacer">
+          <button onClick={this.props.startEdit} className="button is-info is-large" style={{float: 'right', marginTop: '20px', marginBottom: '20px'}}>
+            <span className="icon">
+              <i className="fa fa-pencil"></i>
+            </span>
+            <span>Edit</span>
+          </button>
+        </div>
         <div className="tile is-ancestor">
           <div className="tile is-parent">
-            <BasicStudent user={this.props.student} edit={this.onEdit}/>
+            <BasicStudent user={this.props.user} edit={this.onEdit}/>
             <div className="tile is-parent is-vertical is-6">
-              <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={false}/>
+              <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={true}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={false}/>
             </div>
             <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={false}/>
