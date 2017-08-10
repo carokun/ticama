@@ -34,12 +34,6 @@ class StudentProfileEditable extends Component {
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
     return (
-      // <ReactCSSTransitionGroup
-      //   transitionName="smallfade"
-      //   transitionAppear={true}
-      //   transitionAppearTimeout={350}
-      //   transitionEnter={false}
-      //   transitionLeave={false}>
       <div className="container is-fluid">
         <div className="top-spacer-big">
           <button className="button is-danger is-large" style={{position: 'absolute', top: '20px', right: '12px', zIndex: '5'}} onClick={() => this.props.endEdit()}>
@@ -60,7 +54,6 @@ class StudentProfileEditable extends Component {
           </div>
         </div>
       </div>
-    // </ReactCSSTransitionGroup>
     )
 
   }
