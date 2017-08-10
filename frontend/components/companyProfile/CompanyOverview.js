@@ -22,7 +22,13 @@ class CompanyOverview extends Component {
               <p className="subtitle is-4">{this.props.user.industry}</p>
           <div style={{height: '10px', width: '100%'}}></div>
           <div className='tile is-child is-12'>
+<<<<<<< HEAD
             <p className="size-4">🔗 <a href={this.props.user.website}>{this.props.user.website}</a></p>
+=======
+            <p className="size-4">☎️ {this.props.user.phone || '609-558-8202'}</p>
+            <p className="size-4">ADDICON {this.props.user.email}</p>
+            <p className="size-4">🔗 <a href="www.mckinsey.com">{this.props.user.website}</a></p>
+>>>>>>> c5411e272e5fcf5ca97bb1e780a06559e18723ab
           <hr/>
             <p>{this.props.user.about}</p>
           </div>

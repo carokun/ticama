@@ -81,11 +81,11 @@ export const registerStudent = (dispatch, username, password, repeatPassword, em
     };
 };
 
-export const registerCompany = (dispatch, username, password, repeatPassword, email, fname, about, website, industry) => {
+export const registerCompany = (dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone) => {
     return (dispatch) => {
       console.log('fname on frontend', fname);
         axios.post('/api/register/company', {
-          username, password, repeatPassword, email, fname, about, website, industry
+          username, password, repeatPassword, email, fname, about, website, industry, phone
         })
         .then((response) => {
           console.log(response);

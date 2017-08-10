@@ -14,15 +14,15 @@ class CompanyRegister extends Component {
       repeatPassword: '',
       about: '',
       website: '',
-      industry: 'Finance'
+      industry: '',
+      phone: ''
     }
     this.onSelect = this.onSelect.bind(this);
   }
 
   submit() {
-    const { username, password, repeatPassword, email, fname, about, website, industry } = this.state;
-    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry);
-
+    const { username, password, repeatPassword, email, fname, about, website, industry, phone } = this.state;
+    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry, phone);
     this.props.history.push('/');
   }
   onSelect(e) {
@@ -154,7 +154,7 @@ class CompanyRegister extends Component {
 
         const mapDispatchToProps = (dispatch) => {
           return {
-            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry))
+            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry, phone) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone))
           }
         };
 

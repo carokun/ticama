@@ -10,10 +10,8 @@ class Navbar extends Component {
 
   componentWillMount() {
     var currRoute = this.props.history.location.pathname;
-    console.log(this.props.history.location);
-    console.log("currRoute", currRoute);
     if (currRoute === '/') {
-      this.props.history.push('/profile/student/' + this.props.user.username);
+      this.props.history.push('/profile/club/' + this.props.user._id);
     }
   }
 
@@ -25,31 +23,22 @@ class Navbar extends Component {
         <div className='navbar' style={{height: '50px'}}>
           <div className="navbar-menu" style={{boxShadow: '0px 2px 4px rgba(219, 219, 219, 51)'}}>
             <div className="navbar-end" style={{display:'flex', justifyContent: 'flex-end'}}>
-              <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/home')}>
+              <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/profile/club/' + this.props.user._id)}>
                 Home
               </a>
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/discover')}>
                 Discover
               </a>
-              <div className="navbar-item has-dropdown is-hoverable" >
+              <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
+                Logout
+              </a>
+              <div className="navbar-item" >
+                <figure className="image is-24x24">
+                  <img src="http://bulma.io/images/placeholders/128x128.png"/>
+                </figure>
 
-                <div className="navbar-link">
-                  <figure className="image is-24x24">
-                    <img src="http://bulma.io/images/placeholders/128x128.png"/>
-                  </figure>
-                </div>
-
-              <div id="moreDropdown" className="navbar-dropdown is-boxed">
-                <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user.username)}>
-                  Profile
-                </a>
-                <a className="navbar-item " onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
-                  Logout
-                </a>
               </div>
-
             </div>
-          </div>
           </div>
         </div>
       )

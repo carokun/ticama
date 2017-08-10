@@ -91,6 +91,9 @@ var UserSchema = new Schema ({
   },
   industry: {
     type: String
+  },
+  phone: {
+    type: String
   }
 })
 
