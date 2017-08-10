@@ -22,7 +22,9 @@ class CompanyProfile extends Component {
   componentDidMount() {
     axios.get('/api/user/' + this.props.match.params.id)
     .then(response => {
-      console.log(response.data.user);
+      if (!response.data.user || response.data.user.type !== 'company') {
+        this.props.history.push('/error');
+      }
       this.setState({
         company: response.data.user
       })
