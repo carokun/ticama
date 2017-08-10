@@ -67,7 +67,7 @@ class Skills extends Component {
     } else if (this.props.edit) {
       return (
         <article className='media'>
-          <button className='button' onClick={() => this.setState({ isActive: 'modal is-active' })}>Add Main Skill</button>
+          <button className='button is-danger' onClick={() => this.setState({ isActive: 'modal is-active' })}>Add Main Skill</button>
         </article>
       )
     }
@@ -121,7 +121,7 @@ class Skills extends Component {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <a className="button is-success" onClick={() => this.newMainSkill()}>Save changes</a>
+              <a className="button is-danger" onClick={() => this.newMainSkill()}>Add Experience</a>
             </footer>
           </div>
         </div>

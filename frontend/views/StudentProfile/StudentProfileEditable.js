@@ -7,6 +7,7 @@ import WorkExperience from '../../components/studentProfile/WorkExperience';
 import Skills from '../../components/studentProfile/Skills';
 import BasicStudentEdit from '../../components/studentProfile/BasicStudentEdit';
 import axios from 'axios';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import { addExperience, addSkill, addMainSkill, updateBasicInfo } from '../../actions/StudentActions.js';
 
@@ -22,12 +23,25 @@ class StudentProfileEditable extends Component {
     const { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
     return (
+      <ReactCSSTransitionGroup
+        transitionName="smallfade"
+        transitionAppear={true}
+        transitionAppearTimeout={350}
+        transitionEnter={false}
+        transitionLeave={false}>
       <div className="container is-fluid">
+        <div className="top-spacer">
+          <button onClick={this.props.endEdit} className="button is-danger is-large" style={{float: 'right', marginTop: '20px', marginBottom: '20px'}}>
+            <span className="icon">
+              <i className="fa fa-check"></i>
+            </span>
+            <span>Done</span>
+          </button>
+        </div>
         <div className="tile is-ancestor">
           <div className="tile is-parent">
             <BasicStudentEdit user={this.props.student} updateBasicInfo={this.props.updateBasicInfo}/>
             <div className="tile is-parent is-vertical is-6">
-              <button onClick={this.props.endEdit}>Done</button>
               <CompetitionExperience competitionExperience={competitionExperience}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
             </div>
@@ -35,6 +49,7 @@ class StudentProfileEditable extends Component {
           </div>
         </div>
       </div>
+    </ReactCSSTransitionGroup>
     )
 
   }

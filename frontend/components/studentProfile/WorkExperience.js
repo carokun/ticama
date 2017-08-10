@@ -109,7 +109,7 @@ class WorkExperience extends Component {
               </div>
             </section>
             <footer className="modal-card-foot">
-              <a className="button is-success" onClick={() => this.saveExperience()}>Save changes</a>
+              <a className="button is-danger" onClick={() => this.saveExperience()}>Add Experience</a>
             </footer>
           </div>
         </div>
@@ -125,7 +125,7 @@ class WorkExperience extends Component {
         </article>
         {this.renderExperiences()}
         {(this.props.edit) && <article className='media'>
-          <button className='button' onClick={() => this.setState({ isActive: 'modal is-active' })}>
+          <button className='button is-danger' onClick={() => this.setState({ isActive: 'modal is-active' })}>
             Add Experience
           </button>
         </article>}

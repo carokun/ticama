@@ -33,6 +33,23 @@ body {
   background-color: #F9F7F9;
 }
 
+.smallfade-appear {
+  opacity: 0.5;
+}
+.smallfade-appear.smallfade-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
 .tile .is-parent .is-child{
   background-color: white;
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import SummaryInfo from '../components/studentDashboard/SummaryInfo.js';
 import SubmissionPortal from '../components/studentDashboard/SubmissionPortal.js';
@@ -18,6 +19,12 @@ class StudentDashboard extends Component {
 
   render() {
     return (
+      <ReactCSSTransitionGroup
+        transitionName="example"
+        transitionAppear={true}
+        transitionAppearTimeout={350}
+        transitionEnter={false}
+        transitionLeave={false}>
       <div className='container is-fluid' style={{padding: '36px'}}>
         <div className='tile is-ancestor'>
           <div className='tile is-3 is-parent is-vertical'>
@@ -31,7 +38,7 @@ class StudentDashboard extends Component {
           </div>
         </div>
       </div>
-
+    </ReactCSSTransitionGroup>
     )
   }
 }
