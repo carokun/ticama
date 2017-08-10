@@ -14,45 +14,28 @@ class StudentProfilePublic extends Component {
   constructor(props) {
     super(props);
 
-    this.state ={
-      user: null
-    }
   }
 
-  componentDidMount() {
-    axios.get('/api/user/' + this.props.id)
-    .then(response => {
-      this.setState({
-        user: response.data.user
-      })
-    })
-  }
 
   render() {
-    if (this.state.user) {
-      const { username, email, fname, lname, university, year, major, competitionExperience,
-        workExperience, mainSkills, skills, currentCompetitions } = this.state.user;
+    const { username, email, fname, lname, university, year, major, competitionExperience,
+      workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
 
-      return (
-        <div className="container is-fluid">
-          <div className="tile is-ancestor">
-            <div className="tile is-parent">
-              <BasicStudent user={this.state.user} edit={this.onEdit}/>
-              <div className="tile is-parent is-vertical is-6">
-                {(this.props.isOwnProfile) ? <button onClick={this.props.startEdit}>Edit</button> : ''}
-                <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
-                <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={false}/>
-              </div>
-              <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={false}/>
+    return (
+      <div className="container is-fluid">
+        <div className="tile is-ancestor">
+          <div className="tile is-parent">
+            <BasicStudent user={this.props.student} edit={this.onEdit}/>
+            <div className="tile is-parent is-vertical is-6">
+              {(this.props.isOwnProfile) ? <button onClick={this.props.startEdit}>Edit</button> : ''}
+              <CompetitionExperience competitionExperience={competitionExperience} isOwnProfile={username === this.props.username}/>
+              <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={false}/>
             </div>
+            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={false}/>
           </div>
         </div>
-      )
-    } else {
-      return (
-        <div></div>
-      )
-    }
+      </div>
+    )
 
   }
 }

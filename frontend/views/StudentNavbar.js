@@ -28,28 +28,22 @@ class Navbar extends Component {
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/home')}>
                 Home
               </a>
+              <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user._id)}>
+                Profile
+              </a>
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/discover')}>
                 Discover
               </a>
-              <div className="navbar-item has-dropdown is-hoverable" >
+              <a className="navbar-item " onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
+                Logout
+              </a>
+              <div className="navbar-item" >
+                <figure className="image is-24x24">
+                  <img src="http://bulma.io/images/placeholders/128x128.png"/>
+                </figure>
 
-                <div className="navbar-link">
-                  <figure className="image is-24x24">
-                    <img src="http://bulma.io/images/placeholders/128x128.png"/>
-                  </figure>
-                </div>
-
-              <div id="moreDropdown" className="navbar-dropdown is-boxed">
-                <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user.username)}>
-                  Profile
-                </a>
-                <a className="navbar-item " onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
-                  Logout
-                </a>
               </div>
-
             </div>
-          </div>
           </div>
         </div>
       )
