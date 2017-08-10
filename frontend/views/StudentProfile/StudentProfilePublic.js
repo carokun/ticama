@@ -20,8 +20,8 @@ class StudentProfilePublic extends Component {
   componentWillMount() {
     var html = document.getElementsByTagName("html")[0];
     var body = document.getElementsByTagName("body")[0];
-    $(html).attr("style", 'background-color: #F9F7F9');
-    $(body).attr("style", 'background-color: #F9F7F9')
+    $(html).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
+    $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
   }
 
   render() {
@@ -29,12 +29,6 @@ class StudentProfilePublic extends Component {
       workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
 
     return (
-      <ReactCSSTransitionGroup
-        transitionName="smallfade"
-        transitionAppear={true}
-        transitionAppearTimeout={350}
-        transitionEnter={false}
-        transitionLeave={false}>
       <div className="container is-fluid">
         {(this.props.isOwnProfile) &&
           <div className="top-spacer-big">
@@ -57,7 +51,6 @@ class StudentProfilePublic extends Component {
           </div>
         </div>
       </div>
-    </ReactCSSTransitionGroup>
     )
 
   }

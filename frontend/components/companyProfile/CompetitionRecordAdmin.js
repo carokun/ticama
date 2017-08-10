@@ -42,8 +42,8 @@ class CompetitionRecordAdmin extends Component {
 
   render() {
     return(
-      <div className='tile is-parent is-vertical' style={{backgroundColor: '#F9F7F9'}}>
-          <article className="tile is-child" style={{backgroundColor: '#F9F7F9'}}>
+      <div className='tile is-parent is-vertical' style={{backgroundColor: 'transparent'}}>
+          <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Open Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <CompetitionCard />
@@ -54,7 +54,7 @@ class CompetitionRecordAdmin extends Component {
               <CompetitionCard />
             </div>
           </article>
-          <article className="tile is-child" style={{backgroundColor: '#F9F7F9'}}>
+          <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Past Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <CompetitionCard />

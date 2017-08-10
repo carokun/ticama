@@ -10,12 +10,15 @@ class ClubProfilePublic extends Component {
     super(props);
 
   }
-  render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
+  componentWillMount() {
     var html = document.getElementsByTagName("html")[0];
     var body = document.getElementsByTagName("body")[0];
-    $(html).attr("style", 'background-color: #F9F7F9');
-    $(body).attr("style", 'background-color: #F9F7F9')
+    $(html).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
+    $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
+  }
+  render() {
+    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
+
     return (
       <div className="container is-fluid">
         <div className="top-spacer">
