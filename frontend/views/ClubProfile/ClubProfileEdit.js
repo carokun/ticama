@@ -14,6 +14,7 @@ class ClubProfileEdit extends Component {
   render() {
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
       return (
+        <div>
         <div className="container is-fluid">
           <div className="top-spacer">
             <button className="button is-success is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.endEdit()}>
@@ -40,8 +41,9 @@ class ClubProfileEdit extends Component {
               <CompetitionRecordEdit />
             </div>
           </div>
-      </div>
+          </div>
     )
+}
 }
 
 const mapStateToProps = (state) => {
