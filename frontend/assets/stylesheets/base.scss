@@ -33,6 +33,20 @@ body {
   background-color: #F9F7F9;
 }
 
+.htmlbg {
+  background-color: #F9F7F9;
+}
+
+.edit-background-in {
+  background-color:#6190E8 !important;
+  transition:all ease-in-out 0.6s;
+}
+
+.edit-background-out {
+  background-color:#F9F7F9 !important;
+  transition:all ease-in-out 0.6s;
+}
+
 .smallfade-appear {
   opacity: 0.5;
 }
@@ -79,6 +93,10 @@ body {
 .top-spacer {
   height: 30px;
   width: 100%;
+}
+.top-spacer-big {
+  height: 60px;
+  width: 100%
 }
 .circle {
 	width: 12px;

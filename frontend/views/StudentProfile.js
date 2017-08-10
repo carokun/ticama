@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
 import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
@@ -53,9 +54,16 @@ class StudentProfile extends Component {
 
   render() {
     return (
+      <ReactCSSTransitionGroup
+        transitionName="smallfade"
+        transitionAppear={true}
+        transitionAppearTimeout={350}
+        transitionEnter={false}
+        transitionLeave={false}>
       <div>
         {this.isEditing()}
       </div>
+    </ReactCSSTransitionGroup>
     )
   }
 }

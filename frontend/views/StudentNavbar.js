@@ -28,11 +28,11 @@ class Navbar extends Component {
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/home')}>
                 Home
               </a>
-              <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user._id)}>
-                Profile
-              </a>
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/discover')}>
                 Discover
+              </a>
+              <a className="navbar-item " onClick={() => this.props.history.push('/profile/student/' + this.props.user._id)}>
+                Profile
               </a>
               <a className="navbar-item " onClick={() => {this.props.logoutUser(); this.props.history.push('/')}}>
                 Logout

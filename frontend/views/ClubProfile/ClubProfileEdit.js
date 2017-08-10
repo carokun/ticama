@@ -4,24 +4,29 @@ import { Link } from 'react-router-dom';
 import CompetitionRecordEdit from '../../components/clubProfile/CompetitionRecordEdit';
 import ClubOverviewEdit from '../../components/clubProfile/ClubOverviewEdit';
 import axios from 'axios';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class ClubProfileEdit extends Component {
   constructor(props) {
     super(props);
   }
+  componentWillMount(){
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
+    $(body).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
+  }
+  componentWillUnmount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
+    $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
+  }
   render() {
 
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
 
       return (
-        <ReactCSSTransitionGroup
-          transitionName="smallfade"
-          transitionAppear={true}
-          transitionAppearTimeout={350}
-          transitionEnter={false}
-          transitionLeave={false}>
         <div>
         <div className="container is-fluid">
           <div className="top-spacer">
@@ -42,7 +47,6 @@ class ClubProfileEdit extends Component {
             </div>
         </div>
       </div>
-    </ReactCSSTransitionGroup>
     )
   }
 }

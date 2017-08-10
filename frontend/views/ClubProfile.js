@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ClubProfileEdit from './ClubProfile/ClubProfileEdit';
 import ClubProfilePublic from './ClubProfile/ClubProfilePublic';
 
@@ -57,9 +57,16 @@ class ClubProfile extends Component {
 
   render() {
     return (
+      <ReactCSSTransitionGroup
+        transitionName="smallfade"
+        transitionAppear={true}
+        transitionAppearTimeout={350}
+        transitionEnter={false}
+        transitionLeave={false}>
       <div>
         {this.isEditing()}
       </div>
+    </ReactCSSTransitionGroup>
     )
   }
 }
