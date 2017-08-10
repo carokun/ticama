@@ -7,17 +7,18 @@ class ClubOverview extends Component {
   }
 
   render() {
+    console.log('LCU)AOISDH', this.props.user);
     return(
 
       <div>
+        <article>
+          <div style={{position: 'relative'}}>
+            <figure className="image is-4by3">
+              <img src="http://bulma.io/images/placeholders/640x480.png" />
+            </figure>
+          </div>
+        </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
-          <article>
-            <div style={{position: 'relative'}}>
-              <figure className="image is-4by3">
-                <img src="http://bulma.io/images/placeholders/640x480.png" />
-              </figure>
-            </div>
-          </article>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
               <p className="title is-2">{this.props.user.fname}</p>

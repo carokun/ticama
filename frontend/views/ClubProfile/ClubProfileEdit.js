@@ -4,20 +4,28 @@ import { Link } from 'react-router-dom';
 import CompetitionRecordEdit from '../../components/clubProfile/CompetitionRecordEdit';
 import ClubOverviewEdit from '../../components/clubProfile/ClubOverviewEdit';
 import axios from 'axios';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 class ClubProfileEdit extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
+
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
+
       return (
+        <ReactCSSTransitionGroup
+          transitionName="smallfade"
+          transitionAppear={true}
+          transitionAppearTimeout={350}
+          transitionEnter={false}
+          transitionLeave={false}>
         <div>
         <div className="container is-fluid">
           <div className="top-spacer">
-            <button className="button is-success is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.endEdit()}>
+            <button className="button is-danger is-large" style={{position: 'absolute', top: '50px', right: '53px', zIndex: '5'}} onClick={() => this.props.endEdit()}>
               <span className="icon">
                 <i className="fa fa-check"></i>
               </span>
@@ -34,6 +42,7 @@ class ClubProfileEdit extends Component {
             </div>
         </div>
       </div>
+    </ReactCSSTransitionGroup>
     )
   }
 }

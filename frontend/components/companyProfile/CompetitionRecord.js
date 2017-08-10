@@ -13,7 +13,7 @@ class CompetitionCard extends Component {
         </header>
         <div className="card-content" >
           {/* //ellipses is broken */}
-          <div className="content" style={{width: '400px', height: '50px', whiteSpace: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
+          <div className="content" style={{height: '50px', whiteSpace: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
             Brief Description. This is a super brief description of the competition like this should be like roughly 500 characters or so and we can truncate using elipses.
           </div>
         </div>

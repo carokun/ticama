@@ -12,6 +12,12 @@ class ClubOverviewEdit extends Component {
     }
     this.save = this.save.bind(this);
   }
+  componentWillMount(){
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #6190E8');
+    $(body).attr("style", 'background-color: #6190E8')
+  }
   save() {
     console.log('SAVING THIS', this.state);
   }
@@ -32,7 +38,7 @@ class ClubOverviewEdit extends Component {
             </button>
           </div>
         </article>
-        <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
+        <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #6190E8'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
               <p className="title is-2">{this.props.user.fname}</p>

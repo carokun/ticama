@@ -121,6 +121,8 @@ a {
 
 .card {
   border-radius: 2px;
+  min-width: 0;
+  flex: 1;
 }
 
 #no-white {

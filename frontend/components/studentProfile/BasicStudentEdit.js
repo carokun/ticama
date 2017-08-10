@@ -138,7 +138,7 @@ class StudentProfileEdit extends Component {
                   })}
                 </div>
                 <input value={this.state.newInterest} onChange={(e) => this.setState({newInterest: e.target.value})} />
-                <button className='button' onClick={() => this.addInterest()}>Add</button>
+                <button className='button is-danger' onClick={() => this.addInterest()}>Add</button>
               </div>
             </article>
             <article className='media tile is-vertical'>
@@ -176,8 +176,14 @@ class StudentProfileEdit extends Component {
                 </span>
               </div>
               <div className='tile is-child is-10'>
-                <div className="field">
-                  <input className="file-input" type="file" name="resume" />
+                <div style={{position: 'relative'}}>
+                  <button className="button is-outlined is-danger is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                      <span className="file-icon is-small">
+                        <i className="fa fa-upload"></i>
+                      </span>
+                      <span> Upload</span>
+                  </button>
+                  <input className="file-input"  type="file" name="picClub" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
                 </div>
               </div>
             </article>

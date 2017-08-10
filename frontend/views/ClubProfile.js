@@ -22,7 +22,6 @@ class ClubProfile extends Component {
   componentDidMount() {
     axios.get('/api/user/' + this.props.match.params.id)
     .then(response => {
-      console.log('yooooo', response.data.user);
       if (!response.data.user || response.data.user.type !== 'club') {
         this.props.history.push('/error');
       }
@@ -51,6 +50,9 @@ class ClubProfile extends Component {
     } else {
       return <ClubProfilePublic isOwnProfile={this.props.user._id === this.props.match.params.id} startEdit={this.startEdit} id={this.props.match.params.id} club={this.state.club}/>
     }
+  }
+  componentWillMount() {
+
   }
 
   render() {
