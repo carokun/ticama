@@ -5,16 +5,31 @@ import { Link } from 'react-router-dom';
 import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
 import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
 
+import axios from 'axios';
+
 class StudentProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       edit: false,
-      isOwnProfile: (this.props.user._id === this.props.match.params.id)
+      isOwnProfile: (this.props.user._id === this.props.match.params.id),
+      student: null
     }
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
 
+  }
+
+  componentDidMount() {
+    axios.get('/api/user/' + this.props.match.params.id)
+    .then(response => {
+      if (!response.data.user || response.data.user.type !== 'student') {
+        this.props.history.push('/error');
+      }
+      this.setState({
+        student: response.data.user
+      })
+    })
   }
 
 
@@ -27,10 +42,12 @@ class StudentProfile extends Component {
   }
 
   isEditing() {
-    if (this.state.edit && this.state.isOwnProfile) {
-      return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id}/>
+    if (!this.state.student) {
+      return <div></div>;
+    } else if (this.state.edit && this.state.isOwnProfile) {
+      return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id} student={this.state.student}/>
     } else {
-      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id}/>
+      return <StudentProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id} student={this.state.student}/>
     }
   }
 

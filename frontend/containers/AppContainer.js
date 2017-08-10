@@ -42,7 +42,7 @@ class AppContainer extends React.Component {
   findType() {
     console.log('APPCONTAINER', this.props.user);
     if (!this.props.user.type) {
-      return (<div>  
+      return (<div>
         <Switch>
           <Route path='/' exact component={Login}/>
           <Route path='/register' exact component={Register}/>
@@ -63,19 +63,22 @@ class AppContainer extends React.Component {
           <Route path='/home' exact component={StudentDashboard} />
           <Route path='/competition/:id' exact component={StudentCompetition} />
           <Route path='/discover' exact component={StudentDiscover} />
-
+          <Route path='/error' exact component={ErrorScreen} />
         </Switch>
       </div>);
     } else if (this.props.user.type === 'company') {
       console.log('company');
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
-        <Route path='/home' exact component={CompanyProfile} />
-        <Route path='/profile/student/:id' exact component={StudentProfile} />
-        <Route path='/profile/club/:id' exact component={ClubProfile} />
-        <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/edit/profile' exact component={CompanyProfileEdit} />
-        <Route path='/competition/:id' exact component={CompanyCompetition} />
+        <Switch>
+          <Route path='/home' exact component={CompanyProfile} />
+          <Route path='/profile/student/:id' exact component={StudentProfile} />
+          <Route path='/profile/club/:id' exact component={ClubProfile} />
+          <Route path='/profile/company/:id' exact component={CompanyProfile} />
+          <Route path='/edit/profile' exact component={CompanyProfileEdit} />
+          <Route path='/competition/:id' exact component={CompanyCompetition} />
+          <Route path='/error' exact component={ErrorScreen} />
+        </Switch>
       </div>);
     } else if (this.props.user.type === 'club') {
       return (<div>
