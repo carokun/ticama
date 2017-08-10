@@ -5,15 +5,28 @@ import { Link } from 'react-router-dom';
 import CompanyProfileEdit from './CompanyProfile/CompanyProfileEdit';
 import CompanyProfilePublic from './CompanyProfile/CompanyProfilePublic';
 
+import axios from 'axios';
+
 class CompanyProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       edit: false,
-      isOwnProfile: (this.props.user._id === this.props.match.params.id)
+      company: null,
+      isOwnProfile: (this.props.match.params.id === this.props.user._id)
     }
     this.startEdit = this.startEdit.bind(this);
     this.endEdit = this.endEdit.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('/api/user/' + this.props.match.params.id)
+    .then(response => {
+      console.log(response.data.user);
+      this.setState({
+        company: response.data.user
+      })
+    })
   }
 
 
@@ -26,12 +39,12 @@ class CompanyProfile extends Component {
   }
 
   isEditing() {
-    console.log(this.props.user._id);
-    console.log(this.props.match.params.id);
-    if (this.state.edit && this.state.isOwnProfile) {
-      return <CompanyProfileEdit endEdit={this.endEdit} id={this.props.match.params.id}/>
+    if (!this.state.company) {
+
+    } else if (this.state.edit && this.state.isOwnProfile) {
+      return <CompanyProfileEdit endEdit={this.endEdit} id={this.props.match.params.id} company={this.state.company}/>
     } else {
-      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id}/>
+      return <CompanyProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id} company={this.state.company}/>
     }
   }
 

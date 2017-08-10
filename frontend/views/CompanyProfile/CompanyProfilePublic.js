@@ -10,52 +10,34 @@ class CompanyProfilePublic extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      user: null
-    }
   }
 
-  componentDidMount() {
-    axios.get('/api/user/' + this.props.id)
-    .then(response => {
-      console.log(response.data.user);
-      this.setState({
-        user: response.data.user
-      })
-    })
-  }
 
   render() {
-    if (this.state.user) {
-      const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.user;
+    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.company;
 
-      return(
-        <div className="container is-fluid">
-          <div className="top-spacer">
-            {(this.props.id === this.props.user._id) && <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.startEdit()}>
-              <span className="icon">
-                <i className="fa fa-pencil"></i>
-              </span>
-              <span>Edit</span>
-            </button>}
+    return(
+      <div className="container is-fluid">
+        <div className="top-spacer">
+          {(this.props.id === this.props.user._id) && <button className="button is-info is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.startEdit()}>
+            <span className="icon">
+              <i className="fa fa-pencil"></i>
+            </span>
+            <span>Edit</span>
+          </button>}
+        </div>
+        <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
+          <div className='tile is-3 is-parent is-vertical'>
+            <CompanyOverview user={this.props.company}/>
           </div>
-          <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
-            <div className='tile is-3 is-parent is-vertical'>
-              <CompanyOverview user={this.state.user}/>
-            </div>
-            <div className='tile is-9 is-parent is-vertical'>
-              {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
-              own profile or not. this logic also applies with club profile*/}
-              {(this.props.id === this.props.user._id) ? <CompetitionRecordAdmin /> : <CompetitionRecord />}
-            </div>
+          <div className='tile is-9 is-parent is-vertical'>
+            {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
+            own profile or not. this logic also applies with club profile*/}
+            {(this.props.id === this.props.user._id) ? <CompetitionRecordAdmin /> : <CompetitionRecord />}
           </div>
         </div>
-      )
-    } else {
-      return (
-        <div></div>
-      );
-    }
+      </div>
+    )
 
   }
 }
