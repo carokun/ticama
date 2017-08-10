@@ -4,11 +4,11 @@ class CompanyOverviewEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      industry: this.props.user.industry || '',
-      phone: this.props.user.phone || '',
-      email: this.props.user.email || '',
-      website: this.props.user.website || '',
-      about: this.props.user.about || ''
+      industry: props.user.industry || '',
+      phone: props.user.phone || '',
+      email: props.user.email || '',
+      website: props.user.website || '',
+      about: props.user.about || ''
     }
 
   }
@@ -70,7 +70,7 @@ class CompanyOverviewEdit extends Component {
           <hr/>
           <div className="input-field" >
             <textarea id="about" type="text" className="materialize-textarea" onChange={(e) => this.setState({about: e.target.value})} value={this.state.about}/>
-            <label className={(this.state.about.length > 0) && "active"} htmlFor="about">Club Description</label>
+            <label className={(this.state.about.length > 0) && "active"} htmlFor="about">Company Description</label>
           </div>
           </div>
         </div>

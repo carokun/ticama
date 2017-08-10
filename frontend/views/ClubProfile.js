@@ -20,14 +20,18 @@ class ClubProfile extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/user/' + this.props.id)
+    axios.get('/api/user/' + this.props.match.params.id)
     .then(response => {
+      console.log('yooooo', response.data.user);
       if (!response.data.user || response.data.user.type !== 'club') {
         this.props.history.push('/error');
       }
       this.setState({
         club: response.data.user
       })
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
@@ -43,9 +47,9 @@ class ClubProfile extends Component {
     if (!this.state.club) {
       return <div></div>;
     } else if (this.state.edit && this.state.isOwnProfile) {
-      return <ClubProfileEdit endEdit={this.endEdit} id={this.props.match.params.id}/>
+      return <ClubProfileEdit endEdit={this.endEdit} id={this.props.match.params.id} club={this.state.club}/>
     } else {
-      return <ClubProfilePublic isOwnProfile={this.state.isOwnProfile} startEdit={this.startEdit} id={this.props.match.params.id}/>
+      return <ClubProfilePublic isOwnProfile={this.props.user._id === this.props.match.params.id} startEdit={this.startEdit} id={this.props.match.params.id} club={this.state.club}/>
     }
   }
 

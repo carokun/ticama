@@ -26,24 +26,16 @@ class ClubProfileEdit extends Component {
           </div>
             <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
               <div className='tile is-3 is-parent is-vertical'>
-                {(this.props.user._id === this.props.id) ? <ClubOverviewEdit user={this.state.user}/> : <ClubOverviewEdit user={this.state.company}/>}
+                {(this.props.user._id === this.props.id) ? <ClubOverviewEdit user={this.props.user}/> : <ClubOverviewEdit user={this.props.club}/>}
               </div>
               <div className='tile is-9 is-parent is-vertical'>
-                <CompetitionRecordEdit user={this.state.user}/>
+                <CompetitionRecordEdit user={this.props.club}/>
               </div>
             </div>
         </div>
-          <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
-            <div className='tile is-3 is-parent is-vertical'>
-              <ClubOverviewEdit />
-            </div>
-            <div className='tile is-9 is-parent is-vertical'>
-              <CompetitionRecordEdit />
-            </div>
-          </div>
-          </div>
+      </div>
     )
-}
+  }
 }
 
 const mapStateToProps = (state) => {

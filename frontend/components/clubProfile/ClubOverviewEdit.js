@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 class ClubOverviewEdit extends Component {
   constructor(props) {
     super(props);
+    console.log(props.user);
     this.state = {
-      industry: this.props.user.industry || 'Technology',
-      email: this.props.user.email || '',
-      website: this.props.user.website || '',
-      about: this.props.user.about || '',
+      industry: props.user.industry || 'Technology',
+      email: props.user.email || '',
+      website: props.user.website || '',
+      about: props.user.about || '',
     }
     this.save = this.save.bind(this);
   }
