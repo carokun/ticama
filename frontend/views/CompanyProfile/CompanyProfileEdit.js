@@ -13,18 +13,23 @@ class CompanyProfileEdit extends Component {
     super(props);
 
   }
-
+  componentWillMount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
+    $(body).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
+  }
 
   render() {
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.company;
     return(
       <div className="container is-fluid">
         <div className="top-spacer">
-          <button className="button is-danger is-large" style={{float: 'right', marginTop: '10px'}} onClick={() => this.props.endEdit()}>
+          <button className="button is-danger is-large" style={{position: 'absolute', top: '50px', right: '53px', zIndex: '5'}} onClick={() => this.props.endEdit()}>
             <span className="icon">
-              <i className="fa fa-floppy-o"></i>
+              <i className="fa fa-check"></i>
             </span>
-            <span>Save</span>
+            <span>Done</span>
           </button>
         </div>
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>

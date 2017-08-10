@@ -29,9 +29,9 @@ class CompetitionRecordEdit extends Component {
   }
   render() {
     return(
-      <div className='tile is-parent is-vertical' style={{backgroundColor: '#F9F7F9'}}>
-          <article className="tile is-child" style={{backgroundColor: '#F9F7F9'}}>
-            <p className="title is-2">Open Competitions</p>
+      <div className='tile is-parent is-vertical' style={{backgroundColor: 'transparent'}}>
+          <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
+            <p className="title is-2" style={{color: 'white'}}>Open Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <CompetitionCard />
               <CompetitionCard />
@@ -41,8 +41,8 @@ class CompetitionRecordEdit extends Component {
               <CompetitionCard />
             </div>
           </article>
-          <article className="tile is-child" style={{backgroundColor: '#F9F7F9'}}>
-            <p className="title is-2">Past Competitions</p>
+          <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
+            <p className="title is-2" style={{color: 'white'}}>Past Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
               <CompetitionCard />
               <CompetitionCard />
