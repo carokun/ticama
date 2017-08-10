@@ -20,7 +20,7 @@ class SubmissionPortal extends Component {
           </div>
           <div className='tile is-parent'>
           <div className='tile is-child is-10'>
-            <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
+            <button className='button is-primary' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
               <span className="icon">
                 <i className="fa fa-download"></i>
               </span>

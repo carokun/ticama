@@ -115,37 +115,37 @@ class CompanyRegister extends Component {
             </div>
           </div>
 
-                    <div className="field">
-                      <label className="label">About</label>
-                      <div className="control">
-                        <textarea className="textarea" placeholder="e.g. We promote social good in communities." value={this.state.about} onChange={(e) => this.setState({about: e.target.value})}></textarea>
-                      </div>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'row'}}>
-                      <div className="file">
-                        <label className="label">Profile Picture</label>
-                        <div style={{position: 'relative'}}>
-                          <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
-                              <span className="file-icon is-small">
-                                <i className="fa fa-upload"></i>
-                              </span>
-                              <span> Upload</span>
-                          </button>
-                          <input className="file-input"  type="file" name="picCompany" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="top-spacer"></div>
-
-                    <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
-                      <button className="button is-info" onClick={() => this.submit()}>Register</button>
-                    </div>
-                    <div style={{marginBottom: '60px'}}></div>
-                  </div>
+          <div className="field">
+            <label className="label">About</label>
+            <div className="control">
+              <textarea className="textarea" placeholder="e.g. We promote social good in communities." value={this.state.about} onChange={(e) => this.setState({about: e.target.value})}></textarea>
+            </div>
+          </div>
+          <div style={{display: 'flex', flexDirection: 'row'}}>
+            <div className="file">
+              <label className="label">Profile Picture</label>
+              <div style={{position: 'relative'}}>
+                <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                    <span className="file-icon is-small">
+                      <i className="fa fa-upload"></i>
+                    </span>
+                    <span> Upload</span>
+                </button>
+                <input className="file-input"  type="file" name="picCompany" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
-            )
-          }
-        }
+            </div>
+          </div>
+          <div className="top-spacer"></div>
+
+          <div style={{display: 'flex', flexDirection: 'row', float: 'right'}}>
+            <button className="button is-info" onClick={() => this.submit()}>Register</button>
+          </div>
+          <div style={{marginBottom: '60px'}}></div>
+        </div>
+    </div>
+      )
+    }
+  }
 
         const mapStateToProps = () => {
           return {

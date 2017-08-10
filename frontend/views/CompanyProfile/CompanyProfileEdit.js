@@ -14,7 +14,6 @@ class CompanyProfileEdit extends Component {
     }
 
   }
-
   componentDidMount() {
     axios.get('/api/user/' + this.props.id)
     .then(response => {
@@ -24,7 +23,6 @@ class CompanyProfileEdit extends Component {
       })
     })
   }
-
   render() {
     if (this.state.user) {
       const { username, email, pastCompetitions, currentCompetitions, website, type } = this.state.user;

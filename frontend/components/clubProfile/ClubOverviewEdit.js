@@ -4,41 +4,42 @@ class ClubOverviewEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: 'Marketing',
-      phone: '(415) 920-2019',
-      email: 'admin@admin.com',
-      website: 'www.musepenn.org',
-      streetAddress: '401 Walnut St.',
-      city: 'Philadelphia',
-      state: 'PA',
-      zipcode: '19104',
-      description: 'heyo i like mayo'
+      industry: this.props.user.industry || 'Technology',
+      email: this.props.user.email || '',
+      website: this.props.user.website || '',
+      about: this.props.user.about || '',
     }
-
+    this.save = this.save.bind(this);
   }
-
+  save() {
+    console.log('SAVING THIS', this.state);
+  }
   render() {
-    console.log(this.props.user);
     return(
-
       <div>
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
+            <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1', borderRadius: '0px 0px 0px 3px'}}
+              onClick={() => this.save()}>
+              <span className="icon">
+                <i className="fa fa-floppy-o"></i>
+              </span>
+              <span>Save</span>
+            </button>
           </div>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              {/* no edits to name because we only want official clubs */}
-              <p className="title is-2">MUSE</p>
+              <p className="title is-2">{this.props.user.fname}</p>
               <div className="field">
                 <label className="label">Type</label>
                 <div className="control">
                   <div className="select">
-                    <select>
+                    <select value={this.state.industry}>
                       <option>Finance</option>
                       <option>Consulting</option>
                       <option>Technology</option>
@@ -49,10 +50,6 @@ class ClubOverviewEdit extends Component {
             </div>
           <div className='tile is-child is-12'>
             <div className="input-field" style={{display: 'inline-block'}}>
-              <input id="phone" type="text" className="validate" onChange={(e) => this.setState({phone: e.target.value})} value={this.state.phone}/>
-              <label className={(this.state.phone.length > 0) && "active"} htmlFor="phone">Phone</label>
-            </div>
-            <div className="input-field" style={{display: 'inline-block'}}>
               <input id="email" type="text" className="validate" onChange={(e) => this.setState({email: e.target.value})} value={this.state.email}/>
               <label className={(this.state.email.length > 0) && "active"} htmlFor="email">Email</label>
             </div>
@@ -60,44 +57,10 @@ class ClubOverviewEdit extends Component {
               <input id="website" type="text" className="validate" onChange={(e) => this.setState({website: e.target.value})} value={this.state.website}/>
               <label className={(this.state.website.length > 0) && "active"} htmlFor="website">Website</label>
             </div>
-            <div className="input-field" style={{display: 'inline-block'}}>
-              <input id="streetAddress" type="text" className="validate" onChange={(e) => this.setState({streetAddress: e.target.value})} value={this.state.streetAddress}/>
-              <label className={(this.state.streetAddress.length > 0) && "active"} htmlFor="website">Street Address</label>
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <div className="field">
-                <label className="label">City</label>
-                <div className="control">
-                  <div className="select">
-                    <select>
-                      <option>Philadelphia</option>
-                      <option>Honolulu</option>
-                      <option>San Francisco</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">State</label>
-                <div className="control">
-                  <div className="select">
-                    <select>
-                      <option>PA</option>
-                      <option>HI</option>
-                      <option>CA</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="input-field" style={{display: 'inline-block'}}>
-              <input id="zipcode" type="text" className="validate" onChange={(e) => this.setState({zipcode: e.target.value})} value={this.state.zipcode}/>
-              <label className={(this.state.zipcode.length > 0) && "active"} htmlFor="zipcode">Zipcode</label>
-            </div>
           <hr/>
           <div className="input-field">
-            <textarea id="description" type="text" className="materialize-textarea" onChange={(e) => this.setState({description: e.target.value})} value={this.state.description}/>
-            <label className={(this.state.description.length > 0) && "active"} htmlFor="description">Club Description</label>
+            <textarea id="description" type="text" className="materialize-textarea" onChange={(e) => this.setState({about: e.target.value})} value={this.state.description}/>
+            <label className={(this.state.about.length > 0) && "active"} htmlFor="description">Club Description</label>
           </div>
           </div>
         </div>
