@@ -5,6 +5,7 @@ class BasicStudent extends Component {
     super(props);
   }
   render() {
+    console.log('ME', this.props.user);
     return(
       <div className="tile is-parent is-vertical is-3">
         <article>
@@ -33,7 +34,7 @@ class BasicStudent extends Component {
                   {this.props.user.major}
                 </div>
                 <div>
-                  {this.props.user.year || 'UHOH :('}
+                  {this.props.user.year || 'The year field in schema doesnt exist'}
                 </div>
               </div>
             </article>
@@ -63,7 +64,7 @@ class BasicStudent extends Component {
                   </span>
                 </div>
                 <div className='tile is-child is-10'>
-                  www.linkedin.com/carolineokun
+                  {this.props.user.linkedin}
                 </div>
               </div>
               <div className='tile is-parent'>
@@ -73,7 +74,7 @@ class BasicStudent extends Component {
                   </span>
                 </div>
                 <div className='tile is-child is-10'>
-                  www.carokun.github.io
+                  {this.props.user.website}
                 </div>
               </div>
             </article>
