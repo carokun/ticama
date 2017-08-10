@@ -23,10 +23,12 @@ import ClubNavbar from '../views/ClubNavbar';
 import ClubRegister from '../views/ClubRegister';
 import ClubProfile from '../views/ClubProfile';
 
+import ErrorScreen from '../components/ErrorScreen.js';
+
 import axios from 'axios';
 
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { authenticateUser } from '../actions/AuthActions';
 
@@ -40,23 +42,29 @@ class AppContainer extends React.Component {
   findType() {
     console.log('APPCONTAINER', this.props.user);
     if (!this.props.user.type) {
-      return (<div>
-        <Route path='/' exact component={Login}/>
-        <Route path='/register' exact component={Register}/>
-        <Route path='/rstudent' exact component={StudentRegister} />
-        <Route path='/rclub' exact component={ClubRegister} />
-        <Route path='/rcompany' exact component={CompanyRegister} />
+      return (<div>  
+        <Switch>
+          <Route path='/' exact component={Login}/>
+          <Route path='/register' exact component={Register}/>
+          <Route path='/rstudent' exact component={StudentRegister} />
+          <Route path='/rclub' exact component={ClubRegister} />
+          <Route path='/rcompany' exact component={CompanyRegister} />
+          <Route path='/' component={ErrorScreen} />
+        </Switch>
       </div>);
     } else if (this.props.user.type === 'student') {
       return (<div>
         <Route path='/' component={StudentNavbar}/>
-        <Route path='/loading' component={Loading}/>
-        <Route path='/profile/student/:id' exact component={StudentProfile} />
-        <Route path='/profile/club/:id' exact component={ClubProfile} />
-        <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/home' exact component={StudentDashboard} />
-        <Route path='/competition/:id' exact component={StudentCompetition} />
-        <Route path='/discover' exact component={StudentDiscover} />
+        <Switch>
+          <Route path='/loading' component={Loading}/>
+          <Route path='/profile/student/:id' exact component={StudentProfile} />
+          <Route path='/profile/club/:id' exact component={ClubProfile} />
+          <Route path='/profile/company/:id' exact component={CompanyProfile} />
+          <Route path='/home' exact component={StudentDashboard} />
+          <Route path='/competition/:id' exact component={StudentCompetition} />
+          <Route path='/discover' exact component={StudentDiscover} />
+
+        </Switch>
       </div>);
     } else if (this.props.user.type === 'company') {
       console.log('company');
@@ -72,12 +80,15 @@ class AppContainer extends React.Component {
     } else if (this.props.user.type === 'club') {
       return (<div>
         <Route path='/' component={ClubNavbar}/>
-        <Route path='/home' exact component={ClubProfile} />
-        <Route path='/profile/student/:id' exact component={StudentProfile} />
-        <Route path='/profile/club/:id' exact component={ClubProfile} />
-        <Route path='/profile/company/:id' exact component={CompanyProfile} />
-        <Route path='/competition/:id' exact component={CompanyCompetition} />
-        <Route path='/discover' exact component={StudentDiscover} />
+        <Switch>
+          <Route path='/home' exact component={ClubProfile} />
+          <Route path='/profile/student/:id' exact component={StudentProfile} />
+          <Route path='/profile/club/:id' exact component={ClubProfile} />
+          <Route path='/profile/company/:id' exact component={CompanyProfile} />
+          <Route path='/competition/:id' exact component={CompanyCompetition} />
+          <Route path='/discover' exact component={StudentDiscover} />
+          <Route path='/error' exact component={ErrorScreen} />
+        </Switch>
       </div>);
     }
   }
