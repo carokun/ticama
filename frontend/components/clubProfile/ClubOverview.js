@@ -20,15 +20,14 @@ class CompanyOverview extends Component {
           </article>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              <p className="title is-2">MUSE</p>
-              <p className="subtitle is-4">Marketing</p>
+              <p className="title is-2">{this.props.user.fname}</p>
+              <p className="subtitle is-4">{this.props.user.industry}</p>
             </div>
           <div className='tile is-child is-12'>
-            <p className="size-4">☎️ (415) 901- 3910</p>
-            <p className="size-4">🔗 <a href="www.mckinsey.com">www.musepenn.org</a></p>
-            <p className="size-4">📍 401 Walnut St.<br/>Philadelphia, PA 19104</p>
+            <p className="size-4">🔗 <a href={this.props.user.website}>{this.props.user.website}</a></p>
+            <p className="size-4">📩 {this.props.user.email}</p>
           <hr/>
-            <p>This is a description of the club.</p>
+            <p>{this.props.user.about}</p>
           </div>
         </div>
         </article>
