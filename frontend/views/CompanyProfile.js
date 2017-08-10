@@ -21,7 +21,8 @@ class CompanyProfile extends Component {
     this.setState({edit: true})
   }
 
-  endEdit() {
+  endEdit(saveMe) {
+    console.log('HEHEHEHHE', saveMe);
     this.setState({edit: false})
   }
 

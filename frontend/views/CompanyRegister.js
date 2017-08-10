@@ -14,17 +14,23 @@ class CompanyRegister extends Component {
       repeatPassword: '',
       about: '',
       website: '',
-      industry: ''
+      industry: 'Finance'
     }
+    this.onSelect = this.onSelect.bind(this);
   }
 
   submit() {
     const { username, password, repeatPassword, email, fname, about, website, industry } = this.state;
     this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry);
+
     this.props.history.push('/');
   }
+  onSelect(e) {
 
+    this.setState({industry: e})
+  }
   render() {
+
     return (
       <div className="container">
         <div className="top-spacer"></div>
@@ -42,68 +48,72 @@ class CompanyRegister extends Component {
               <input className="input" type="text" name="username" value={this.state.username}
                 onChange={(e) => this.setState({username: e.target.value})}/>
               </div>
-            </div>
+          </div>
 
-            <div className="field">
-              <label className="label">Company Name</label>
-              <div className="control">
-                <input className="input" type="text" name="fname" value={this.state.fname}
-                  onChange={(e) => this.setState({fname: e.target.value})}/>
-                </div>
+          <div className="field">
+            <label className="label">Company Name</label>
+            <div className="control">
+              <input className="input" type="text" name="fname" value={this.state.fname}
+                onChange={(e) => this.setState({fname: e.target.value})}/>
               </div>
+          </div>
 
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control has-icons-left">
-                  <span className="icon is-small is-left">
-                    <i className="fa fa-envelope"></i>
-                  </span>
-                  <input className="input" type="email" placeholder="e.g. charliebrown@gmail.com" name="email"
-                    value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control has-icons-left">
-                    <span className="icon is-small is-left">
-                      <i className="fa fa-lock"></i>
-                    </span>
-                    <input className="input" type="password" name="password"
-                      value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <label className="label">Confirm Password</label>
-                    <div className="control has-icons-left">
-                      <span className="icon is-small is-left">
-                        <i className="fa fa-lock"></i>
-                      </span>
-                      <input className="input" type="password" name="repeatPassword"
-                        value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
-                      </div>
-                    </div>
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-envelope"></i>
+              </span>
+              <input className="input" type="email" placeholder="e.g. charliebrown@gmail.com" name="email"
+                value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
+              </div>
+          </div>
 
-                    <div className="field">
-                      <label className="label">Website</label>
-                      <div className="control has-icons-left">
-                        <span className="icon is-small is-left">
-                          <i className="fa fa-link"></i>
-                        </span>
-                        <input className="input" type="text" placeholder="http://www.ticama.com" name="website"
-                        value={this.state.website} onChange={(e) => this.setState({website: e.target.value})}/>
-                      </div>
-                    </div>
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="password"
+                value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+              </div>
+          </div>
 
-                    <div className="field">
-                      <label className="label">Industry</label>
-                      <div className="control has-icons-left">
-                        <span className="icon is-small is-left">
-                          <i className="fa fa-link"></i>
-                        </span>
-                        <input className="input" type="text" placeholder="finance" name="industry"
-                        value={this.state.industry} onChange={(e) => this.setState({industry: e.target.value})}/>
-                      </div>
-                    </div>
+          <div className="field">
+            <label className="label">Confirm Password</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-lock"></i>
+              </span>
+              <input className="input" type="password" name="repeatPassword"
+                value={this.state.repeatPassword} onChange={(e) => this.setState({repeatPassword: e.target.value})}/>
+              </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Website</label>
+            <div className="control has-icons-left">
+              <span className="icon is-small is-left">
+                <i className="fa fa-link"></i>
+              </span>
+              <input className="input" type="text" placeholder="http://www.ticama.com" name="website"
+              value={this.state.website} onChange={(e) => this.setState({website: e.target.value})}/>
+            </div>
+          </div>
+
+          <div className="field">
+            <label className="label">Industry</label>
+            <div className="control">
+              <div className="select">
+                <select value={this.state.industry} onChange={(e) => this.onSelect(e.target.value)}>
+                  <option value="Finance">Finance</option>
+                  <option value="Consulting">Consulting</option>
+                  <option value="Technology">Technology</option>
+                </select>
+              </div>
+            </div>
+          </div>
 
                     <div className="field">
                       <label className="label">About</label>

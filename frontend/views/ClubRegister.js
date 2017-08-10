@@ -54,6 +54,20 @@ class ClubRegister extends Component {
                 onChange={(e) => this.setState({clubName: e.target.value})}/>
             </div>
           </div>
+          
+          <div className="field">
+            <label className="label">Industry</label>
+            <div className="control">
+              <div className="select">
+                <select>
+                  <option>Finance</option>
+                  <option>Consulting</option>
+                  <option>Technology</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
           <div className="field">
             <label className="label">Email</label>
             <div className="control has-icons-left">

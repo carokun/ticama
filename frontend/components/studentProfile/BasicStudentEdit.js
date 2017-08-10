@@ -46,7 +46,7 @@ class StudentProfileEdit extends Component {
             <figure className="image is-4by3">
               <img src="http://bulma.io/images/placeholders/640x480.png" />
             </figure>
-            <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1'}}
+            <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1',  borderRadius: '0px 0px 0px 3px'}}
               onClick={() => this.save()}>
               <span className="icon">
                 <i className="fa fa-floppy-o"></i>
