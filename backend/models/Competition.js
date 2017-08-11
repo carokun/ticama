@@ -72,6 +72,9 @@ var CompetitionSchema = new Schema ({
   companyOrganizerInfo: {
     type: Object
   },
+  clubOrganizerInfo: {
+    type: Object
+  },
   specifications: {
     type: String
   }

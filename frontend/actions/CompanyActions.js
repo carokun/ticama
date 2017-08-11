@@ -19,22 +19,3 @@ export const updateBasicInfo = (dispatch, about, email, phone, website, industry
         })
     };
 };
-
-export const competitionRequest = (dispatch, competition) => {
-  console.log('frontend', competition);
-    return (dispatch) => {
-        axios.post('/api/request/competition', {
-          competition
-        })
-        .then((response) => {
-          if (response.data.competition) {
-            dispatch({ type: 'competition_request', competition: response.data.competition });
-          } else {
-            console.log('failed');
-          }
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    };
-};

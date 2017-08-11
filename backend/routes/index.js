@@ -222,9 +222,8 @@ router.get('/companies', function(req, res) {
     res.json({message: 'this is not allowed!!!!!'})
   } else {
     User.find()
-    .populate('workExperience')
-    .populate('skills')
     .populate('pastCompetitions')
+    .populate('currentCompetitions')
     .exec()
     .then(users => {
       const companies = users.filter((user) => {
@@ -243,9 +242,8 @@ router.get('/clubs', function(req, res) {
     res.json({message: 'this is not allowed!!!!!'})
   } else {
     User.find()
-    .populate('workExperience')
-    .populate('skills')
     .populate('pastCompetitions')
+    .populate('currentCompetitions')
     .exec()
     .then(users => {
       const clubs = users.filter((user) => {
@@ -279,6 +277,8 @@ router.get('/competitions', function(req, res) {
     })
   } else {
     Competition.find()
+    .populate('club')
+    .populate('company')
     .exec()
     .then(competitions => {
       res.json({competitions})
@@ -320,6 +320,30 @@ router.post('/add/competition', function(req, res) {
     .then(competition => {
       res.json({
         competition
+      })
+      Company.findById(company)
+      .then(company => {
+        if (company.currentCompetitions) {
+          company.currentCompetitions.push(competition);
+        } else {
+          company.currentCompetitions = [competition];
+        }
+        company.save()
+        .then(company => {
+          console.log(company);
+        })
+      })
+      Club.findById(club)
+      .then(club => {
+        if (club.currentCompetitions) {
+          club.currentCompetitions.push(competition);
+        } else {
+          club.currentCompetitions = [competition];
+        }
+        club.save()
+        .then(club => {
+          console.log(club);
+        })
       })
     })
     .catch(err => {
