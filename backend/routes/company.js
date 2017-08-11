@@ -5,8 +5,10 @@ const WorkExperience = models.WorkExperience;
 const Skill = models.Skill;
 const Company = models.Company;
 const User = models.User;
+const Competition = models.Competition;
 
-// API ROUTES HEREx
+
+// API ROUTES HERE
 
 router.post('/basic/company/info', function(req, res) {
   console.log(req.user);
@@ -29,6 +31,31 @@ router.post('/basic/company/info', function(req, res) {
   })
   .catch(err => {
     res.json(err)
+  })
+});
+
+router.post('/request/competition', function(req, res) {
+  console.log('backend', req.body.competition);
+  new Competition(Object.assign({}, req.body.competition, {approved: false, competition: req.user._id}))
+  .save()
+  .then(competition => {
+    if (req.user.currentCompetitions) {
+      req.user.currentCompetitions.push(competition);
+    } else {
+      req.user.currentCompetitions = [competition];
+    }
+    req.user.save()
+    .then(user => {
+      res.json({success: true})
+    })
+    .catch(err => {
+      res.json({err})
+      console.log(err);
+    })
+  })
+  .catch(err => {
+    res.json({err})
+    console.log(err);
   })
 });
 
