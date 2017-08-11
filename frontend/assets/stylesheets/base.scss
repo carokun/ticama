@@ -143,6 +143,20 @@ a {
   flex: 1;
 }
 
+.feed {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+ .filters {
+   margin: 20px;
+   height: 50px;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
 #no-white {
   background-color: #f9f7f9 !important;
 }
