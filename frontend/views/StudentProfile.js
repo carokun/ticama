@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
+import {updateViewedUser} from '../actions/ViewedActions.js'
+
 import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
 import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
 import StudentProfilePrivate from './StudentProfile/StudentProfilePrivate';
@@ -31,6 +33,7 @@ class StudentProfile extends Component {
       this.setState({
         student: response.data.user
       })
+      this.props.updateViewedUser(response.data.user)
     })
   }
 
@@ -47,10 +50,8 @@ class StudentProfile extends Component {
     if (!this.state.student) {
       return <div></div>;
     } else if (this.state.edit && (this.props.user._id === this.props.match.params.id)) {
-      console.log('editing');
       return <StudentProfileEditable endEdit={this.endEdit} id={this.props.match.params.id}/>
     } else if (this.props.user._id === this.props.match.params.id) {
-      console.log('not editing');
       return <StudentProfilePrivate startEdit={this.startEdit} id={this.props.match.params.id}/>
     } else {
       return <StudentProfilePublic id={this.props.match.params.id} student={this.state.student}/>
@@ -81,6 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
   }
 };
 

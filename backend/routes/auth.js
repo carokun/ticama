@@ -10,12 +10,13 @@ module.exports = function(passport) {
   });
 
   router.get('/logout', function(req, res) {
-    console.log('hi');
     req.logout();
     console.log(req.user);
+    console.log(req.session);
     req.session.destroy(function (err) {
-      if (err) { return next(err); }
-      // The response should indicate that the user is no longer authenticated.
+      if (err) {
+        return next(err);
+      }
       return res.send({ success: true });
     });
   });

@@ -84,6 +84,23 @@ router.post('/add/skill', function(req, res) {
 
 });
 
+router.post('/delete/skill', function(req, res) {
+  console.log(req.user);
+  var newSkills = req.user.skills();
+  newSkills = newSkills.filter(skill => {
+    return skill._id !== req.body.id;
+  });
+  req.user.skills = newSkills;
+  req.user.save()
+  .then(user => {
+    res.json({success: true, skill: skill});
+  })
+  .catch(err => {
+    res.json({ success: false, message: 'invalid skill' });
+  })
+
+});
+
 router.post('/add/mainSkill', function(req, res) {
   Skill.findOne({name: req.body.skill})
   .then(skill => {

@@ -52,6 +52,25 @@ export const addSkill = (dispatch, skill) => {
     };
 };
 
+export const deleteSkill = (dispatch, id) => {
+    return (dispatch) => {
+        axios.post('/api/delete/skill', {
+          id
+        })
+        .then((response) => {
+          if (!response.data.skill) {
+            dispatch({ type: 'delete_skill_failed' });
+          } else {
+            dispatch({ type: 'delete_skill', skill: response.data.skill });
+          }
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: 'add_skill_failed' });
+        })
+    };
+};
+
 export const addMainSkill = (dispatch, skill, description) => {
     return (dispatch) => {
         axios.post('/api/add/mainSkill', {
