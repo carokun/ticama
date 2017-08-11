@@ -263,6 +263,8 @@ router.get('/clubs', function(req, res) {
 router.get('/competitions', function(req, res) {
   if (req.user.type !== 'admin') {
     Competition.find()
+    .populate('club')
+    .populate('company')
     .exec()
     .then(competitions => {
       res.json({

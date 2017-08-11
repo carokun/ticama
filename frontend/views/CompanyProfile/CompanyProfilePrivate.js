@@ -6,28 +6,34 @@ import CompanyOverview from '../../components/companyProfile/CompanyOverview';
 import CompetitionRecordAdmin from '../../components/companyProfile/CompetitionRecordAdmin';
 import axios from 'axios';
 
+import {competitionRequest} from '../../actions/CompanyActions.js';
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      start: '',
-      end: '',
-      streetAddress: '',
-      city: '',
-      state: '',
-      zipcode: '',
-      description: '',
-      email: '',
-      phone: '',
-      link: ''
     }
     this.makeRequest = this.makeRequest.bind(this)
   }
   makeRequest() {
-    console.log('MAKE COMPETITION REQUEST', this.state);
+    var competition = {
+      title: this.refs.title.value,
+      description: this.refs.description.value,
+      startDate: this.refs.startDate.value,
+      endDate: this.refs.endDate.value,
+      companyOrganizerInfo: {
+        phone: this.refs.phone.value,
+        email: this.refs.email.value
+      },
+      location: this.refs.location.value,
+      specifications: this.refs.specifications.value,
+      approved: false,
+    }
+    console.log('MAKE COMPETITION REQUEST', competition);
+    this.props.competitionRequest(competition)
     this.props.closeModal()
   }
+
   render() {
     return (
       <div className="modal is-active">
@@ -42,78 +48,52 @@ class Modal extends React.Component {
             <div className="field">
               <label className="label">Competition Name</label>
               <div className="control">
-                <input className="input" type="text" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}/>
+                <input className="input" type="text" ref='title'/>
               </div>
             </div>
             <div className="field">
               <label className="label">Description</label>
               <div className="input-field">
-                <textarea id="description" type="text" className="materialize-textarea" onChange={(e) => this.setState({description: e.target.value})} value={this.state.description}/>
+                <textarea id="description" type="text" className="materialize-textarea" ref='description'/>
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Specifications</label>
+              <div className="input-field">
+                <textarea id="specifications" type="text" className="materialize-textarea" ref='specifications' placeholder='list any specifications about the competition here such as where the event will be held and the exact time of the event'/>
               </div>
             </div>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <div className="field">
-                <label className="label">Start</label>
+              <div className="field" style={{flex: 5}}>
+                <label className="label">Start Date</label>
                 <div className="control">
-                  <input className="input" type="datetime-local" value={this.state.start} onChange={(e) => (this.setState({ start: e.target.value }))}/>
+                  <input className="input" type="date" ref='startDate'/>
                 </div>
               </div>
-              <div className="field">
-                <label className="label">End</label>
+              <div style={{flex: 1}}></div>
+              <div className="field" style={{flex: 5}}>
+                <label className="label">End Date</label>
                 <div className="control">
-                  <input className="input" type="datetime-local" value={this.state.end} onChange={(e) => (this.setState({ end: e.target.value }))}/>
+                  <input className="input" type="date" ref='endDate'/>
                 </div>
               </div>
             </div>
             <div className="field">
               <label className="label">Location</label>
               <div className="control">
-                <input className="input" type="text" value={this.state.streetAddress} onChange={(e) => this.setState({ streetAddress: e.target.value })}/>
-              </div>
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <div className="field">
-                <label className="label">City</label>
-                <div className="control">
-                  <input className="input" type="text" value={this.state.city} onChange={(e) => (this.setState({ city: e.target.value }))}/>
-                </div>
-              </div>
-              <div style={{width: '10px', height: '5px'}}></div>
-              <div className="field">
-                <label className="label">State</label>
-                <div className="control">
-                  <div className="select">
-                    <select value={this.state.state} onChange={(e) => this.setState({state: e.target.value})}>
-                      <option>Alabama</option>
-                      <option>Arkansas</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div style={{width: '50px', height: '5px'}}></div>
-              <div className="field">
-                <label className="label">Zipcode</label>
-                <div className="control">
-                  <input className="input" type="text" value={this.state.zipcode} onChange={(e) => (this.setState({ zipcode: e.target.value }))}/>
-                </div>
+                <input className="input" type="text" ref='location'/>
               </div>
             </div>
               <div className="field">
-                <label className="label">Email</label>
+                <label className="label">Organizer Email</label>
                 <div className="control">
-                  <input className="input" type="text" value={this.state.email} onChange={(e) => (this.setState({ email: e.target.value }))}/>
+                  <input className="input" type="text" ref='email'/>
                 </div>
               </div>
               <div className="field">
-                <label className="label">Phone</label>
+                <label className="label">Organizer Phone</label>
                 <div className="control">
-                  <input className="input" type="text" value={this.state.phone} onChange={(e) => (this.setState({ phone: e.target.value }))}/>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">Link</label>
-                <div className="control">
-                  <input className="input" type="text" value={this.state.link} onChange={(e) => (this.setState({ link: e.target.value }))}/>
+                  <input className="input" type="text" ref='phone'/>
                 </div>
               </div>
 
@@ -157,10 +137,8 @@ class CompanyProfilePrivate extends Component {
   }
   render() {
     const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.user;
-    console.log(this.state.modal);
     return(
       <div>
-        {/* <div style={{position: 'absolute', top: '0', backgroundColor: 'red', height: '100%', width: '100%', zIndex: '0'}}></div> */}
       <div className="container is-fluid">
         <div className="top-spacer">
             <div style={{position: 'absolute', top: '50px', right: '53px', zIndex: '5'}}>
@@ -178,14 +156,12 @@ class CompanyProfilePrivate extends Component {
             </button>
             </div>
         </div>
-        {this.state.modal && <Modal closeModal={this.closeModal}/>}
+        {this.state.modal && <Modal competitionRequest={this.props.competitionRequest} closeModal={this.closeModal}/>}
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>
             {(this.props.id === this.props.user._id) ? <CompanyOverview user={this.props.user}/> : <CompanyOverview user={this.props.company}/>}
           </div>
           <div className='tile is-9 is-parent is-vertical'>
-            {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
-            own profile or not. this logic also applies with club profile*/}
             <CompetitionRecordAdmin />
           </div>
         </div>
@@ -203,8 +179,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
+    competitionRequest: (competition) => dispatch(competitionRequest(dispatch, competition))
   }
 };
 

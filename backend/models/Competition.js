@@ -68,6 +68,12 @@ var CompetitionSchema = new Schema ({
   },
   approved: {
     type: Boolean
+  },
+  companyOrganizerInfo: {
+    type: Object
+  },
+  specifications: {
+    type: String
   }
 })
 
