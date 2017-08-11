@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ClubProfileEdit from './ClubProfile/ClubProfileEdit';
 import ClubProfilePublic from './ClubProfile/ClubProfilePublic';
+import ClubProfilePrivate from './ClubProfile/ClubProfilePrivate';
+
+import {updateViewedUser} from '../actions/ViewedActions.js'
 
 import axios from 'axios';
 
@@ -28,6 +31,7 @@ class ClubProfile extends Component {
       this.setState({
         club: response.data.user
       })
+      this.props.updateViewedUser(response.data.user)
     })
     .catch(err => {
       console.log(err);
@@ -45,10 +49,12 @@ class ClubProfile extends Component {
   isEditing() {
     if (!this.state.club) {
       return <div></div>;
-    } else if (this.state.edit && this.state.isOwnProfile) {
+    } else if (this.state.edit && this.props.user._id === this.props.match.params.id) {
       return <ClubProfileEdit endEdit={this.endEdit} id={this.props.match.params.id} club={this.state.club}/>
+    } else if (this.props.user._id === this.props.match.params.id) {
+      return <ClubProfilePrivate startEdit={this.startEdit}/>
     } else {
-      return <ClubProfilePublic isOwnProfile={this.props.user._id === this.props.match.params.id} startEdit={this.startEdit} id={this.props.match.params.id} club={this.state.club}/>
+      return <ClubProfilePublic id={this.props.match.params.id} club={this.state.club}/>
     }
   }
   componentWillMount() {
@@ -79,6 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
   }
 };
 

@@ -23,12 +23,9 @@ class Skills extends Component {
         <div>
           {this.props.skills.map(skill => {
             return (
-              <div>
-                <span className="tag is-primary is-medium" style={{margin: '5px'}}>
-                  {skill.name}
-                </span>
-              </div>
-
+              <span className="tag is-primary is-medium" style={{margin: '5px'}}>
+                {skill.name}
+              </span>
             )
           })}
         </div>

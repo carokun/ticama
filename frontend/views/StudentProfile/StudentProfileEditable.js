@@ -9,7 +9,7 @@ import BasicStudentEdit from '../../components/studentProfile/BasicStudentEdit';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import { addExperience, addSkill, addMainSkill, updateBasicInfo } from '../../actions/StudentActions.js';
+import { addExperience, addSkill, addMainSkill, updateBasicInfo, deleteSkill } from '../../actions/StudentActions.js';
 
 class StudentProfileEditable extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ class StudentProfileEditable extends Component {
               <CompetitionExperience competitionExperience={competitionExperience}/>
               <WorkExperience experiences={workExperience} addExperience={this.props.addExperience} edit={true}/>
             </div>
-            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} addMainSkill={this.props.addMainSkill} edit={true}/>
+            <Skills skills={skills} mainSkills={mainSkills} addSkill={this.props.addSkill} deleteSkill={this.props.deleteSkill} addMainSkill={this.props.addMainSkill} edit={true}/>
           </div>
         </div>
       </div>
@@ -70,7 +70,8 @@ const mapDispatchToProps = (dispatch) => {
     addExperience: (newCompany, newStart, newEnd, newRole, newDescription, newLocation) => dispatch(addExperience(dispatch, newCompany, newStart, newEnd, newRole, newDescription, newLocation)),
     addSkill: (skill) => dispatch(addSkill(dispatch, skill)),
     addMainSkill: (skill, description) => dispatch(addMainSkill(dispatch, skill, description)),
-    updateBasicInfo: (fname, lname, about, university, major, year, interests, linkedin, website, resume) => dispatch(updateBasicInfo(dispatch, fname, lname, about, university, major, year, interests, linkedin, website, resume))
+    updateBasicInfo: (fname, lname, about, university, major, year, interests, linkedin, website, resume) => dispatch(updateBasicInfo(dispatch, fname, lname, about, university, major, year, interests, linkedin, website, resume)),
+    deleteSkill: (id) => dispatch(addSkill(dispatch, id))
   }
 };
 

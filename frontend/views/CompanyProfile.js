@@ -5,6 +5,9 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import CompanyProfileEdit from './CompanyProfile/CompanyProfileEdit';
 import CompanyProfilePublic from './CompanyProfile/CompanyProfilePublic';
+import CompanyProfilePrivate from './CompanyProfile/CompanyProfilePrivate';
+
+import {updateViewedUser} from '../actions/ViewedActions.js'
 
 import axios from 'axios';
 
@@ -28,6 +31,7 @@ class CompanyProfile extends Component {
       this.setState({
         company: response.data.user
       })
+      this.props.updateViewedUser(response.data.user)
     })
   }
 
@@ -43,9 +47,11 @@ class CompanyProfile extends Component {
 
   isEditing() {
     if (!this.state.company) {
-
+      return <div></div>;
     } else if (this.state.edit && this.props.match.params.id === this.props.user._id) {
       return <CompanyProfileEdit endEdit={this.endEdit} id={this.props.match.params.id} company={this.state.company}/>
+    } else if (this.props.user._id === this.props.match.params.id) {
+      return <CompanyProfilePrivate startEdit={this.startEdit} id={this.props.match.params.id}/>
     } else {
       return <CompanyProfilePublic isOwnProfile={this.props.match.params.id === this.props.user._id} startEdit={this.startEdit} id={this.props.match.params.id} company={this.state.company}/>
     }
@@ -75,6 +81,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
   }
 };
 
