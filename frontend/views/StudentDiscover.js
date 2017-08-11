@@ -24,7 +24,7 @@ class Card extends Component {
           </div>
         </div>
         <div className="media-content">
-          <div className="content" style={{width: '400px', textOverflow: 'ellipsis', overflow: 'scroll'}}>
+          <div className="content" style={{height: '200px', width: '400px', textOverflow: 'ellipsis', overflow: 'scroll'}}>
             <p>
               <strong>{comp.title}</strong>
               <br/>
