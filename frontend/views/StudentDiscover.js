@@ -64,6 +64,7 @@ class StudentDiscover extends Component {
   }
 
   render() {
+    console.log('comps', this.state.competitions);
     return (
       <div className="container is-fluid">
         <div className="filters">
