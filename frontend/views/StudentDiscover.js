@@ -7,7 +7,7 @@ import axios from 'axios';
 class Card extends Component {
   render() {
     let comp = this.props.comp
-    console.log(comp.company);
+    console.log('LECOMP', comp);
     return (
     <div className="box">
       <article className="media">
@@ -29,7 +29,7 @@ class Card extends Component {
             <p>
               <strong>{comp.title}</strong>
               <br/>
-              {/* <small>{comp.company}</small> */}
+              <small>{comp.company.fname}</small>
               <br/>
               <small>{comp.location}</small>
               <br/>
@@ -98,7 +98,7 @@ class StudentDiscover extends Component {
         <div className="feed">
         {this.state.competitions.map((competition) =>
           competition.approved &&
-          <Card onClick={() => this.props.history.push('/competition/student')} comp={competition}/>
+          <Card key={competition._id} onClick={() => this.props.history.push('/competition/' + competition._id)}/>
         )}
         </div>
       </div>
