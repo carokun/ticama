@@ -36,7 +36,7 @@ router.post('/basic/company/info', function(req, res) {
 
 router.post('/request/competition', function(req, res) {
   console.log('backend', req.body.competition);
-  new Competition(Object.assign({}, req.body.competition, {approved: false, competition: req.user._id}))
+  new Competition(Object.assign({}, req.body.competition, {approved: false, company: req.user._id}))
   .save()
   .then(competition => {
     if (req.user.currentCompetitions) {
