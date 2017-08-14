@@ -65,7 +65,7 @@ class AppContainer extends React.Component {
           <Route path='/profile/student/:id' exact component={StudentProfile} />
           <Route path='/profile/club/:id' exact component={ClubProfile} />
           <Route path='/profile/company/:id' exact component={CompanyProfile} />
-          <Route path='/home' exact component={StudentDashboard} />
+          <Route path='/home' component={StudentDashboard} />
           <Route path='/competition/:id' exact component={StudentCompetition} />
           <Route path='/discover' exact component={StudentDiscover} />
           <Route path='/error' exact component={ErrorScreen} />

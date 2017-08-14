@@ -11,8 +11,6 @@ module.exports = function(passport) {
 
   router.get('/logout', function(req, res) {
     req.logout();
-    console.log(req.user);
-    console.log(req.session);
     req.session.destroy(function (err) {
       if (err) {
         return next(err);
@@ -24,7 +22,6 @@ module.exports = function(passport) {
 
   router.post('/register/student', function(req, res) {
     var { username, password, repeatPassword, email, fname, lname, university, year, major, about, website, linkedin } = req.body;
-    console.log('username', req.body.username);
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
@@ -48,7 +45,6 @@ module.exports = function(passport) {
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
-      console.log('YO from backend', req.body.fname);
       var user = new User({
         username, password, email, fname, about, website, type: 'company', industry, phone, approved: false
       })
@@ -66,7 +62,6 @@ module.exports = function(passport) {
 
   router.post('/register/club', function(req, res) {
     var { username, password, repeatPassword, email, name, about, website } = req.body;
-    console.log('username', req.body.username);
     if (password !== repeatPassword) {
       res.json({ success: false, message: 'passwords do not match' });
     } else {
@@ -91,7 +86,6 @@ module.exports = function(passport) {
     .populate('skills')
     .populate('competitions')
     .then((user) => {
-      console.log(user);
       res.json({user})
     })
     .catch(err => {

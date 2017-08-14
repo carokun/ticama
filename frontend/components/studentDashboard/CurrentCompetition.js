@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 class CurrentCompetition extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      fname: ''
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/user/' + this.props.comp.company)
+    .then(response => {
+      this.setState({
+        fname: response.data.user.fname
+      })
+    })
   }
 
   render() {
@@ -20,7 +33,7 @@ class CurrentCompetition extends Component {
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>McKinsey & Co.</strong>
+                <strong>{this.props.comp.title}</strong>
                 <br />
                 <nav className="level is-mobile">
                   <div className="level-left">
@@ -33,7 +46,7 @@ class CurrentCompetition extends Component {
                   </div>
                   <div className="level-right">
                     <div className="level-item">
-                      <button className="button is-info">Open</button>
+                      <button className="button is-info" onClick={() => this.props.changeCompView(this.props.comp)}>Open</button>
                     </div>
                   </div>
                 </nav>

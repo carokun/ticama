@@ -10,8 +10,6 @@ const Competition = models.Competition;
 // API ROUTES HEREx
 
 router.post('/add/experience', function(req, res) {
-  console.log('here');
-  console.log(req.body);
   var { company, startDate, endDate, role, description, location } = req.body;
 
   var experience = new WorkExperience({
@@ -39,7 +37,6 @@ router.post('/add/experience', function(req, res) {
 });
 
 router.post('/add/skill', function(req, res) {
-  console.log(req.user);
   Skill.find({name: req.body.skill})
   .then(skills => {
     if (skills.length < 1) {
@@ -85,7 +82,6 @@ router.post('/add/skill', function(req, res) {
 });
 
 router.post('/delete/skill', function(req, res) {
-  console.log(req.user);
   var newSkills = req.user.skills();
   newSkills = newSkills.filter(skill => {
     return skill._id !== req.body.id;
@@ -118,7 +114,6 @@ router.post('/add/mainSkill', function(req, res) {
         req.user.mainSkills = newMainSkills;
         req.user.save()
         .then(user => {
-          console.log(user);
           res.json({success: true, mainSkill: {name: skill.name, description: req.body.description} });
         })
         .catch(err => {
@@ -138,7 +133,6 @@ router.post('/add/mainSkill', function(req, res) {
       req.user.mainSkills = newMainSkills;
       req.user.save()
       .then(user => {
-        console.log(user);
         res.json({success: true, mainSkill: {name: skill.name, description: req.body.description} });
       })
       .catch(err => {
@@ -189,7 +183,6 @@ router.post('/add/company', function(req, res) {
 });
 
 router.post('/updateBasicInfo', function(req, res) {
-  console.log(req.user);
   User.findById(req.user._id)
   .then(user => {
     user.fname = req.body.fname || user.fname;
@@ -205,7 +198,6 @@ router.post('/updateBasicInfo', function(req, res) {
 
     user.save()
     .then(user => {
-      console.log(user);
       res.json({user})
     })
     .catch(err => {

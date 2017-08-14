@@ -13,8 +13,15 @@ class StudentDashboard extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      competition: this.props.user.competitions[0]
     }
+  }
+
+  changeCompView(competition) {
+    this.setState({
+      competition
+    })
   }
 
   render() {
@@ -30,10 +37,10 @@ class StudentDashboard extends Component {
       <div className='container is-fluid' style={{padding: '36px'}}>
         <div className='tile is-ancestor'>
           <div className='tile is-3 is-parent is-vertical'>
-            <SummaryInfo />
+            <SummaryInfo user={this.props.user} changeCompView={this.changeCompView.bind(this)}/>
           </div>
           <div className='tile is-6 is-parent is-vertical'>
-            <SubmissionPortal />
+            <SubmissionPortal comp={this.state.competition}/>
           </div>
           <div className='tile is-3 is-parent is-vertical'>
             <Inbox />
