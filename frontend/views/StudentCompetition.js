@@ -6,6 +6,8 @@ import MessageBoard from '../components/studentCompetition/MessageBoard.js'
 import axios from 'axios';
 import PostModal from '../components/studentCompetition/PostModal';
 
+import {updateViewed} from '../actions/ViewedActions.js'
+
 class StudentCompetition extends Component {
   constructor(props) {
     super(props);
@@ -24,16 +26,20 @@ class StudentCompetition extends Component {
       this.setState({
         competition: response.data.competition
       })
+      this.props.updateViewed(response.data.competition)
     })
   }
+
   closeModal() {
     this.setState({modal: false})
+
   }
+
   render() {
     if (this.state.competition) {
       return (
         <div className="container is-fluid">
-          { this.state.modal && <PostModal closeModal={this.closeModal}/> }
+          { this.state.modal && <PostModal closeModal={this.closeModal} comp={this.state.competition}/> }
           <div className="top-spacer-big">
             <button className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '78px', zIndex: '5'}} onClick={() => this.setState({modal: true})}>
               <span className="icon">
@@ -68,6 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
   }
 };
 

@@ -7,7 +7,7 @@ import CompanyProfileEdit from './CompanyProfile/CompanyProfileEdit';
 import CompanyProfilePublic from './CompanyProfile/CompanyProfilePublic';
 import CompanyProfilePrivate from './CompanyProfile/CompanyProfilePrivate';
 
-import {updateViewedUser} from '../actions/ViewedActions.js'
+import {updateViewed} from '../actions/ViewedActions.js'
 
 import axios from 'axios';
 
@@ -31,7 +31,7 @@ class CompanyProfile extends Component {
       this.setState({
         company: response.data.user
       })
-      this.props.updateViewedUser(response.data.user)
+      this.props.updateViewed(response.data.user)
     })
   }
 
@@ -81,7 +81,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
+    updateViewed: (user) => dispatch(updateViewed(dispatch, user))
   }
 };
 

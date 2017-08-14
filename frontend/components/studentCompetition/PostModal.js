@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 
+import {updateViewed} from '../../actions/ViewedActions.js'
+
+import { connect } from 'react-redux';
+
 class PostModal extends React.Component {
   constructor(props) {
     super(props);
@@ -13,12 +17,22 @@ class PostModal extends React.Component {
 
 
   makeRequest() {
-    const date = new Date()
-    console.log('SEND THIS TO POST MESSAGE & GRAB USER FRM BACKEND', this.state.message, date);
+    axios.post('/api/new/post', {
+      text: this.state.message,
+      competition: this.props.comp._id
+    })
+    .then(response => {
+      this.props.viewed.notifications.push(response.data.notification)
+      this.props.updateViewed(this.props.viewed)
+    })
+    .catch(err => {
+      console.log(err);
+    })
     this.props.closeModal();
   }
 
   render() {
+    console.log('viewed', this.props.viewed);
     return (
       <div className="modal is-active">
         <div className="modal-background"></div>
@@ -31,7 +45,7 @@ class PostModal extends React.Component {
             <div className="field">
               <label className="label">Message</label>
               <div className="control">
-                <input className="input" value={this.state.message} type="text" ref='title'
+                <input className="input" value={this.state.message} type="text" ref='message'
                   onChange={(e) => this.setState({message: e.target.value})}/>
               </div>
             </div>
@@ -51,4 +65,17 @@ class PostModal extends React.Component {
   }
 }
 
-export default PostModal;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    viewed: state.viewed
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

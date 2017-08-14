@@ -6,7 +6,7 @@ import ClubProfileEdit from './ClubProfile/ClubProfileEdit';
 import ClubProfilePublic from './ClubProfile/ClubProfilePublic';
 import ClubProfilePrivate from './ClubProfile/ClubProfilePrivate';
 
-import {updateViewedUser} from '../actions/ViewedActions.js'
+import {updateViewed} from '../actions/ViewedActions.js'
 
 import axios from 'axios';
 
@@ -31,7 +31,7 @@ class ClubProfile extends Component {
       this.setState({
         club: response.data.user
       })
-      this.props.updateViewedUser(response.data.user)
+      this.props.updateViewed(response.data.user)
     })
     .catch(err => {
       console.log(err);
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
+    updateViewed: (user) => dispatch(updateViewed(dispatch, user))
   }
 };
 
