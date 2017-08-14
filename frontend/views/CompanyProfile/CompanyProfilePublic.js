@@ -20,7 +20,7 @@ class CompanyProfilePublic extends Component {
   }
 
   render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.company;
+    const { username, email, competitions, website, type } = this.props.company;
     return(
       <div>
         {/* <div style={{position: 'absolute', top: '0', backgroundColor: 'red', height: '100%', width: '100%', zIndex: '0'}}></div> */}

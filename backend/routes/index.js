@@ -222,8 +222,7 @@ router.get('/companies', function(req, res) {
     res.json({message: 'this is not allowed!!!!!'})
   } else {
     User.find()
-    .populate('pastCompetitions')
-    .populate('currentCompetitions')
+    .populate('competitions')
     .exec()
     .then(users => {
       const companies = users.filter((user) => {
@@ -242,8 +241,7 @@ router.get('/clubs', function(req, res) {
     res.json({message: 'this is not allowed!!!!!'})
   } else {
     User.find()
-    .populate('pastCompetitions')
-    .populate('currentCompetitions')
+    .populate('competitions')
     .exec()
     .then(users => {
       const clubs = users.filter((user) => {
@@ -290,6 +288,25 @@ router.get('/competitions', function(req, res) {
 
 })
 
+router.get('/competition/:id', function(req, res) {
+  Competition.findById(req.params.id)
+  .populate('club')
+  .populate('company')
+  .exec()
+  .then(competition => {
+    if (!competition || !competition.approved) {
+      res.send('failed!')
+    } else {
+      res.json({
+        competition: competition
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
 router.post('/add/competition', function(req, res) {
   if (req.user.type !== 'admin') {
     res.json({message: 'this is not allowed!!!!!'})
@@ -323,10 +340,10 @@ router.post('/add/competition', function(req, res) {
       })
       User.findById(company)
       .then(company => {
-        if (company.currentCompetitions) {
-          company.currentCompetitions.push(competition);
+        if (company.competitions) {
+          company.competitions.push(competition);
         } else {
-          company.currentCompetitions = [competition];
+          company.competitions = [competition];
         }
         company.save()
         .then(company => {
@@ -335,10 +352,10 @@ router.post('/add/competition', function(req, res) {
       })
       User.findById(club)
       .then(club => {
-        if (club.currentCompetitions) {
-          club.currentCompetitions.push(competition);
+        if (club.competitions) {
+          club.competitions.push(competition);
         } else {
-          club.currentCompetitions = [competition];
+          club.competitions = [competition];
         }
         club.save()
         .then(club => {

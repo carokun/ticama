@@ -47,7 +47,11 @@ class CompetitionRecordAdmin extends Component {
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Open Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-              {this.props.user.currentCompetitions.map(comp => {
+              {this.props.user.competitions
+              .filter(comp => {
+                return new Date(comp.endDate) >= new Date()
+              })
+              .map(comp => {
                 return <CompetitionCard comp={comp}/>
               })}
             </div>
@@ -55,7 +59,11 @@ class CompetitionRecordAdmin extends Component {
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Past Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-              {this.props.user.currentCompetitions.map(comp => {
+              {this.props.user.competitions
+              .filter(comp => {
+                return new Date(comp.endDate) < new Date()
+              })
+              .map(comp => {
                 return <CompetitionCard comp={comp}/>
               })}
             </div>

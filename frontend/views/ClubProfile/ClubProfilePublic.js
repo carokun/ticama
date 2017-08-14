@@ -17,7 +17,7 @@ class ClubProfilePublic extends Component {
     $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
   }
   render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
+    const { username, email, competitions, website, type } = this.props.club;
 
     return (
       <div className="container is-fluid">
