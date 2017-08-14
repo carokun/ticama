@@ -6,6 +6,8 @@ import MessageBoard from '../components/studentCompetition/MessageBoard.js'
 import axios from 'axios';
 import PostModal from '../components/studentCompetition/PostModal';
 
+import {updateViewed} from '../actions/ViewedActions.js'
+
 class StudentCompetition extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +26,13 @@ class StudentCompetition extends Component {
       this.setState({
         competition: response.data.competition
       })
+      this.props.updateViewed(response.data.competition)
     })
   }
 
   closeModal() {
     this.setState({modal: false})
+
   }
 
   render() {
@@ -70,6 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
   }
 };
 

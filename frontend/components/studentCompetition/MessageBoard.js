@@ -7,7 +7,16 @@ class MessageBoard extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      comp: this.props.comp
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.viewed.notifications) {
+      this.setState({
+        comp: this.props.viewed
+      })
     }
   }
 
@@ -16,7 +25,7 @@ class MessageBoard extends Component {
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
         <div style={{overflow: 'scroll', height: '750px'}}>
-          {this.props.comp.notifications.map(notification => {
+          {this.state.comp.notifications.map(notification => {
             return <Post notification={notification}/>
           })}
         </div>
@@ -26,4 +35,16 @@ class MessageBoard extends Component {
   }
 }
 
-export default MessageBoard;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    viewed: state.viewed
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageBoard);

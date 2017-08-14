@@ -1,6 +1,10 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 
+import {updateViewed} from '../../actions/ViewedActions.js'
+
+import { connect } from 'react-redux';
+
 class PostModal extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +22,8 @@ class PostModal extends React.Component {
       competition: this.props.comp._id
     })
     .then(response => {
-      console.log(response.data.notification);
+      this.props.viewed.notifications.push(response.data.notification)
+      this.props.updateViewed(this.props.viewed)
     })
     .catch(err => {
       console.log(err);
@@ -27,6 +32,7 @@ class PostModal extends React.Component {
   }
 
   render() {
+    console.log('viewed', this.props.viewed);
     return (
       <div className="modal is-active">
         <div className="modal-background"></div>
@@ -59,4 +65,17 @@ class PostModal extends React.Component {
   }
 }
 
-export default PostModal;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+    viewed: state.viewed
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
