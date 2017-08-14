@@ -15,11 +15,17 @@ class MessageBoard extends Component {
   render() {
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
-        <div style={{overflow: 'scroll', height: '750px'}}>
-          {
-            this.state.messages.map((message) => {
+        <div style={{overflow: 'scroll', height: '750px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          { (this.state.messages.length > 0) ?
+            (this.state.messages.map((message) => {
               <Post message={message}/>
-            })
+            })) :
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+              <h2 className="title is-1" style={{textAlign: 'center'}}>
+                There are no posts right now!</h2>
+                <p  className="title is-1" style={{textAlign: 'center', fontSize: '60px'}}>🤷‍</p>
+                <h2 className="title is-1" style={{textAlign: 'center'}}>Make one up there!</h2>
+            </div>
           }
         </div>
       </div>
