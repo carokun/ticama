@@ -7,7 +7,7 @@ class CompetitionOverview extends Component {
   }
 
   render() {
-    console.log("get in hurr", this.props.comp);
+    console.log("", this.props.comp);
     return(
       <div>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', margin: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>

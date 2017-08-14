@@ -6,25 +6,22 @@ class MessageBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      messages: []
     }
   }
-
+  componentDidMount() {
+    this.setState({messages: this.props.comp.messages})
+  }
   render() {
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
         <div style={{overflow: 'scroll', height: '750px'}}>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {
+            this.state.messages.map((message) => {
+              <Post message={message}/>
+            })
+          }
         </div>
-
       </div>
     )
   }

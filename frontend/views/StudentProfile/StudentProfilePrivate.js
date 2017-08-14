@@ -30,8 +30,8 @@ class StudentProfilePublic extends Component {
         transitionEnter={false}
         transitionLeave={false}>
       <div className="container is-fluid">
-        <div className="top-spacer">
-          <button onClick={this.props.startEdit} className="button is-info is-large" style={{float: 'right', marginTop: '20px', marginBottom: '20px'}}>
+        <div className="top-spacer-big">
+          <button onClick={this.props.startEdit} className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '12px', zIndex: '5'}}>
             <span className="icon">
               <i className="fa fa-pencil"></i>
             </span>
