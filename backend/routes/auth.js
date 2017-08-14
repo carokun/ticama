@@ -89,7 +89,7 @@ module.exports = function(passport) {
     User.findById(req.params.id)
     .populate('workExperience')
     .populate('skills')
-    .populate('pastCompetitions')
+    .populate('competitions')
     .then((user) => {
       console.log(user);
       res.json({user})

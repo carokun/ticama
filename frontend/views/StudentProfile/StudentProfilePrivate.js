@@ -20,7 +20,7 @@ class StudentProfilePublic extends Component {
 
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,
-      workExperience, mainSkills, skills, currentCompetitions } = this.props.user;
+      workExperience, mainSkills, skills, competitions } = this.props.user;
 
     return (
       <ReactCSSTransitionGroup

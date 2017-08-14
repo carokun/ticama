@@ -40,7 +40,7 @@ passport.deserializeUser(function(id, done) {
   User.findById(id)
   .populate('workExperience')
   .populate('skills')
-  .populate('pastCompetitions')
+  .populate('competitions')
   .exec()
   .then(user => {
     done(null, user);
@@ -58,7 +58,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     User.findOne({ username: username })
     .populate('workExperience')
     .populate('skills')
-    .populate('pastCompetitions')
+    .populate('competitions')
     .exec()
     .then(user => {
       //IF NO USER IS PRESENT -- AUTHENTICATION FAILS

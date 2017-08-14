@@ -21,7 +21,7 @@ class CompanyProfileEdit extends Component {
   }
 
   render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.company;
+    const { username, email, competitions, website, type } = this.props.company;
     return(
       <div className="container is-fluid">
         <div className="top-spacer">

@@ -19,7 +19,7 @@ class StudentDashboard extends Component {
 
   render() {
     console.log('hello', this.props.user);
-    const { currentCompetitions } = this.props.user
+    const { competitions } = this.props.user
     return (
       <ReactCSSTransitionGroup
         transitionName="example"

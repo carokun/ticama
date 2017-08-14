@@ -31,7 +31,7 @@ class CompanyProfilePrivate extends Component {
     this.setState({modal: false})
   }
   render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.user;
+    const { username, email, competitions, website, type } = this.props.user;
     return(
       <div>
       <div className="container is-fluid">
@@ -57,7 +57,7 @@ class CompanyProfilePrivate extends Component {
             <CompanyOverview user={this.props.user}/>
           </div>
           <div className='tile is-9 is-parent is-vertical'>
-            <CompetitionRecordAdmin />
+            <CompetitionRecordAdmin user={this.props.user}/>
           </div>
         </div>
       </div>
