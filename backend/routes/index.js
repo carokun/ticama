@@ -321,7 +321,7 @@ router.post('/add/competition', function(req, res) {
       res.json({
         competition
       })
-      Company.findById(company)
+      User.findById(company)
       .then(company => {
         if (company.currentCompetitions) {
           company.currentCompetitions.push(competition);
@@ -333,7 +333,7 @@ router.post('/add/competition', function(req, res) {
           console.log(company);
         })
       })
-      Club.findById(club)
+      User.findById(club)
       .then(club => {
         if (club.currentCompetitions) {
           club.currentCompetitions.push(competition);
