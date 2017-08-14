@@ -53,10 +53,9 @@ class StudentDiscover extends Component {
   }
 
   componentDidMount() {
-    console.log('searching');
     axios.get('/api/competitions')
     .then(response => {
-      console.log('comps', response);
+      console.log('compsstudentdiscover', response);
       this.setState({
         competitions: response.data.competitions
       })
@@ -64,7 +63,7 @@ class StudentDiscover extends Component {
   }
 
   render() {
-    console.log('comps', this.state.competitions);
+    console.log('compsstate', this.state.competitions);
     return (
       <div className="container is-fluid">
         <div className="filters">
@@ -98,7 +97,7 @@ class StudentDiscover extends Component {
         <div className="feed">
         {this.state.competitions.map((competition) =>
           competition.approved &&
-          <Card key={competition._id} onClick={() => this.props.history.push('/competition/' + competition._id)}/>
+          <Card key={competition._id} comp={competition} onClick={() => this.props.history.push('/competition/' + competition._id)}/>
         )}
         </div>
       </div>
