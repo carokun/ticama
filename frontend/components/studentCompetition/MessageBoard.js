@@ -20,7 +20,13 @@ class MessageBoard extends Component {
       })
     }
   }
-
+  noPosts() {
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+      <h2 className="title is-1" style={{textAlign: 'center'}}>There are no posts right now!</h2>
+      <p className="title is-1" style={{textAlign: 'center', fontSize: '60px'}}>🤷</p>
+      <h2 className="title is-1" style={{textAlign: 'center'}}>Make one up there!</h2>
+    </div>
+  }
   render() {
     console.log(this.state.comp.notifications.length);
     return (
