@@ -10,22 +10,15 @@ class StudentCompetition extends Component {
   }
 
   render() {
+    console.log(this.props.competition, 'HURR');
     return (
-      <div>
-        <nav className="breadcrumb has-bullet-separator" aria-label="breadcrumbs" style={{paddingTop: '10px'}}>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li className="is-active"><a href="#" aria-current="page">
-              McKinsey & Co. Undergraduate Case Competition
-            </a></li>
-          </ul>
-        </nav>
+      <div className="container is-fluid">
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
           <div className='tile is-3 is-parent is-vertical'>
-            <CompetitionOverview />
+            <CompetitionOverview comp={this.props.comp}/>
           </div>
           <div className='tile is-9 is-parent is-vertical'>
-            <MessageBoard />
+            <MessageBoard comp={this.props.comp}/>
           </div>
         </div>
       </div>

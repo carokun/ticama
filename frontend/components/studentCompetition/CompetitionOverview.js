@@ -12,8 +12,8 @@ class CompetitionOverview extends Component {
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              <p className="title is-2">Undergraduate Case Competition</p>
-              <p className="subtitle is-3">McKinsey & Co</p>
+              <p className="title is-2">{this.props.comp.title}</p>
+              <p className="subtitle is-3">{this.props.comp.company}</p>
             </div>
           </div>
         <div className='tile is-parent'>
@@ -24,7 +24,7 @@ class CompetitionOverview extends Component {
           </div>
           <div className='tile is-child is-10'>
             <div>
-              5/11/2017 - 5/13/2017
+              {this.props.comp.startDate} - {this.props.comp.endDate}
             </div>
           </div>
         </div>
@@ -36,10 +36,7 @@ class CompetitionOverview extends Component {
           </div>
           <div className='tile is-child is-10'>
             <div>
-              401 Walnut St.
-            </div>
-            <div>
-              Philadelphia, PA 19104
+              {this.props.comp.location}
             </div>
 
           </div>

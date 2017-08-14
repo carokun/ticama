@@ -65,12 +65,13 @@ class StudentProfile extends Component {
   }
 
   render() {
+    console.log('comps', this.state.competitions);
     return (
       <div className="container is-fluid">
         <div className="filters">
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
           <div className="field">
-            <label class="label"><strong>Sort By</strong></label>
+            <label className="label"><strong>Sort By</strong></label>
             <div className="control">
               <div className="select">
                 <select>
@@ -82,7 +83,7 @@ class StudentProfile extends Component {
           </div>
           <div style={{width: '10px', height: '10px'}}></div>
           <div className="field">
-          <label class="label"><strong>Industry</strong></label>
+          <label className="label"><strong>Industry</strong></label>
           <div className="control">
             <div className="select">
               <select>
