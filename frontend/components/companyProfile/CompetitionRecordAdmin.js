@@ -3,18 +3,19 @@ import React, { Component } from 'react';
 
 class CompetitionCard extends Component {
   render() {
+    var comp = this.props.comp;
     return(
       <div className="card" style={{margin: '10px', boxShadow: '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 20px 0px rgba(204, 204, 204, 0.1)'}}>
         <header className="card-header">
           <p className="card-header-title">
-            <a>Competition Title</a>
+            <a>{comp.title}</a>
           </p>
-          <small className="card-header-icon">05/27/2017 - 05/30/2017</small>
+          <small className="card-header-icon">{comp.startDate} - {comp.endDate}</small>
         </header>
         <div className="card-content" >
           {/* //ellipses is broken */}
           <div className="content" style={{height: '50px', whiteSpace: 'wrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>
-            Brief Description. This is a super brief description of the competition like this should be like roughly 500 characters or so and we can truncate using elipses.
+            {comp.description}
           </div>
         </div>
         <footer className="card-footer">
@@ -46,23 +47,17 @@ class CompetitionRecordAdmin extends Component {
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Open Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
+              {this.props.user.currentCompetitions.map(comp => {
+                return <CompetitionCard comp={comp}/>
+              })}
             </div>
           </article>
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2">Past Competitions</p>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
+            <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+              {this.props.user.currentCompetitions.map(comp => {
+                return <CompetitionCard comp={comp}/>
+              })}
             </div>
           </article>
       </div>

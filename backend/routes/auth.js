@@ -90,6 +90,7 @@ module.exports = function(passport) {
     .populate('workExperience')
     .populate('skills')
     .populate('pastCompetitions')
+    .populate('currentCompetitions')
     .then((user) => {
       console.log(user);
       res.json({user})

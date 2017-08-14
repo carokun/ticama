@@ -41,6 +41,7 @@ passport.deserializeUser(function(id, done) {
   .populate('workExperience')
   .populate('skills')
   .populate('pastCompetitions')
+  .populate('currentCompetitions')
   .exec()
   .then(user => {
     done(null, user);
@@ -59,6 +60,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     .populate('workExperience')
     .populate('skills')
     .populate('pastCompetitions')
+    .populate('currentCompetitions')
     .exec()
     .then(user => {
       //IF NO USER IS PRESENT -- AUTHENTICATION FAILS

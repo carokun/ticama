@@ -57,7 +57,7 @@ class CompanyProfilePrivate extends Component {
             <CompanyOverview user={this.props.user}/>
           </div>
           <div className='tile is-9 is-parent is-vertical'>
-            <CompetitionRecordAdmin />
+            <CompetitionRecordAdmin user={this.props.user}/>
           </div>
         </div>
       </div>
