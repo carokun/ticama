@@ -7,13 +7,14 @@ class CompetitionOverview extends Component {
   }
 
   render() {
+    console.log("get in hurr", this.props.comp);
     return(
       <div>
-        <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
+        <article className="tile is-parent is-vertical notification" style={{padding: '30px', margin: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              {/* <p className="title is-2">{this.props.comp.title}</p> */}
-              {/* <p className="subtitle is-3">{this.props.comp.company}</p> */}
+              <p className="title is-2">{this.props.comp.title}</p>
+              <p className="subtitle is-3">{this.props.comp.company.fname}</p>
             </div>
           </div>
         <div className='tile is-parent'>
@@ -24,7 +25,8 @@ class CompetitionOverview extends Component {
           </div>
           <div className='tile is-child is-10'>
             <div>
-              {/* {this.props.comp.startDate} - {this.props.comp.endDate} */}
+              Start: {this.props.comp.startDate} <br/>
+              End: {this.props.comp.endDate}
             </div>
           </div>
         </div>
@@ -36,7 +38,7 @@ class CompetitionOverview extends Component {
           </div>
           <div className='tile is-child is-10'>
             <div>
-              {/* {this.props.comp.location} */}
+              {this.props.comp.location}
             </div>
 
           </div>
@@ -49,7 +51,7 @@ class CompetitionOverview extends Component {
         <div className='tile is-parent'>
           <div className='tile is-child'>
             <div>
-              This is a brief description blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaah blah blaaaah blaaah
+              {this.props.comp.description}
             </div>
           </div>
         </div>
@@ -64,27 +66,15 @@ class CompetitionOverview extends Component {
           </div>
 
           <div className='tile is-child'>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+            {this.props.comp.individuals.map((person) => {
+              <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+            })
+            }
           </div>
         </div>
         <div className='tile is-parent'>
-          <div className='tile is-child'>
-            <button className='button is-success'>
+          <div className='tile is-child' style={{display: 'flex', justifyContent: 'center'}}>
+            <button className='button is-info is-large' style={{width: '100%'}}>
               Register
             </button>
           </div>
