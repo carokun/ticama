@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-class StudentProfile extends Component {
+class StudentDiscover extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +16,7 @@ class StudentProfile extends Component {
   componentDidMount() {
     axios.get('/api/competitions')
     .then(response => {
+      console.log('comps', response);
       this.setState({
         competitions: response.data.competitions
         .map(competition => {
@@ -40,4 +41,4 @@ class StudentProfile extends Component {
 
 
 
-export default StudentProfile;
+export default StudentDiscover;
