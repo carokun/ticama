@@ -29,7 +29,11 @@ class Card extends Component {
             <p>
               <strong>{comp.title || 'title'}</strong>
               <br/>
+<<<<<<< HEAD
               <small>{comp.company.fname || 'comp'}</small>
+=======
+              <small>{comp.company.fname}</small>
+>>>>>>> 8884376b3ad50bd36fbe257af45476a89824a0ff
               <br/>
               <small>{comp.location || 'location'}</small>
               <br/>
@@ -63,7 +67,7 @@ class StudentDiscover extends Component {
   }
 
   render() {
-    console.log('compsstate', this.state.competitions);
+    console.log('comps', this.state.competitions);
     return (
       <div className="container is-fluid">
         <div className="filters">
