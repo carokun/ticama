@@ -30,7 +30,7 @@ class ClubProfilePublic extends Component {
     this.setState({modal: false})
   }
   render() {
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.user;
+    const { username, email, competitions, website, type } = this.props.user;
 
     return (
       <div className="container is-fluid">

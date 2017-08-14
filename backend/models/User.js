@@ -58,12 +58,6 @@ var UserSchema = new Schema ({
         ref: 'WorkExperience'
       }
   ],
-  pastCompetitions: [
-      {
-        type: Schema.ObjectId,
-        ref: 'Competition'
-      }
-  ],
   mainSkills: [
     {
       name: {
@@ -74,7 +68,7 @@ var UserSchema = new Schema ({
       }
     }
   ],
-  currentCompetitions: [
+  competitions: [
     {
       type: Schema.ObjectId,
       ref: 'Competition'

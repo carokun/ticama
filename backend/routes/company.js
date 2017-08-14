@@ -35,14 +35,13 @@ router.post('/basic/company/info', function(req, res) {
 });
 
 router.post('/request/competition', function(req, res) {
-  console.log('backend', req.body.competition);
   new Competition(Object.assign({}, req.body.competition, {approved: false, company: req.user._id}))
   .save()
   .then(competition => {
-    if (req.user.currentCompetitions) {
-      req.user.currentCompetitions.push(competition);
+    if (req.user.competitions) {
+      req.user.competitions.push(competition);
     } else {
-      req.user.currentCompetitions = [competition];
+      req.user.competitions = [competition];
     }
     req.user.save()
     .then(user => {

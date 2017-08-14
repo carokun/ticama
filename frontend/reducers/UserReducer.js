@@ -1,6 +1,6 @@
 const BLANK_STATE = { username: '', password: '', fname: '', lname: '', email: '', title: '', about: '', university: '',
-website: '', major: '', skills: [], linkedin: '', competitionExperience: [], workExperience: [], pastCompetitions: [],
-mainSkills: [], currentCompetitions: [], type: ''};
+website: '', major: '', skills: [], linkedin: '', competitionExperience: [], workExperience: [],
+mainSkills: [], competitions: [], type: ''};
 
 
 export default (state = {}, action) => {

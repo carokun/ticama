@@ -24,7 +24,7 @@ class ClubProfileEdit extends Component {
   }
   render() {
 
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.club;
+    const { username, email, competitions, website, type } = this.props.club;
 
       return (
         <div>
