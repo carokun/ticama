@@ -5,7 +5,7 @@ const WorkExperience = models.WorkExperience;
 const Skill = models.Skill;
 const User = models.User;
 const Competition = models.Competition;
-
+const Notification = models.Notification;
 
 // API ROUTES HEREx
 
@@ -284,6 +284,7 @@ router.get('/competition/:id', function(req, res) {
   Competition.findById(req.params.id)
   .populate('club')
   .populate('company')
+  .populate('notifications')
   .exec()
   .then(competition => {
     if (!competition || !competition.approved) {
@@ -359,6 +360,38 @@ router.post('/add/competition', function(req, res) {
       console.log(err);
     })
   }
+})
+
+router.post('/new/post', function(req,res) {
+  Competition.findById(req.body.competition)
+  .then(comp => {
+    console.log(comp);
+    if(!comp) {
+      res.send('error')
+    }
+    new Notification({
+      date: new Date(),
+      text: req.body.text,
+      poster: req.user,
+      type: req.user.type
+    })
+    .save()
+    .then(notification => {
+      if(comp.notifications) {
+        comp.notifications.push(notification)
+      } else {
+        comp.notifications = [notification]
+      }
+      comp.save()
+      .then(comp => {
+        res.json({notification})
+      })
+    })
+  })
+  .catch(err => {
+    res.send('error')
+    console.log(err);
+  })
 })
 
 

@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fname: '',
+      lname: ''
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/user/' + this.props.notification.poster)
+    .then(response => {
+      console.log(response.data);
+      this.setState({
+        fname: response.data.user.fname,
+        lname: response.data.user.lname
+      })
+    })
+  }
+
   render() {
     return (
       <div className="box">
@@ -14,18 +34,18 @@ class Post extends Component {
           <div className="media-content" style={{paddingTop: '16px'}}>
             <div className="content">
               <p style={{fontSize: '18px'}}>
-                John Smith
+                {this.state.fname} {this.state.lname}
               </p>
             </div>
           </div>
           <div className="media-right">
             <div>
-              5/11/2017 1:34pm
+              {this.props.notification.date}
             </div>
           </div>
         </article>
         <article className="media">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+          {this.props.notification.text}
         </article>
       </div>
 

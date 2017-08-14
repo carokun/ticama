@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import {updateViewedUser} from '../actions/ViewedActions.js'
+import {updateViewed} from '../actions/ViewedActions.js'
 
 import StudentProfileEditable from './StudentProfile/StudentProfileEditable';
 import StudentProfilePublic from './StudentProfile/StudentProfilePublic';
@@ -33,7 +33,7 @@ class StudentProfile extends Component {
       this.setState({
         student: response.data.user
       })
-      this.props.updateViewedUser(response.data.user)
+      this.props.updateViewed(response.data.user)
     })
   }
 
@@ -82,7 +82,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updateViewedUser: (user) => dispatch(updateViewedUser(dispatch, user))
+    updateViewed: (user) => dispatch(updateViewed(dispatch, user))
   }
 };
 
