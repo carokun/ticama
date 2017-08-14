@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 class CompetitionOverview extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      modal: false
+    }
   }
-
   render() {
-    console.log("get in hurr", this.props.comp);
+    console.log("", this.props.comp);
     return(
       <div>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', margin: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
@@ -74,7 +75,7 @@ class CompetitionOverview extends Component {
         </div>
         <div className='tile is-parent'>
           <div className='tile is-child' style={{display: 'flex', justifyContent: 'center'}}>
-            <button className='button is-info is-large' style={{width: '100%'}}>
+            <button onClick={() => this.props.startRegister()} className='button is-info is-large' style={{width: '100%'}}>
               Register
             </button>
           </div>
