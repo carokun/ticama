@@ -31,6 +31,7 @@ class CompanyProfile extends Component {
       this.setState({
         company: response.data.user
       })
+      console.log('YOOOOO', this.state.company);
       this.props.updateViewedUser(response.data.user)
     })
   }

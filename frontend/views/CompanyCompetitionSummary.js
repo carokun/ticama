@@ -11,7 +11,7 @@ class CompanyCompetitionSummary extends Component {
 
   render() {
     //all of the user variables for the company
-    const { username, email, pastCompetitions, currentCompetitions, website, type } = this.props.user;
+    const { username, email, competitions, website, type } = this.props.user;
 
 
     return (

@@ -26,7 +26,7 @@ class StudentProfilePublic extends Component {
 
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,
-      workExperience, mainSkills, skills, currentCompetitions } = this.props.student;
+      workExperience, mainSkills, skills, competitions } = this.props.student;
 
     return (
       <div className="container is-fluid">
