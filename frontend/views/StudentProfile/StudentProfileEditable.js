@@ -24,13 +24,16 @@ class StudentProfileEditable extends Component {
     $(html).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
     $(body).attr("style", 'background-color: #6190E8; transition:all ease-in-out 0.2s;');
   }
+
   componentWillUnmount() {
     var html = document.getElementsByTagName("html")[0];
     var body = document.getElementsByTagName("body")[0];
     $(html).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
     $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s');
   }
+
   render() {
+    console.log('OAIWEHSJFPOIASHJPFOIASJNFPOISAJNFPOAISHJFPISOAJFNPASIOJNFPAOISJNSAOIJNFOPASIJNPO;AISJ');
     let { username, email, fname, lname, university, year, major, competitionExperience,
       workExperience, mainSkills, skills, competitions } = this.props.user;
     return (

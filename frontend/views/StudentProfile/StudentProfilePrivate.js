@@ -17,6 +17,12 @@ class StudentProfilePublic extends Component {
 
   }
 
+  componentWillMount() {
+    var html = document.getElementsByTagName("html")[0];
+    var body = document.getElementsByTagName("body")[0];
+    $(html).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s;');
+    $(body).attr("style", 'background-color: #F9F7F9; transition:all ease-in-out 0.2s;');
+  }
 
   render() {
     const { username, email, fname, lname, university, year, major, competitionExperience,

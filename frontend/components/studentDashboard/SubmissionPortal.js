@@ -12,7 +12,14 @@ class SubmissionPortal extends Component {
 
   render() {
     if (!this.props.comp) {
-      return <div>you have no competitions!!!</div>
+      return (
+      <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
+        <div className='tile is-parent is-vertical'>
+          <article className="tile is-child">
+            <div>you have no competitions!!!</div>
+          </article>
+        </div>
+      </div>)
     } else {
       return (
         <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
