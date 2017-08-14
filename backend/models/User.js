@@ -49,7 +49,7 @@ var UserSchema = new Schema ({
   competitionExperience: [
       {
         type: Schema.ObjectId,
-        ref: 'CompetitionExperience'
+        ref: 'Competition'
       }
   ],
   workExperience: [

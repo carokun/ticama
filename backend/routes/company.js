@@ -11,7 +11,6 @@ const Competition = models.Competition;
 // API ROUTES HERE
 
 router.post('/basic/company/info', function(req, res) {
-  console.log(req.user);
   User.findById(req.user._id)
   .then(user => {
     user.about = req.body.about || user.about;
@@ -22,7 +21,6 @@ router.post('/basic/company/info', function(req, res) {
 
     user.save()
     .then(user => {
-      console.log(user);
       res.json({user})
     })
     .catch(err => {
@@ -35,7 +33,6 @@ router.post('/basic/company/info', function(req, res) {
 });
 
 router.post('/request/competition', function(req, res) {
-  console.log('backend', req.body.competition);
   new Competition(Object.assign({}, req.body.competition, {approved: false, company: req.user._id}))
   .save()
   .then(competition => {

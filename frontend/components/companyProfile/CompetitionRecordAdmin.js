@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 
 class CompetitionCard extends Component {
   render() {
@@ -8,7 +8,10 @@ class CompetitionCard extends Component {
       <div className="card" style={{margin: '10px', boxShadow: '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 20px 0px rgba(204, 204, 204, 0.1)'}}>
         <header className="card-header">
           <p className="card-header-title">
-            <a>{comp.title}</a>
+            <Link to={'/competition/' + comp._id}>
+              <a>{comp.title}</a>
+            </Link>
+
           </p>
           <small className="card-header-icon">{comp.startDate} - {comp.endDate}</small>
         </header>
@@ -21,12 +24,16 @@ class CompetitionCard extends Component {
         <footer className="card-footer">
           <p className="card-footer-item">
             <span>
-              <a>Analytics</a>
+              <Link to={'/analytics'}>
+                <a>Analytics</a>
+              </Link>
             </span>
           </p>
           <p className="card-footer-item">
             <span>
-              <a>Event Page</a>
+              <Link to={'/competition/' + comp._id}>
+                <a>Event Page</a>
+              </Link>
             </span>
           </p>
         </footer>

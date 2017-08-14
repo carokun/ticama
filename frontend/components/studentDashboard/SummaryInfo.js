@@ -25,15 +25,19 @@ class SummaryInfo extends Component {
   }
 
   render() {
+    var { fname, lname } = this.props.user;
     return (
       <article className='tile is-child notification is-tile'>
         <div style={{height: '30px', width: '1px'}}></div>
-        <h1 className='title is-1'>👋🏼 Welcome Caroline!</h1>
+        <h1 className='title is-1'>👋🏼 Welcome {fname}!</h1>
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-2'>Your Current Competitions</h3>
         <hr/>
         {/* toggle currentcompetition & nocompetitions using isCompeting*/}
-        <CurrentCompetition />
+        {this.props.user.competitions.map(comp => {
+          return <CurrentCompetition comp={comp} changeCompView={this.props.changeCompView.bind(this)}/>;
+        })}
+
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-2'>Notifications</h3>
         <hr/>

@@ -33,23 +33,25 @@ class CompetitionRecordEdit extends Component {
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2" style={{color: 'white'}}>Open Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
+              {this.props.user.competitions
+              .filter(comp => {
+                return new Date(comp.endDate) >= new Date()
+              })
+              .map(comp => {
+                return <CompetitionCard comp={comp}/>
+              })}
             </div>
           </article>
           <article className="tile is-child" style={{backgroundColor: 'transparent'}}>
             <p className="title is-2" style={{color: 'white'}}>Past Competitions</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
-            </div>
-            <div style={{display: 'flex', flexDirection: 'row'}}>
-              <CompetitionCard />
-              <CompetitionCard />
+              {this.props.user.competitions
+              .filter(comp => {
+                return new Date(comp.endDate) < new Date()
+              })
+              .map(comp => {
+                return <CompetitionCard comp={comp}/>
+              })}
             </div>
           </article>
       </div>

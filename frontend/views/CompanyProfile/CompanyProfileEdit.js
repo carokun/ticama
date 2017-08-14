@@ -37,7 +37,7 @@ class CompanyProfileEdit extends Component {
             <CompanyOverviewEdit user={this.props.user} updateBasicInfo={this.props.updateBasicInfo} />
           </div>
           <div className='tile is-9 is-parent is-vertical'>
-            <CompetitionRecordEdit />
+            <CompetitionRecordEdit user={this.props.user}/>
           </div>
         </div>
       </div>

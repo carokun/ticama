@@ -34,7 +34,7 @@ class CompanyProfilePublic extends Component {
           <div className='tile is-9 is-parent is-vertical'>
             {/* we want to toggle this with CompetitionRecord depending on if it's the company viewing their
             own profile or not. this logic also applies with club profile*/}
-            <CompetitionRecord />
+            <CompetitionRecord user={this.props.company}/>
           </div>
         </div>
       </div>
