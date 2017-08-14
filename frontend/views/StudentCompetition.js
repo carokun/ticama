@@ -10,7 +10,11 @@ class StudentCompetition extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     console.log(this.props.history.location.pathname, 'HURR');
+=======
+    console.log(this.props.competition, 'HURR');
+>>>>>>> hmmm
     return (
       <div className="container is-fluid">
         <div className='tile is-ancestor' style={{padding: '0px 20px', margin: '0px'}}>
