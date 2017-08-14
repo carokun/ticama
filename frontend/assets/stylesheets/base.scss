@@ -33,8 +33,8 @@ body {
   background-color: #F9F7F9;
 }
 
-.htmlbg {
-  background-color: #F9F7F9;
+html {
+   background-color: #F9F7F9 !important;
 }
 
 .edit-background-in {
@@ -142,6 +142,20 @@ a {
   min-width: 0;
   flex: 1;
 }
+
+.feed {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+ .filters {
+   margin: 20px;
+   height: 50px;
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
 
 #no-white {
   background-color: #f9f7f9 !important;

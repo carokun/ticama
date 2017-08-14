@@ -14,7 +14,6 @@ class AddCompetition extends Component {
 
   submit() {
     const {title, startDate,endDate, company, club, description, location, caseFile, applicationQuestions} = this.refs;
-    console.log('submitting');
     axios.post('/api/add/competition', {
       title : title.value,
       startDate : startDate.value,
