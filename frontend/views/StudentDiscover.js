@@ -7,7 +7,7 @@ import axios from 'axios';
 class Card extends Component {
   render() {
     let comp = this.props.comp
-    console.log(comp.company);
+    console.log('LECOMP', comp);
     return (
     <div className="box">
       <article className="media">
@@ -27,13 +27,13 @@ class Card extends Component {
         <div className="media-content">
           <div className="content" style={{height: '200px', width: '400px', textOverflow: 'ellipsis', overflow: 'scroll'}}>
             <p>
-              <strong>{comp.title}</strong>
+              <strong>{comp.title || 'title'}</strong>
               <br/>
-              {/* <small>{comp.company}</small> */}
+              <small>{comp.company.fname || 'comp'}</small>
               <br/>
-              <small>{comp.location}</small>
+              <small>{comp.location || 'location'}</small>
               <br/>
-              {comp.description}
+              {comp.description || 'descr'}
             </p>
           </div>
         </div>
@@ -53,10 +53,9 @@ class StudentDiscover extends Component {
   }
 
   componentDidMount() {
-    console.log('searching');
     axios.get('/api/competitions')
     .then(response => {
-      console.log('comps', response);
+      console.log('compsstudentdiscover', response);
       this.setState({
         competitions: response.data.competitions
       })
@@ -64,6 +63,7 @@ class StudentDiscover extends Component {
   }
 
   render() {
+    console.log('comps', this.state.competitions);
     return (
       <div className="container is-fluid">
         <div className="filters">
@@ -97,7 +97,7 @@ class StudentDiscover extends Component {
         <div className="feed">
         {this.state.competitions.map((competition) =>
           competition.approved &&
-          <Card onClick={() => this.props.history.push('/competition/student')} comp={competition}/>
+          <Card key={competition._id} comp={competition} onClick={() => this.props.history.push('/competition/' + competition._id)}/>
         )}
         </div>
       </div>

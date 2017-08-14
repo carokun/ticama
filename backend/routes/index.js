@@ -290,7 +290,7 @@ router.get('/competition/:id', function(req, res) {
       res.send('failed!')
     } else {
       res.json({
-        competition: competition
+        competition: competition,
       })
     }
   })

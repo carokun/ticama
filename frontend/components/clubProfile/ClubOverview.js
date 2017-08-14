@@ -7,7 +7,6 @@ class ClubOverview extends Component {
   }
 
   render() {
-    console.log('LCU)AOISDH', this.props.user);
     return(
 
       <div>
