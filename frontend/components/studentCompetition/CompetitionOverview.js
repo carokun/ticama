@@ -12,8 +12,8 @@ class CompetitionOverview extends Component {
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
           <div className='tile is-parent is-vertical'>
             <div className='tile is-child'>
-              {/* <p className="title is-2">{this.props.comp.title}</p>
-              <p className="subtitle is-3">{this.props.comp.company}</p> */}
+              {/* <p className="title is-2">{this.props.comp.title}</p> */}
+              {/* <p className="subtitle is-3">{this.props.comp.company}</p> */}
             </div>
           </div>
         <div className='tile is-parent'>
