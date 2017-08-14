@@ -27,13 +27,13 @@ class Card extends Component {
         <div className="media-content">
           <div className="content" style={{height: '200px', width: '400px', textOverflow: 'ellipsis', overflow: 'scroll'}}>
             <p>
-              <strong>{comp.title}</strong>
+              <strong>{comp.title || 'title'}</strong>
               <br/>
-              <small>{comp.company.fname}</small>
+              <small>{comp.company.fname || 'comp'}</small>
               <br/>
-              <small>{comp.location}</small>
+              <small>{comp.location || 'location'}</small>
               <br/>
-              {comp.description}
+              {comp.description || 'descr'}
             </p>
           </div>
         </div>
