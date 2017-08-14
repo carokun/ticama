@@ -6,7 +6,8 @@ import axios from 'axios';
 
 class Card extends Component {
   render() {
-    let comp = JSON.parse(this.props.comp)
+    let comp = this.props.comp
+    console.log(comp.company);
     return (
     <div className="box">
       <article className="media">
@@ -28,7 +29,7 @@ class Card extends Component {
             <p>
               <strong>{comp.title}</strong>
               <br/>
-              <small>{comp.company}</small>
+              {/* <small>{comp.company}</small> */}
               <br/>
               <small>{comp.location}</small>
               <br/>
@@ -42,7 +43,7 @@ class Card extends Component {
   }
 }
 
-class StudentProfile extends Component {
+class StudentDiscover extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,14 +53,12 @@ class StudentProfile extends Component {
   }
 
   componentDidMount() {
+    console.log('searching');
     axios.get('/api/competitions')
     .then(response => {
+      console.log('comps', response);
       this.setState({
         competitions: response.data.competitions
-        .map(competition => {
-          console.log(JSON.stringify(competition));
-          return JSON.stringify(competition);
-        })
       })
     })
   }
@@ -98,7 +97,7 @@ class StudentProfile extends Component {
         </div>
         <div className="feed">
         {this.state.competitions.map((competition) =>
-          (JSON.parse(competition).approved) &&
+          competition.approved &&
           <Card onClick={() => this.props.history.push('/competition/student')} comp={competition}/>
         )}
         </div>
@@ -109,4 +108,4 @@ class StudentProfile extends Component {
 
 
 
-export default StudentProfile;
+export default StudentDiscover;

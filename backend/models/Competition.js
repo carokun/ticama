@@ -16,11 +16,11 @@ var CompetitionSchema = new Schema ({
   },
   company: {
     type: Schema.ObjectId,
-    ref: 'Company'
+    ref: 'User'
   },
   club: {
     type: Schema.ObjectId,
-    ref: 'Club'
+    ref: 'User'
   },
   description: {
     type: String,
