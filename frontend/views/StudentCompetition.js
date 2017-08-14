@@ -26,14 +26,16 @@ class StudentCompetition extends Component {
       })
     })
   }
+
   closeModal() {
     this.setState({modal: false})
   }
+
   render() {
     if (this.state.competition) {
       return (
         <div className="container is-fluid">
-          { this.state.modal && <PostModal closeModal={this.closeModal}/> }
+          { this.state.modal && <PostModal closeModal={this.closeModal} comp={this.state.competition}/> }
           <div className="top-spacer-big">
             <button className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '78px', zIndex: '5'}} onClick={() => this.setState({modal: true})}>
               <span className="icon">

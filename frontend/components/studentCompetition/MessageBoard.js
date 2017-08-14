@@ -12,17 +12,13 @@ class MessageBoard extends Component {
   }
 
   render() {
+    console.log('this.props.competition',this.props.comp);
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
         <div style={{overflow: 'scroll', height: '750px'}}>
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
-          <Post />
+          {this.props.comp.notifications.map(notification => {
+            return <Post notification={notification}/>
+          })}
         </div>
 
       </div>

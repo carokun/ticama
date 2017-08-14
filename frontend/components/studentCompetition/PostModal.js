@@ -13,8 +13,16 @@ class PostModal extends React.Component {
 
 
   makeRequest() {
-    const date = new Date()
-    console.log('SEND THIS TO POST MESSAGE & GRAB USER FRM BACKEND', this.state.message, date);
+    axios.post('/api/new/post', {
+      text: this.state.message,
+      competition: this.props.comp._id
+    })
+    .then(response => {
+      console.log(response.data.notification);
+    })
+    .catch(err => {
+      console.log(err);
+    })
     this.props.closeModal();
   }
 
@@ -31,7 +39,7 @@ class PostModal extends React.Component {
             <div className="field">
               <label className="label">Message</label>
               <div className="control">
-                <input className="input" value={this.state.message} type="text" ref='title'
+                <input className="input" value={this.state.message} type="text" ref='message'
                   onChange={(e) => this.setState({message: e.target.value})}/>
               </div>
             </div>
