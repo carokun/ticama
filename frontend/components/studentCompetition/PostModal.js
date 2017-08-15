@@ -22,6 +22,7 @@ class PostModal extends React.Component {
       competition: this.props.comp._id
     })
     .then(response => {
+      response.data.notification.poster = response.data.notification.poster._id
       this.props.viewed.notifications.push(response.data.notification)
       this.props.updateViewed(this.props.viewed)
     })

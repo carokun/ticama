@@ -32,7 +32,7 @@ class MessageBoard extends Component {
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
         {(this.state.comp.notifications.length === 0) ?
-          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: '20px'}}>
             <h2 className="title is-1" style={{textAlign: 'center'}}>There are no posts right now!</h2>
             <p className="title is-1" style={{textAlign: 'center', fontSize: '60px'}}>¯\_(ツ)_/¯</p>
             <h2 className="title is-1" style={{textAlign: 'center'}}>Make one up there!</h2>

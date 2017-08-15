@@ -22,6 +22,7 @@ class StudentCompetition extends Component {
     this.startRegister = this.startRegister.bind(this);
     this.endRegister = this.endRegister.bind(this);
   }
+  
   componentDidMount() {
     const path = this.props.history.location.pathname
     const id = path.slice(13);
@@ -48,11 +49,13 @@ class StudentCompetition extends Component {
 
 
   render() {
+    console.log(this.state.competition);
     if (this.state.competition) {
+
       return (
         <div className="container is-fluid">
-          { this.state.modal && <PostModal closeModal={this.closeModal}/> }
-          { this.state.register && <RegisterModal endRegister={this.endRegister}/> }
+          { this.state.modal && <PostModal closeModal={this.closeModal} comp={this.state.competition}/> }
+          { this.state.register && <RegisterModal endRegister={this.endRegister} comp={this.state.competition}/> }
 
           <div className="top-spacer-big">
             <button className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '78px', zIndex: '5'}} onClick={() => this.setState({modal: true})}>

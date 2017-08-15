@@ -13,7 +13,7 @@ class CompanyCompetitionSubmissions extends Component {
   render() {
     //all of the user variables for the company
     const { username, email, competitions, website, type } = this.props.user;
-
+    console.log('viewed', this.props.viewed);
 
     return (
       <div className="container is-fluid">
@@ -36,7 +36,7 @@ class CompanyCompetitionSubmissions extends Component {
             <SubmissionPortal />
           </div>
           <div className="tile is-parent is-8">
-            <Teams />
+            <Teams competition={this.props.viewed}/>
           </div>
         </div>
       </div>
@@ -46,7 +46,8 @@ class CompanyCompetitionSubmissions extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    viewed: state.viewed
   }
 };
 

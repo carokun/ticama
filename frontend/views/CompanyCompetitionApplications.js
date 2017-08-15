@@ -3,18 +3,26 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import TeamApplication from '../components/companyCompetitionApplications/TeamApplication.js';
 import Teams from '../components/companyCompetitionApplications/Teams.js';
-
+import {updateViewed} from '../actions/ViewedActions.js'
 
 class CompanyCompetitionApplications extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      applicationViewed: this.props.viewed.applications[0],
+      index: 1
+    }
+  }
+
+  changeAppViewed(application, index) {
+    this.setState({
+      applicationViewed: application,
+      index
+    })
   }
 
   render() {
-    //all of the user variables for the company
-    const { username, email, competitions, website, type } = this.props.user;
-
-
     return (
       <div className="container is-fluid">
         <div className="top-spacer"></div>
@@ -33,10 +41,10 @@ class CompanyCompetitionApplications extends Component {
               <p>123 5th Street <br/> New York, NY 19102</p>
             </article>
 
-            <TeamApplication />
+            <TeamApplication application={this.state.applicationViewed} index={this.state.index}/>
           </div>
           <div className="tile is-parent is-8">
-            <Teams />
+            <Teams changeAppViewed={this.changeAppViewed.bind(this)}/>
           </div>
         </div>
       </div>
@@ -46,12 +54,14 @@ class CompanyCompetitionApplications extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    viewed: state.viewed
   }
 };
 
 const mapDispatchToProps = () => {
   return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
   }
 };
 

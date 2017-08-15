@@ -9,6 +9,8 @@ var Competition = require('./Competition')
 var Team = require('./Team')
 var Notification = require('./Notification')
 var Submission = require('./Submission')
+var Application = require('./Application')
+
 
 module.exports = {
   User,
@@ -18,5 +20,6 @@ module.exports = {
   Competition,
   Team,
   Notification,
-  Submission
+  Submission,
+  Application
 };

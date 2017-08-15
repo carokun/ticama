@@ -13,13 +13,13 @@ class CompetitionMessages extends Component {
   render(){
     return(
       <article id="doggo" className="no-padding tile is-child notification" style={{display: 'flex', minHeight: this.state.minHeight}}>
-          <div style={{flex: '1', minHeight: this.state.minHeight, padding: '20px'}}>
+          <div style={{flex: '1', minHeight: this.state.minHeight, padding: '20px', display: 'flex', flexDirection: 'column'}}>
             <span>
               <p className="title is-2" style={{display: 'inline-block'}}>Messages</p>
               <div className="circle-big">3</div>
             </span>
-            <StudentMessage />
-            <StudentMessage />
+              <StudentMessage />
+
           </div>
           <div style={{backgroundColor: '#f0f0f8', flex: '2', minHeight: this.state.minHeight, padding: '20px'}}>
             <p style={{fontSize: '20px', fontWeight: 'bold', marginBottom: '-1.5em !important'}}>

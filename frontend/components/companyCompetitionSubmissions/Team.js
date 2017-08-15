@@ -6,7 +6,7 @@ class Team extends Component {
     return (
       <div className="box columns">
         <div className="column">
-          <strong> Team 1 </strong>
+          <strong> Team {this.props.index} </strong>
         </div>
         <div className="column is-3">
           5/11/2017 1:34pm
