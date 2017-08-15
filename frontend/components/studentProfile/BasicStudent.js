@@ -11,7 +11,7 @@ class BasicStudent extends Component {
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/640x480.png" />
+              <img src={this.props.user.image} />
             </figure>
           </div>
         </article>
@@ -85,7 +85,7 @@ class BasicStudent extends Component {
                 </span>
               </div>
               <div className='tile is-child is-10'>
-                <a style={{textDecoration: 'none'}}>
+                <a href={this.props.user.resume} target="_blank" style={{textDecoration: 'none'}}>
                   Resume
                 </a>
               </div>

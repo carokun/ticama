@@ -14,7 +14,8 @@ class StudentProfileEdit extends Component {
         website: this.props.user.website || 'tifchang.com',
         interests: this.props.user.interests || [],
         newInterest: '',
-        resume: ''
+        image: this.props.user.image,
+        resume: this.props.user.resume
       }
   }
 
@@ -44,7 +45,7 @@ class StudentProfileEdit extends Component {
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/640x480.png" />
+              <img src={this.state.image} />
             </figure>
             <button className="button is-danger" style={{position: 'absolute', right: '0', zIndex: '1',  borderRadius: '0px 0px 0px 3px'}}
               onClick={() => this.save()}>

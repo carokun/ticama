@@ -32,7 +32,7 @@ class StudentProfileEditable extends Component {
   }
   render() {
     let { username, email, fname, lname, university, year, major, competitionExperience,
-      workExperience, mainSkills, skills, competitions } = this.props.user;
+      workExperience, mainSkills, skills, competitions, image, resume} = this.props.user;
     return (
       <div className="container is-fluid">
         <div className="top-spacer-big">
