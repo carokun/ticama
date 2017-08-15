@@ -8,6 +8,8 @@ import PostModal from '../components/studentCompetition/PostModal';
 import RegisterModal from '../components/studentCompetition/RegisterModal';
 
 
+import {updateViewed} from '../actions/ViewedActions.js'
+
 class StudentCompetition extends Component {
   constructor(props) {
     super(props);
@@ -29,10 +31,13 @@ class StudentCompetition extends Component {
       this.setState({
         competition: response.data.competition
       })
+      this.props.updateViewed(response.data.competition)
     })
   }
+
   closeModal() {
     this.setState({modal: false})
+
   }
   startRegister() {
     this.setState({register: true})
@@ -40,12 +45,15 @@ class StudentCompetition extends Component {
   endRegister() {
     this.setState({register: false})
   }
+
+
   render() {
     if (this.state.competition) {
       return (
         <div className="container is-fluid">
           { this.state.modal && <PostModal closeModal={this.closeModal}/> }
           { this.state.register && <RegisterModal endRegister={this.endRegister}/> }
+
           <div className="top-spacer-big">
             <button className="button is-info is-large" style={{position: 'absolute', top: '20px', right: '78px', zIndex: '5'}} onClick={() => this.setState({modal: true})}>
               <span className="icon">
@@ -80,6 +88,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
   }
 };
 

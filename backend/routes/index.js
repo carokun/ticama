@@ -95,6 +95,8 @@ router.post('/upload/resume', upload.single('content'), (req, res) => {
   });
 });
 
+const Notification = models.Notification;
+
 
 
 router.post('/add/experience', function(req, res) {
@@ -372,6 +374,7 @@ router.get('/competition/:id', function(req, res) {
   Competition.findById(req.params.id)
   .populate('club')
   .populate('company')
+  .populate('notifications')
   .exec()
   .then(competition => {
     if (!competition || !competition.approved) {
@@ -449,10 +452,45 @@ router.post('/add/competition', function(req, res) {
   }
 })
 
+<<<<<<< HEAD
 router.post('/studentpic', function(req, res) {
   const pic = req.body.file;
   var formData = new FormData();
   formData.append(pic.name, pic);
 })
+=======
+router.post('/new/post', function(req,res) {
+  Competition.findById(req.body.competition)
+  .then(comp => {
+    console.log(comp);
+    if(!comp) {
+      res.send('error')
+    }
+    new Notification({
+      date: new Date(),
+      text: req.body.text,
+      poster: req.user,
+      type: req.user.type
+    })
+    .save()
+    .then(notification => {
+      if(comp.notifications) {
+        comp.notifications.push(notification)
+      } else {
+        comp.notifications = [notification]
+      }
+      comp.save()
+      .then(comp => {
+        res.json({notification})
+      })
+    })
+  })
+  .catch(err => {
+    res.send('error')
+    console.log(err);
+  })
+})
+
+>>>>>>> 52412d262fa65e0339c1b22a174f2c136153bc14
 
 module.exports = router;

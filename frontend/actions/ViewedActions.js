@@ -1,6 +1,6 @@
-export const updateViewedUser = (dispatch, user) => {
+export const updateViewed = (dispatch, view) => {
     return {
       type: 'page_viewed',
-      user
+      view
     }
 };
