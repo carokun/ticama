@@ -11,14 +11,14 @@ class BasicStudent extends Component {
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
-              <img src={this.props.user.image} />
+              <img src={this.props.user.image ? this.props.user.image : 'https://s3-us-west-2.amazonaws.com/mirathon/defaultpp.png'} />
             </figure>
           </div>
         </article>
         <article className="tile is-parent is-vertical notification" style={{padding: '30px', backgroundColor: 'white', boxShadow: '0 0 0.5px 0 #dbdbdb'}}>
             <article className='tile media is-vertical' style={{marginBottom: '10px'}}>
               <div className="title is-2" style={{marginBottom: '10px'}}>{this.props.user.fname} {this.props.user.lname}</div>
-              <div className="subtitle is-4" style={{margin: '0px'}}>{this.props.user.about || 'meeee!'}</div>
+              <div className="subtitle is-4" style={{margin: '0px'}}>{this.props.user.about || 'About me.'}</div>
             </article>
             <article className='tile is-parent media'>
               <div className='tile is-child is-2'>

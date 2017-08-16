@@ -19,10 +19,10 @@ class CompetitionMessages extends Component {
               <div className="circle-big">3</div>
             </span>
               <StudentMessage />
-
+              <StudentMessage />
           </div>
           <div style={{backgroundColor: '#f0f0f8', flex: '2', minHeight: this.state.minHeight, padding: '20px'}}>
-            <p style={{fontSize: '20px', fontWeight: 'bold', marginBottom: '-1.5em !important'}}>
+            <p style={{fontSize: '20px', fontWeight: 'bold'}}>
               Hello this is Tiff when the box is expanded?</p>
             <p style={{fontSize: '16px', margin: '3px !important'}}>05/16/2017 4:45pm</p>
             <p style={{fontSize: '16px', margin: '3px !important'}}>From: Team 1</p>

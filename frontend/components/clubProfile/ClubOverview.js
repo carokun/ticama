@@ -7,13 +7,14 @@ class ClubOverview extends Component {
   }
 
   render() {
+    console.log(this.props.user);
     return(
 
       <div>
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/640x480.png" />
+              <img src={this.props.user.image ? this.props.user.image : 'https://s3-us-west-2.amazonaws.com/mirathon/defaultpp.png'} />
             </figure>
           </div>
         </article>

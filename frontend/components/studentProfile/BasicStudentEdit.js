@@ -14,13 +14,12 @@ class StudentProfileEdit extends Component {
         website: this.props.user.website || 'tifchang.com',
         interests: this.props.user.interests || [],
         newInterest: '',
-        image: this.props.user.image,
+        image: this.props.user.image || 'https://s3-us-west-2.amazonaws.com/mirathon/defaultpp.png',
         resume: this.props.user.resume
       }
   }
 
   save() {
-    // this.props.endEdit(this.state);
     var { fname, lname, about, university, major, year, interests, linkedin, website, resume } = this.state;
     this.props.updateBasicInfo(fname, lname, about, university, major, year, interests, linkedin, website, resume);
   }
