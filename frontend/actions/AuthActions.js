@@ -97,12 +97,12 @@ export const registerCompany = (dispatch, {username, password, repeatPassword, e
           username, password, repeatPassword, email, fname, about, website, industry, phone
         })
         .then((response) => {
-          console.log(response);
+          console.log('1', response);
           if (!response.data.success) {
             dispatch({ type: 'user_registration_failed' });
           } else {
             console.log(response.data.user);
-            console.log('I am abbout to register company profile pic', image, username);
+            console.log('I am about to register company profile pic', image, username);
             uploadProfPic(image, username);
             dispatch({ type: 'user_registration', user: response.data.user});
           }
