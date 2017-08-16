@@ -12,6 +12,10 @@ const s3 = new aws.S3();
 
 // FILE UPLOADING ROUTES
 router.post('/upload/image', upload.single('content'), (req, res) => {
+  if (!req.file || !req.body) {
+    return res.status(402).json({error: 'Missing files'})
+  }
+
   if (!req.file) {
     return res.status(403).json({ error: 'Invalid file.' });
   }
@@ -38,12 +42,13 @@ router.post('/upload/image', upload.single('content'), (req, res) => {
       user.image = 'https://s3-us-west-2.amazonaws.com/mirathon/' + req.body.username + '-' + req.file.originalname;
       user.save((err, user) => {
         if (err) {
+          console.log('Failed to save photo');
           res.json({failure: err})
         } else {
+          console.log('Successfully saved photo');
           res.json({success: true})
         }
       })
-    res.end();
     })
   })
   .catch(err => {
@@ -81,12 +86,13 @@ router.post('/upload/resume', upload.single('content'), (req, res) => {
       user.resume = 'https://s3-us-west-2.amazonaws.com/mirathon/' + req.body.username + '-' + req.file.originalname;
       user.save((err, user) => {
         if (err) {
+          console.log('Failed saving resume');
           res.json({failure: err})
         } else {
+          console.log('Successfully saved resume');
           res.json({success: true})
         }
       })
-      res.end();
     })
   })
   .catch(err => {
@@ -452,13 +458,13 @@ router.post('/add/competition', function(req, res) {
   }
 })
 
-<<<<<<< HEAD
+
 router.post('/studentpic', function(req, res) {
   const pic = req.body.file;
   var formData = new FormData();
   formData.append(pic.name, pic);
 })
-=======
+
 router.post('/new/post', function(req,res) {
   Competition.findById(req.body.competition)
   .then(comp => {
@@ -490,7 +496,5 @@ router.post('/new/post', function(req,res) {
     console.log(err);
   })
 })
-
->>>>>>> 52412d262fa65e0339c1b22a174f2c136153bc14
 
 module.exports = router;

@@ -6,6 +6,9 @@ import { refreshUser, logoutUser } from '../actions/AuthActions'
 class Navbar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      student: ''
+    }
   }
 
   componentWillMount() {
@@ -16,6 +19,7 @@ class Navbar extends Component {
       this.props.history.push('/profile/student/' + this.props.user._id);
     }
   }
+
 
   checkLoginState() {
     if (!this.props.user.username) {
@@ -39,7 +43,7 @@ class Navbar extends Component {
               </a>
               <div className="navbar-item" >
                 <figure className="image is-24x24">
-                  <img src="http://bulma.io/images/placeholders/128x128.png"/>
+                  <img src={this.props.user.image}/>
                 </figure>
 
               </div>

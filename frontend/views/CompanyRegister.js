@@ -15,22 +15,23 @@ class CompanyRegister extends Component {
       about: '',
       website: '',
       industry: '',
-      phone: ''
+      phone: '',
+      image: ''
     }
     this.onSelect = this.onSelect.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   submit() {
-    const { username, password, repeatPassword, email, fname, about, website, industry, phone } = this.state;
-    this.props.registerCompany(username, password, repeatPassword, email, fname, about, website, industry, phone);
+    const { username, password, repeatPassword, email, fname, about, website, industry, phone, image } = this.state;
+    this.props.registerCompany({username, password, repeatPassword, email, fname, about, website, industry, phone, image});
     this.props.history.push('/');
   }
   onSelect(e) {
-
     this.setState({industry: e})
   }
   render() {
-
+    console.log('the image yo', this.state.image);
     return (
       <div className="container">
         <div className="top-spacer"></div>
@@ -125,13 +126,16 @@ class CompanyRegister extends Component {
             <div className="file">
               <label className="label">Profile Picture</label>
               <div style={{position: 'relative'}}>
-                <button className="button is-outlined is-info is-medium" style={{position: 'absolute', left: '0', zIndex: '0'}}>
+                <button className="button is-outlined is-info is-medium"
+                  style={{position: 'absolute', left: '0', zIndex: '0'}}>
                     <span className="file-icon is-small">
                       <i className="fa fa-upload"></i>
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="picCompany" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+                <input className="file-input" type="file" name="picCompany"
+                  onChange={(e) => this.setState({image: e.target.files[0]})}
+                  style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
           </div>

@@ -184,7 +184,8 @@ class StudentProfileEdit extends Component {
                       </span>
                       <span> Upload</span>
                   </button>
-                  <input className="file-input"  type="file" name="picClub" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+                  <input className="file-input" onChange={(e) => this.setState({resume: e.target.files[0]})}
+                    type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
                 </div>
               </div>
             </article>

@@ -77,7 +77,7 @@ export const registerStudent = (dispatch, {username, password, repeatPassword, e
           if (!response.data.success) {
             dispatch({ type: 'user_registration_failed' });
           } else {
-            console.log(response.data.user);
+            console.log('Uploading resume and image here STUDENT_', resume, image, username);
             uploadResume(resume, username);
             uploadProfPic(image, username);
             dispatch({ type: 'user_registration', user: response.data.user});
@@ -91,7 +91,7 @@ export const registerStudent = (dispatch, {username, password, repeatPassword, e
 
 
 
-export const registerCompany = (dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone) => {
+export const registerCompany = (dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone, image) => {
     return (dispatch) => {
         axios.post('/api/register/company', {
           username, password, repeatPassword, email, fname, about, website, industry, phone
@@ -102,6 +102,8 @@ export const registerCompany = (dispatch, username, password, repeatPassword, em
             dispatch({ type: 'user_registration_failed' });
           } else {
             console.log(response.data.user);
+            console.log('I am abbout to register company profile pic', image, username);
+            uploadProfPic(image, username);
             dispatch({ type: 'user_registration', user: response.data.user});
           }
         })
@@ -111,7 +113,7 @@ export const registerCompany = (dispatch, username, password, repeatPassword, em
     };
 };
 
-export const registerClub = (dispatch, username, password, repeatPassword, email, name, about, website) => {
+export const registerClub = (dispatch, username, password, repeatPassword, email, name, about, website, image) => {
     return (dispatch) => {
         axios.post('/api/register/club', {
           username, password, repeatPassword, email, name, about, website
@@ -122,6 +124,7 @@ export const registerClub = (dispatch, username, password, repeatPassword, email
             dispatch({ type: 'user_registration_failed' });
           } else {
             console.log(response.data.user);
+            // uploadProfPic(image, username);
             dispatch({ type: 'user_registration', user: response.data.user});
           }
         })

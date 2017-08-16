@@ -34,7 +34,6 @@ class StudentRegister extends Component {
 
 
   render() {
-    console.log('this is my image', this.state.image, 'this is my resume', this.state.resume);
     return (
       <div>
       <div className="container">

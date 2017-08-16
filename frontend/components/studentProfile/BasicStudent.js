@@ -5,7 +5,7 @@ class BasicStudent extends Component {
     super(props);
   }
   render() {
-    console.log('ME', this.props.user);
+    console.log('The users information', this.props.user);
     return(
       <div className="tile is-parent is-vertical is-3">
         <article>
