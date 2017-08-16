@@ -113,7 +113,7 @@ export const registerCompany = (dispatch, {username, password, repeatPassword, e
     };
 };
 
-export const registerClub = (dispatch, username, password, repeatPassword, email, name, about, website, image) => {
+export const registerClub = (dispatch, {username, password, repeatPassword, email, name, about, website, image}) => {
     return (dispatch) => {
         axios.post('/api/register/club', {
           username, password, repeatPassword, email, name, about, website
@@ -124,7 +124,7 @@ export const registerClub = (dispatch, username, password, repeatPassword, email
             dispatch({ type: 'user_registration_failed' });
           } else {
             console.log(response.data.user);
-            // uploadProfPic(image, username);
+            uploadProfPic(image, username);
             dispatch({ type: 'user_registration', user: response.data.user});
           }
         })
