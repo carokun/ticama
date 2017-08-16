@@ -10,14 +10,14 @@ class CompanyCompetitionSubmissions extends Component {
     super(props);
 
     this.state = {
-      applicationViewed: this.props.viewed.applications[0],
+      teamViewed: this.props.viewed.applications[0],
       index: 1
     }
   }
 
-  changeAppViewed(application, index) {
+  changeTeamViewed(team, index) {
     this.setState({
-      applicationViewed: application,
+      teamViewed: team,
       index
     })
   }
@@ -47,7 +47,7 @@ class CompanyCompetitionSubmissions extends Component {
             <SubmissionPortal application={this.state.applicationViewed} index={this.state.index}/>
           </div>
           <div className="tile is-parent is-8">
-            <Teams changeAppViewed={this.changeAppViewed.bind(this)}/>
+            <Teams changeTeamViewed={this.changeTeamViewed.bind(this)}/>
           </div>
         </div>
       </div>

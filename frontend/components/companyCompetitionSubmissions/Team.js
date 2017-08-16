@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios'
 
 class Team extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      members: [],
+      name: ''
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/team/' + this.props.team._id)
+    .then(response => {
+      console.log(response.data);
+      this.setState({
+        members: response.data.team.members,
+        name: response.data.team.name
+      })
+    })
+  }
+
   render() {
     return (
       <div className="box columns">
@@ -9,10 +30,17 @@ class Team extends Component {
           <strong> Team {this.props.index} </strong>
         </div>
         <div className="column is-3">
-          5/11/2017 1:34pm
+          {this.state.name}
         </div>
         <div className="column is-6">
-          Tiffany, Caroline, Jay, Ben, Corey
+          <div>
+            {this.state.members.map((member, index) => {
+              if (this.state.members.length - 1 === index) {
+                return <span>{member.fname}</span>
+              }
+              return <span>{member.fname}, </span>
+            })}
+          </div>
         </div>
         <div className="column">
           <div>
@@ -22,7 +50,7 @@ class Team extends Component {
 
           </div>
           <div>
-            <button className='button is-warning' style={{width: '100px'}} onClick={() => this.props.changeAppViewed(this.props.app, this.props.index)}>View</button>
+            <button className='button is-warning' style={{width: '100px'}} onClick={() => this.props.changeTeamViewed(this.props.team, this.props.index)}>View</button>
           </div>
         </div>
       </div>

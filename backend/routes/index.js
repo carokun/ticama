@@ -306,6 +306,7 @@ router.get('/competition/:id', function(req, res) {
   .populate('company')
   .populate('notifications')
   .populate('applications')
+  .populate('teams')
   .exec()
   .then(competition => {
     console.log(competition);
@@ -332,6 +333,24 @@ router.get('/team/:id', function(req, res) {
     } else {
       res.json({
         team
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
+router.get('/application/:id', function(req, res) {
+  Application.findById(req.params.id)
+  .populate('team')
+  .exec()
+  .then(app => {
+    if (!app) {
+      res.send('failed!')
+    } else {
+      res.json({
+        application: app
       })
     }
   })
@@ -441,22 +460,14 @@ router.post('/apply', function(req, res) {
     return User.findOne({username: teammate})
   }))
   .then(members => {
-    new Team({
-      name: 'idk',
-      members,
-      submissions: [],
-      notifications: []
-    })
-    .save()
-    .then(team => {
-      console.log(3);
+      members.push(req.user);
       Competition.findById(req.body.competition)
       .then(competition => {
         console.log(3.5);
         new Application({
           date: new Date(),
           responses: req.body.responses,
-          team,
+          team: members,
           approved: false
         })
         .save()
@@ -484,7 +495,6 @@ router.post('/apply', function(req, res) {
         console.log(err);
         res.json({err})
       })
-    })
   })
   .catch(err => {
     res.json({err})
@@ -540,6 +550,28 @@ router.post('/accept/teams', function(req, res) {
     .exec()
     .then(comp => {
       Promise.all(comp.applications.map(app => {
+        if (!app.approved && app.tempApproved) {
+          new Team({
+            members: app.team,
+            name: 'idk',
+            submissions: [],
+            notifications: []
+          })
+          .save()
+          .then(team => {
+            comp.teams.push(team);
+            comp.save()
+            .then(comp => {
+              console.log('success');
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
         app.approved = app.tempApproved;
         return app.save()
       }))

@@ -23,13 +23,9 @@ class Teams extends Component {
     return (
       <div className='notification tile is-child'>
         <div style={{overflow: 'scroll', height: '700px'}}>
-          {this.props.viewed.applications
-          .filter(app => {
-            console.log(app.approved);
-            return app.approved;
-          })
-          .map((app, index) => {
-            return <Team index={index + 1} competition={this.props.competition} app={app} changeAppViewed={this.props.changeAppViewed}/>
+          {this.props.viewed.teams
+          .map((team, index) => {
+            return <Team index={index + 1} competition={this.props.competition} team={team} changeTeamViewed={this.props.changeTeamViewed}/>
           })}
         </div>
 

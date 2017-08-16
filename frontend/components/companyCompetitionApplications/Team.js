@@ -14,11 +14,18 @@ class Team extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/team/' + this.props.application.team)
+
+    axios.get('/api/application/' + this.props.application._id)
     .then(response => {
+      console.log(response.data);
       this.setState({
-        members: response.data.team.members
+        approved: response.data.application.tempApproved || false,
+        rejected: response.data.application.tempRejected || false,
+        members: response.data.application.team
       })
+    })
+    .catch(err => {
+      console.log(err);
     })
   }
 
@@ -73,9 +80,14 @@ class Team extends Component {
           {this.props.application.date}
         </div>
         <div className="column is-6">
-          {this.state.members.map(member => {
+          {this.state.members.map((member, index) => {
+            if (index === this.state.members.length - 1) {
+              return <div key={member._id}>
+                {member.fname}
+              </div>
+            }
             return <div key={member._id}>
-              {member.fname},
+              {member.fname}, 
             </div>
           })}
         </div>
