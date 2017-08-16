@@ -10,22 +10,33 @@ class TeamApplication extends Component {
   }
 
   render() {
-    return (
-      <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
-        <div className='tile is-parent'>
-          <div className='tile is-child'>
-            <strong>1. This is question one of the application?</strong>
-          </div>
-        </div>
-        <div className='tile is-parent'>
-          <div className='tile is-child'>
-            This is the answer to question #1. Per te munere albucius signiferumque, vel ea docendi salutatus. Mea expetenda pertinacia adversarium ei, ut vel sint singulis, pri omnis dicam et. Ea facete antiopam voluptatum has, eum nobis conclusionemque ex. Ex qui aperiam omnesque perpetua.
-
-          </div>
-        </div>
-
+    if (!this.props.application) {
+      return <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
+        no applications :(
       </div>
-    )
+    } else {
+      return (
+        <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
+          <p className="title is-2"><strong>Team {this.props.index}</strong></p>
+          {this.props.application.responses.map((resp, index) => {
+            return <div>
+              <div className='tile is-parent'>
+                <div className='tile is-child'>
+                  <strong>{index + 1}. {resp.question}</strong>
+                </div>
+              </div>
+              <div className='tile is-parent'>
+                <div className='tile is-child'>
+                  {resp.response}
+                </div>
+              </div>
+            </div>;
+          })}
+
+
+        </div>
+      )
+    }
   }
 }
 

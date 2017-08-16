@@ -15,17 +15,40 @@ class RegisterModal extends React.Component {
 
   componentDidMount() {
     console.log('Get all of the users in database on componentDidMount & set state with users');
+    axios.get('/api/students')
+    .then(response => {
+      this.setState({
+        users: response.data.students
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    })
 
   }
+
   registerUser() {
     console.log('Grab array of teammates with their usernames and send to backend');
+    axios.post('/api/apply', {
+      teammates: this.state.teammates,
+      responses: [{
+        question: "question here",
+        response: this.refs.response.value
+      }],
+      competition: this.props.comp._id
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    this.props.endRegister()
   }
+
   addTeammate() {
-    console.log('adteammate', this.refs.teammates.value);
+    console.log('add teammate', this.refs.teammates.value);
     const newTeammate = this.refs.teammates.value;
     const currArr = this.state.teammates;
     currArr.push(newTeammate)
-    this.setState({teammate: currArr});
+    this.setState({teammates: currArr});
     this.refs.teammates.value = ''
   }
   render() {
@@ -59,7 +82,7 @@ class RegisterModal extends React.Component {
               <label className="label">Question 1</label>
               <p>Insert company question here.</p>
               <div className="control">
-                <input className="input" type="text" ref='title'/>
+                <input className="input" type="text" ref='response'/>
               </div>
             </div>
 

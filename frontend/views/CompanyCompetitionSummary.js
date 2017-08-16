@@ -20,7 +20,7 @@ class CompanyCompetitionSummary extends Component {
         <div className="tabs">
           <ul>
             <li className="is-active"><a>Summary</a></li>
-            <li><a onClick={() => this.props.setView('submissions')}>Submissions</a></li>
+            <li><a onClick={() => this.props.setView('submissions')}>Teams</a></li>
             <li><a onClick={() => this.props.setView('applications')}>Applications</a></li>
           </ul>
         </div>

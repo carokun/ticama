@@ -14,6 +14,7 @@ class MessageBoard extends Component {
 
   componentDidMount() {
     if (this.props.viewed.notifications) {
+      console.log('here');
       this.setState({
         comp: this.props.viewed
       })
@@ -27,14 +28,22 @@ class MessageBoard extends Component {
     </div>
   }
   render() {
-    console.log('this.props.competition',this.props.comp);
+    console.log(this.state.comp.notifications.length);
     return (
       <div className='notification tile is-child' style={{backgroundColor: 'transparent'}}>
-        <div style={{overflow: 'scroll', height: '750px'}}>
-          {this.state.comp.notifications.map(notification => {
-            return <Post notification={notification}/>
-          })}
-        </div>
+        {(this.state.comp.notifications.length === 0) ?
+          <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', padding: '20px'}}>
+            <h2 className="title is-1" style={{textAlign: 'center'}}>There are no posts right now!</h2>
+            <p className="title is-1" style={{textAlign: 'center', fontSize: '60px'}}>¯\_(ツ)_/¯</p>
+            <h2 className="title is-1" style={{textAlign: 'center'}}>Make one up there!</h2>
+          </div>
+        :
+          <div style={{overflow: 'scroll', height: '750px'}}>
+            {this.state.comp.notifications.map(notification => {
+              return <Post notification={notification}/>
+            })}
+          </div>
+        }
 
       </div>
     )

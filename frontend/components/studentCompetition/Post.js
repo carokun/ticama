@@ -14,7 +14,6 @@ class Post extends Component {
   componentDidMount() {
     axios.get('/api/user/' + this.props.notification.poster)
     .then(response => {
-      console.log(response.data);
       this.setState({
         fname: response.data.user.fname,
         lname: response.data.user.lname
@@ -23,6 +22,7 @@ class Post extends Component {
   }
 
   render() {
+    console.log(this.props.notification);
     return (
       <div className="box">
         <article className="media">

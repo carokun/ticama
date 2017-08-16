@@ -102,6 +102,8 @@ router.post('/upload/resume', upload.single('content'), (req, res) => {
 });
 
 const Notification = models.Notification;
+const Team = models.Team;
+const Application = models.Application;
 
 
 
@@ -305,6 +307,24 @@ router.post('/updateBasicInfo', function(req, res) {
   })
 });
 
+router.get('/students', function(req, res) {
+  User.find()
+  .populate('competitions')
+  .exec()
+  .then(users => {
+    const students = users.filter((user) => {
+      return user.type === 'student'
+    })
+    .map(student => {
+      return {fname: student.fname, lname: student.lname, username: student.username}
+    })
+    res.json({students})
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
 router.get('/companies', function(req, res) {
   if (req.user.type !== 'admin') {
     res.json({message: 'this is not allowed!!!!!'})
@@ -381,13 +401,52 @@ router.get('/competition/:id', function(req, res) {
   .populate('club')
   .populate('company')
   .populate('notifications')
+  .populate('applications')
+  .populate('teams')
   .exec()
   .then(competition => {
+    console.log(competition);
     if (!competition || !competition.approved) {
       res.send('failed!')
     } else {
       res.json({
         competition: competition,
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
+router.get('/team/:id', function(req, res) {
+  Team.findById(req.params.id)
+  .populate('members')
+  .exec()
+  .then(team => {
+    if (!team) {
+      res.send('failed!')
+    } else {
+      res.json({
+        team
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})
+
+router.get('/application/:id', function(req, res) {
+  Application.findById(req.params.id)
+  .populate('team')
+  .exec()
+  .then(app => {
+    if (!app) {
+      res.send('failed!')
+    } else {
+      res.json({
+        application: app
       })
     }
   })
@@ -487,6 +546,7 @@ router.post('/new/post', function(req,res) {
       }
       comp.save()
       .then(comp => {
+        console.log(notification);
         res.json({notification})
       })
     })
@@ -495,6 +555,142 @@ router.post('/new/post', function(req,res) {
     res.send('error')
     console.log(err);
   })
+})
+
+router.post('/apply', function(req, res) {
+  console.log(req.body.teammates);
+  var members = Promise.all(req.body.teammates.map(teammate => {
+    return User.findOne({username: teammate})
+  }))
+  .then(members => {
+      members.push(req.user);
+      Competition.findById(req.body.competition)
+      .then(competition => {
+        console.log(3.5);
+        new Application({
+          date: new Date(),
+          responses: req.body.responses,
+          team: members,
+          approved: false
+        })
+        .save()
+        .then(app => {
+          console.log(4);
+          competition.applications.push(app);
+          competition.save()
+          .then(comp => {
+            console.log(5);
+            res.json({competition: comp})
+          })
+          .catch(err => {
+            res.json({err})
+            console.log(err);
+          })
+        })
+        .catch(err => {
+          console.log(err);
+          res.json({err})
+
+        })
+
+      })
+      .catch(err => {
+        console.log(err);
+        res.json({err})
+      })
+  })
+  .catch(err => {
+    res.json({err})
+  })
+
+})
+
+router.post('/temp/application/update', function(req, res) {
+  var competitionApproved = false;
+  req.user.competitions.map(comp => {
+    if (comp._id.toString() === req.body.competition) {
+      competitionApproved = true;
+    }
+  })
+  if (!competitionApproved) {
+    console.log('not auth');
+    res.send('not authorized')
+  } else {
+    Application.findById(req.body.appId)
+    .then(app => {
+      app.tempApproved = req.body.tempApproved,
+      app.tempRejected = req.body.tempRejected
+      app.save()
+      .then(app => {
+        res.json({application: app})
+      })
+      .catch(err => {
+        res.json({err})
+        console.log(err);
+      })
+    })
+    .catch(err => {
+      res.json({err})
+      console.log(err);
+    })
+  }
+
+})
+
+router.post('/accept/teams', function(req, res) {
+  var competitionApproved = false;
+  req.user.competitions.map(comp => {
+    if (comp._id.toString() === req.body.compId) {
+      competitionApproved = true;
+    }
+  })
+  if (!competitionApproved) {
+    console.log('not auth');
+    res.send('not authorized')
+  } else {
+    Competition.findById(req.body.compId)
+    .populate('applications')
+    .exec()
+    .then(comp => {
+      Promise.all(comp.applications.map(app => {
+        if (!app.approved && app.tempApproved) {
+          new Team({
+            members: app.team,
+            name: 'idk',
+            submissions: [],
+            notifications: []
+          })
+          .save()
+          .then(team => {
+            comp.teams.push(team);
+            comp.save()
+            .then(comp => {
+              console.log('success');
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        }
+        app.approved = app.tempApproved;
+        return app.save()
+      }))
+      .then(applications => {
+        res.send({competition: comp})
+      })
+      .catch(err => {
+        console.log(err);
+        res.send(err)
+      })
+    })
+    .catch(err => {
+      res.json({err})
+      console.log(err);
+    })
+  }
 })
 
 module.exports = router;

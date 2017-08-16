@@ -4,18 +4,36 @@ import { Link } from 'react-router-dom';
 import CompanyCompetitionApplications from './CompanyCompetitionApplications.js';
 import CompanyCompetitionSubmissions from './CompanyCompetitionSubmissions.js';
 import CompanyCompetitionSummary from './CompanyCompetitionSummary.js';
+import {updateViewed} from '../actions/ViewedActions.js'
+
+import axios from 'axios';
 
 class CompanyCompetition extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      view: 'summary'
+      view: 'summary',
+      competition: ''
     }
   }
 
+  componentDidMount() {
+    const path = this.props.history.location.pathname
+    const id = path.slice(13);
+    axios.get('/api/competition/' + id)
+    .then(response => {
+      this.setState({
+        competition: response.data.competition
+      })
+      this.props.updateViewed(response.data.competition)
+    })
+  }
+
   pickView() {
-    if (this.state.view === 'summary') {
+    if (!this.state.competition) {
+      return <div></div>
+    } else if (this.state.view === 'summary') {
       return (
         <CompanyCompetitionSummary setView={this.setView.bind(this)}/>
       );
@@ -25,7 +43,7 @@ class CompanyCompetition extends Component {
       );
     } else {
       return (
-        <CompanyCompetitionApplications setView={this.setView.bind(this)}/>
+        <CompanyCompetitionApplications setView={this.setView.bind(this)} />
       );
     }
   }
@@ -55,9 +73,9 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    
+    updateViewed: (competition) => dispatch(updateViewed(dispatch, competition))
   }
 };
 

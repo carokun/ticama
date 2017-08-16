@@ -22,8 +22,14 @@ var ApplicationSchema = new Schema ({
       }
     }
   ],
-  status: {
-    type: String
+  approved: {
+    type: Boolean
+  },
+  tempApproved: {
+    type: Boolean
+  },
+  tempRejected: {
+    type: Boolean
   }
 })
 
