@@ -12,6 +12,7 @@ class SubmissionPortal extends Component {
   render() {
     return (
       <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
+        <p className="title is-2"><strong>Team {this.props.index}</strong></p>
         <div className='tile is-parent'>
           <div className='tile is-child'>
             <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100%', height:'50px'}}>

@@ -29,7 +29,7 @@ class CompanyCompetitionApplications extends Component {
         <div className="tabs">
           <ul>
             <li><a onClick={() => this.props.setView('summary')}>Summary</a></li>
-            <li><a onClick={() => this.props.setView('submissions')}>Submissions</a></li>
+            <li><a onClick={() => this.props.setView('submissions')}>Teams</a></li>
             <li className="is-active"><a>Applications</a></li>
           </ul>
         </div>

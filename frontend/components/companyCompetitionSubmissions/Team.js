@@ -22,7 +22,7 @@ class Team extends Component {
 
           </div>
           <div>
-            <button className='button is-warning' style={{width: '100px'}}>View</button>
+            <button className='button is-warning' style={{width: '100px'}} onClick={() => this.props.changeAppViewed(this.props.app, this.props.index)}>View</button>
           </div>
         </div>
       </div>

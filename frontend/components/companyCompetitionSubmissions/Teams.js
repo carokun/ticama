@@ -13,6 +13,7 @@ class Teams extends Component {
       username: '',
       password: ''
     }
+    console.log('view', this.props.viewed);
   }
   onSubmit() {
 
@@ -23,9 +24,12 @@ class Teams extends Component {
       <div className='notification tile is-child'>
         <div style={{overflow: 'scroll', height: '700px'}}>
           {this.props.viewed.applications
-          .filter(app => app.approved)
+          .filter(app => {
+            console.log(app.approved);
+            return app.approved;
+          })
           .map((app, index) => {
-            <Team index={index + 1} competition={this.props.competition}/>
+            return <Team index={index + 1} competition={this.props.competition} app={app} changeAppViewed={this.props.changeAppViewed}/>
           })}
         </div>
 
