@@ -37,7 +37,6 @@ module.exports = function(passport) {
         res.json({ success: false, message: 'invalid registration' });
       })
     }
-
   });
 
   router.post('/register/company', function(req, res) {

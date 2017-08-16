@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerStudent } from '../actions/AuthActions'
+import axios from 'axios';
 
 class StudentRegister extends Component {
   constructor(props) {
@@ -18,16 +19,19 @@ class StudentRegister extends Component {
       major: 'Anthropology',
       about: '',
       linkedin: '',
-      website: ''
+      website: '',
+      image: '',
+      resume: ''
     }
   }
 
   submit() {
-    const { username, password, repeatPassword, email, fname, lname, university, year, major, website, linkedin, about } = this.state;
+    const { username, password, repeatPassword, email, fname, lname, university, year, major, website, linkedin, about, image, resume } = this.state;
     console.log('link there', linkedin);
-    this.props.registerStudent({username, password, repeatPassword, email, fname, lname, university, year, major, about, website, linkedin});
+    this.props.registerStudent({username, password, repeatPassword, email, fname, lname, university, year, major, about, website, linkedin, image, resume});
     this.props.history.push('/');
   }
+
 
   render() {
     return (
@@ -182,7 +186,9 @@ class StudentRegister extends Component {
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="resume" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+                <input className="file-input"  type="file" name="resume"
+                  onChange={(e) => this.setState({resume: e.target.files[0]})}
+                  style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
             <div className="file">
@@ -194,7 +200,10 @@ class StudentRegister extends Component {
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="picStudent" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+                <input className="file-input"
+                  type="file" name="picStudent" ref={(ref) => this.fileUpload = ref}
+                  onChange={(e) => this.setState({image: e.target.files[0]})}
+                  style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
           </div>

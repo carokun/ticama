@@ -34,7 +34,7 @@ class Navbar extends Component {
               </a>
               <div className="navbar-item" >
                 <figure className="image is-24x24">
-                  <img src="http://bulma.io/images/placeholders/128x128.png"/>
+                  <img src={this.props.user.image} className="cover"/>
                 </figure>
 
               </div>

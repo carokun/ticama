@@ -13,13 +13,14 @@ class ClubRegister extends Component {
       password: '',
       repeatPassword: '',
       about: '',
-      industry: ''
+      industry: '',
+      image: ''
     }
   }
 
   submit() {
-    const { username, password, repeatPassword, email, name, about, website } = this.state;
-    this.props.registerClub(username, password, repeatPassword, email, name, about, website);
+    const { username, password, repeatPassword, email, name, about, website, image } = this.state;
+    this.props.registerClub({username, password, repeatPassword, email, name, about, website, image});
     this.props.history.push('/');
   }
 
@@ -127,7 +128,9 @@ class ClubRegister extends Component {
                     </span>
                     <span> Upload</span>
                 </button>
-                <input className="file-input"  type="file" name="picClub" style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
+                <input className="file-input"  type="file" name="picClub"
+                  onChange={(e) => this.setState({image: e.target.files[0]})}
+                  style={{opacity: '0', zIndex: '2', float: 'left', height: '32px'}}/>
               </div>
             </div>
           </div>
@@ -150,7 +153,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerClub: (username, password, repeatPassword, email, name, about, website) => dispatch(registerClub(dispatch, username, password, repeatPassword, email, name, about, website))
+    registerClub: (user) => dispatch(registerClub(dispatch, user))
   }
 };
 
