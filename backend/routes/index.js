@@ -1,15 +1,111 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const models = require('../models/models');
 const WorkExperience = models.WorkExperience;
 const Skill = models.Skill;
 const User = models.User;
 const Competition = models.Competition;
+const aws = require('aws-sdk');
+const upload = multer();
+const s3 = new aws.S3();
+
+// FILE UPLOADING ROUTES
+router.post('/upload/image', upload.single('content'), (req, res) => {
+  if (!req.file || !req.body) {
+    return res.status(402).json({error: 'Missing files'})
+  }
+
+  if (!req.file) {
+    return res.status(403).json({ error: 'Invalid file.' });
+  }
+
+  if (!req.file.originalname) {
+    return res.status(403).json({ error: 'Invalid file name.' });
+  }
+
+  if (!['image/png', 'application/pdf'].includes(req.file.mimetype)) {
+    return res.status(403).json({ error: 'Invalid file type.' });
+  }
+
+  const s3Params = {
+    Bucket: process.env.S3_BUCKET,
+    Key: req.body.username + '-' + req.file.originalname,
+    ContentType: req.file.mimetype,
+    Body: req.file.buffer,
+  };
+
+  s3.putObject(s3Params).promise()
+  .then(data => {
+    User.findOne({username: req.body.username})
+    .then((user) => {
+      user.image = 'https://s3-us-west-2.amazonaws.com/mirathon/' + req.body.username + '-' + req.file.originalname;
+      user.save((err, user) => {
+        if (err) {
+          console.log('Failed to save photo');
+          res.json({failure: err})
+        } else {
+          console.log('Successfully saved photo');
+          res.json({success: true})
+        }
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(403).json({ error: 'Not authorized.' });
+  });
+});
+
+
+router.post('/upload/resume', upload.single('content'), (req, res) => {
+  if (!req.file) {
+    return res.status(403).json({ error: 'Invalid file.' });
+  }
+
+  if (!req.file.originalname) {
+    return res.status(403).json({ error: 'Invalid file name.' });
+  }
+
+  if (!['image/png', 'application/pdf'].includes(req.file.mimetype)) {
+    return res.status(403).json({ error: 'Invalid file type.' });
+  }
+
+  const s3Params = {
+    Bucket: process.env.S3_BUCKET,
+    Key: req.body.username + '-' + req.file.originalname,
+    ContentType: req.file.mimetype,
+    Body: req.file.buffer,
+  };
+
+  s3.putObject(s3Params).promise()
+  .then(data => {
+    console.log('I AM ABOUT TO FIND THE USER', data, req.body.username);
+     User.findOne({username: req.body.username})
+    .then((user) => {
+      user.resume = 'https://s3-us-west-2.amazonaws.com/mirathon/' + req.body.username + '-' + req.file.originalname;
+      user.save((err, user) => {
+        if (err) {
+          console.log('Failed saving resume');
+          res.json({failure: err})
+        } else {
+          console.log('Successfully saved resume');
+          res.json({success: true})
+        }
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(403).json({ error: 'Not authorized.' });
+  });
+});
+
 const Notification = models.Notification;
 const Team = models.Team;
 const Application = models.Application;
 
-// API ROUTES HEREx
+
 
 router.post('/add/experience', function(req, res) {
   var { company, startDate, endDate, role, description, location } = req.body;
@@ -421,6 +517,13 @@ router.post('/add/competition', function(req, res) {
   }
 })
 
+
+router.post('/studentpic', function(req, res) {
+  const pic = req.body.file;
+  var formData = new FormData();
+  formData.append(pic.name, pic);
+})
+
 router.post('/new/post', function(req,res) {
   Competition.findById(req.body.competition)
   .then(comp => {
@@ -589,6 +692,5 @@ router.post('/accept/teams', function(req, res) {
     })
   }
 })
-
 
 module.exports = router;

@@ -59,6 +59,7 @@ class StudentProfile extends Component {
   }
 
   render() {
+    console.log('THIS IS THE USER WITH RESUME AND PHOTO', this.state.student);
     return (
       <ReactCSSTransitionGroup
         transitionName="smallfade"

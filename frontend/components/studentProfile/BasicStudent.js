@@ -5,13 +5,13 @@ class BasicStudent extends Component {
     super(props);
   }
   render() {
-    console.log('ME', this.props.user);
+    console.log('The users information', this.props.user);
     return(
       <div className="tile is-parent is-vertical is-3">
         <article>
           <div style={{position: 'relative'}}>
             <figure className="image is-4by3">
-              <img src="http://bulma.io/images/placeholders/640x480.png" />
+              <img src={this.props.user.image} />
             </figure>
           </div>
         </article>
@@ -85,7 +85,7 @@ class BasicStudent extends Component {
                 </span>
               </div>
               <div className='tile is-child is-10'>
-                <a style={{textDecoration: 'none'}}>
+                <a href={this.props.user.resume} target="_blank" style={{textDecoration: 'none'}}>
                   Resume
                 </a>
               </div>
