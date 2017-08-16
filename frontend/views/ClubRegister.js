@@ -20,7 +20,7 @@ class ClubRegister extends Component {
 
   submit() {
     const { username, password, repeatPassword, email, name, about, website, image } = this.state;
-    this.props.registerClub(username, password, repeatPassword, email, name, about, website, image);
+    this.props.registerClub({username, password, repeatPassword, email, name, about, website, image});
     this.props.history.push('/');
   }
 
@@ -153,7 +153,7 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    registerClub: (username, password, repeatPassword, email, name, about, website) => dispatch(registerClub(dispatch, username, password, repeatPassword, email, name, about, website))
+    registerClub: (user) => dispatch(registerClub(dispatch, user))
   }
 };
 

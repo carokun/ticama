@@ -158,7 +158,7 @@ class CompanyRegister extends Component {
 
         const mapDispatchToProps = (dispatch) => {
           return {
-            registerCompany: (username, password, repeatPassword, email, fname, about, website, industry, phone) => dispatch(registerCompany(dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone))
+            registerCompany: (user) => dispatch(registerCompany(dispatch, user))
           }
         };
 

@@ -91,7 +91,7 @@ export const registerStudent = (dispatch, {username, password, repeatPassword, e
 
 
 
-export const registerCompany = (dispatch, username, password, repeatPassword, email, fname, about, website, industry, phone, image) => {
+export const registerCompany = (dispatch, {username, password, repeatPassword, email, fname, about, website, industry, phone, image}) => {
     return (dispatch) => {
         axios.post('/api/register/company', {
           username, password, repeatPassword, email, fname, about, website, industry, phone
