@@ -58,6 +58,7 @@ class CompanyProfile extends Component {
   }
 
   render() {
+    console.log('company', this.state.company);
     return (
       <ReactCSSTransitionGroup
         transitionName="smallfade"
