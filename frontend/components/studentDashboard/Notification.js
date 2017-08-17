@@ -15,7 +15,7 @@ class Notification extends Component {
     <div className={this.state.isOrganizer ? "notification is-danger" : "notification is-info"}>
       <button className="delete"></button>
       <strong>{this.props.sender}</strong><br/>
-      Attention participants! We are releasing edits to slide 40 in the packet. Please checkout the new updates.
+      {this.props.msg}
     </div>
 
     )

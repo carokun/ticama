@@ -7,7 +7,7 @@ class Analytics extends Component {
 
   render() {
     return(
-      <img src="https://s3-us-west-2.amazonaws.com/mirathon/Analytics.png"></img>
+      <img style={{marginTop: '-200px', transform: 'scale(0.9)'}} src="https://s3-us-west-2.amazonaws.com/mirathon/Analytics.png"></img>
     )
   }
 }

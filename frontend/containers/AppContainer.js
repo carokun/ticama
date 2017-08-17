@@ -18,6 +18,7 @@ import CompanyProfile from '../views/CompanyProfile';
 import CompanyProfileEdit from '../views/CompanyProfile/CompanyProfileEdit';
 import CompanyHome from '../views/CompanyHome';
 import CompanyCompetition from '../views/CompanyCompetition.js';
+import Analytics from '../components/companyCompetition/Analytics.js'
 
 import ClubNavbar from '../views/ClubNavbar';
 import ClubRegister from '../views/ClubRegister';
@@ -76,6 +77,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={CompanyNavbar}/>
         <Switch>
+          <Route path='/analytics' exact component={Analytics} />
           <Route path='/home' exact component={CompanyProfile} />
           <Route path='/profile/student/:id' exact component={StudentProfile} />
           <Route path='/profile/club/:id' exact component={ClubProfile} />
@@ -102,6 +104,7 @@ class AppContainer extends React.Component {
       return (<div>
         <Route path='/' component={ClubNavbar}/>
         <Switch>
+          <Route path='/analytics' exact component={Analytics} />
           <Route path='/profile/student/:id' exact component={StudentProfile} />
           <Route path='/profile/club/:id' exact component={ClubProfile} />
           <Route path='/profile/company/:id' exact component={CompanyProfile} />
