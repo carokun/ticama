@@ -34,7 +34,7 @@ class Navbar extends Component {
               </a>
               <div className="navbar-item" >
                 <figure className="image is-24x24">
-                  <img src={this.props.user.image} className="cover"/>
+                  <img src={this.props.user.image}/>
                 </figure>
 
               </div>
