@@ -14,7 +14,7 @@ class StudentDashboard extends Component {
     this.state = {
       username: '',
       password: '',
-      competition: this.props.user.competitions[0]
+      competition: this.props.user.competitions[0] || {title: 'asdf'}
     }
   }
 

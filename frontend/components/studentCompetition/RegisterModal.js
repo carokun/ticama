@@ -32,7 +32,7 @@ class RegisterModal extends React.Component {
     axios.post('/api/apply', {
       teammates: this.state.teammates,
       responses: [{
-        question: "question here",
+        question: "1. Over the last few decades, we have seen cognitive technologies (such as computer vision, machine learning, natural language processing, speech recognition, and robotics) revolutionize the world as we know it. Now more than ever, it's important for businesses to be at the forefront of this technology to ensure they are staying competitive in the marketplace. How can businesses plan for and leverage digital and cognitive technology developments to take advantage of the unique opportunities they bring forth? What are some of the key risks and challenges that businesses will face, and how do you suggest they mitigate them successfully?",
         response: this.refs.response.value
       }],
       competition: this.props.comp._id,

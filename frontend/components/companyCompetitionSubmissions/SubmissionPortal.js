@@ -31,12 +31,16 @@ class SubmissionPortal extends Component {
               <tbody>
                 <tr>
                   <td>
-                    Team4_Powerpoint_V5.ppt
+                    <a href="https://s3-us-west-2.amazonaws.com/mirathon/examplecase.pdf" target="_blank">
+                      Team4_Powerpoint_V5.ppt
+                    </a>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    Team4_Powerpoint_V4.ppt
+                    <a href="https://s3-us-west-2.amazonaws.com/mirathon/examplecase.pdf" target="_blank">
+                      Team4_Powerpoint_V4.ppt
+                    </a>
                   </td>
                 </tr>
                 <tr>

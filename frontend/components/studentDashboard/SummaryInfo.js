@@ -33,14 +33,8 @@ class SummaryInfo extends Component {
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-2'>Your Current Competitions</h3>
         <hr/>
-        {/* toggle currentcompetition & nocompetitions using isCompeting*/}
-        {
-          (this.props.user.competitions.length > 0) ? this.props.user.competitions.map(comp => {
-            return <CurrentCompetition comp={comp} changeCompView={this.props.changeCompView.bind(this)}/>;
-          }) :
-          <NoCompetitions />
-      }
-
+          <CurrentCompetition />
+          {/* <CurrentCompetition comp={comp} changeCompView={this.props.changeCompView.bind(this)}/> */}
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-2'>Notifications</h3>
         <hr/>
