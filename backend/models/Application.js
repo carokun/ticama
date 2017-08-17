@@ -30,6 +30,9 @@ var ApplicationSchema = new Schema ({
   },
   tempRejected: {
     type: Boolean
+  },
+  name: {
+    type: String
   }
 })
 
