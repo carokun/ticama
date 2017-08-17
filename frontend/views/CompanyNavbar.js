@@ -23,6 +23,9 @@ class Navbar extends Component {
       return (
         <div className='navbar' style={{height: '50px'}}>
           <div className="navbar-menu" style={{boxShadow: '0px 2px 4px rgba(219, 219, 219, 51)'}}>
+            <div className="navbar-brand">
+              <img className="navbar-item" src="https://s3-us-west-2.amazonaws.com/mirathon/Logo.png" style={{height: '50px'}}></img>
+            </div>
             <div className="navbar-end" style={{display:'flex', justifyContent: 'flex-end'}}>
               <a className="navbar-item" style={{textDecoration: 'none'}} onClick={() => this.props.history.push('/profile/company/' + this.props.user._id)}>
                 Home
