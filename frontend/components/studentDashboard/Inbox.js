@@ -6,19 +6,15 @@ class Message extends Component {
     return (
       <article className="message is-medium">
         <div className="message-header">
-          <p>RE: Question #5 is too hard!</p><br/>
+          <p>RE: Approval for Q4</p><br/>
           <button className="delete"></button>
         </div>
         <div className="message-body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>,
-          tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla.
-          Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur.
-          Aenean ac <em>eleifend lacus</em>,
-          in mollis lectus. Donec sodales, arcu et sollicitudin porttitor,
-          tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna,
-          vehicula et sem eget, facilisis sodales sem.
+          Hey, thanks for letting us know about Q4. We have just reviewed your solution for Q4
+          and think that there could be more work done on clearly identifying the TAM for part 4.2.
+          Please review your solutions and resubmit when you are ready.
           <div style={{height: '10px', width: '1px'}}></div>
-          <p>2017-05-15 3:00pm</p>
+          <p>2017-08-25 6:00pm</p>
         </div>
       </article>
     )

@@ -34,18 +34,21 @@ class SummaryInfo extends Component {
         <h3 className='subtitle is-2'>Your Current Competitions</h3>
         <hr/>
         {/* toggle currentcompetition & nocompetitions using isCompeting*/}
-        {this.props.user.competitions.map(comp => {
-          return <CurrentCompetition comp={comp} changeCompView={this.props.changeCompView.bind(this)}/>;
-        })}
+        {
+          (this.props.user.competitions.length > 0) ? this.props.user.competitions.map(comp => {
+            return <CurrentCompetition comp={comp} changeCompView={this.props.changeCompView.bind(this)}/>;
+          }) :
+          <NoCompetitions />
+      }
 
         <div style={{height: '30px', width: '1px'}}></div>
         <h3 className='subtitle is-2'>Notifications</h3>
         <hr/>
         <div style={{overflow: 'scroll', height: '400px'}}>
-          <Notification isOrganizer={false} sender={"McKinsey & Co."}/>
-          <Notification isOrganizer={true} sender={"Ticama"}/>
-          <Notification isOrganizer={true} sender={"McKinsey & Co."}/>
-          <Notification isOrganizer={false} sender={"McKinsey & Co."}/>
+          <Notification isOrganizer={false} sender={"BCG Organizer"} msg={"Attention! Cases are due in 3 hours. Please seek help if needed."}/>
+          <Notification isOrganizer={true} sender={"Mirathon"} msg={"Tiffany uploaded a revision to the slidedeck."}/>
+          <Notification isOrganizer={false} sender={"BCG Organizer"} msg={"Hey guys! Food is in room 253 on the 2nd floor."}/>
+          <Notification isOrganizer={true} sender={"Mirathon"} msg={"Caroline uploaded a revision to the slidedeck."}/>
         </div>
       </article>
 

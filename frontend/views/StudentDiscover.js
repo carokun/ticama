@@ -13,7 +13,6 @@ class Card extends Component {
       <article className="media">
         <div className="media-left">
           <figure className="image is-64x64">
-            {/* after populating company field, link their profile image here */}
             <img src={comp.company.image} alt="Image" />
           </figure>
           <div style={{marginTop: '5px'}}>

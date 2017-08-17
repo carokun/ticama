@@ -44,11 +44,18 @@ class CompetitionExperience extends Component {
         <article className='media'>
           <table className='table is-fullwidth'>
             <tbody>
-              {this.props.competitionExperience.map((item) => this.renderCompetitionExperience(item))}
+              {
+                (this.props.competitionExperience.length > 0) ? (this.props.competitionExperience.map((item) => this.renderCompetitionExperience(item)))
+                : <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <h2 style={{fontSize: '20px'}}>You don't have any competition experience.
+                    <br/><p style={{fontSize: '40px'}}>☹️</p><br/>
+                    Visit <strong>Discover</strong> to get started!</h2>
+                </div>
+              }
             </tbody>
           </table>
         </article>
-        <nav className="pagination">
+        {/* <nav className="pagination">
           <a className="pagination-previous">Previous</a>
           <a className="pagination-next">Next page</a>
           <ul className="pagination-list">
@@ -62,7 +69,7 @@ class CompetitionExperience extends Component {
               <a className="pagination-link is-current">3</a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </article>
     )
   }
