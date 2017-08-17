@@ -7,8 +7,7 @@ class Team extends Component {
     super(props);
 
     this.state = {
-      members: [],
-      name: ''
+      members: []
     }
   }
 
@@ -17,8 +16,7 @@ class Team extends Component {
     .then(response => {
       console.log(response.data);
       this.setState({
-        members: response.data.team.members,
-        name: response.data.team.name
+        members: response.data.team.members
       })
     })
   }
@@ -30,7 +28,7 @@ class Team extends Component {
           <strong> Team {this.props.index} </strong>
         </div>
         <div className="column is-3">
-          {this.state.name}
+          {this.props.team.name}
         </div>
         <div className="column is-6">
           <div>

@@ -35,6 +35,8 @@ router.post('/upload/image', upload.single('content'), (req, res) => {
     Body: req.file.buffer,
   };
 
+  console.log(process.env.S3_BUCKET);
+
   s3.putObject(s3Params).promise()
   .then(data => {
     User.findOne({username: req.body.username})
@@ -571,7 +573,8 @@ router.post('/apply', function(req, res) {
           date: new Date(),
           responses: req.body.responses,
           team: members,
-          approved: false
+          approved: false,
+          name: req.body.name
         })
         .save()
         .then(app => {
@@ -656,7 +659,7 @@ router.post('/accept/teams', function(req, res) {
         if (!app.approved && app.tempApproved) {
           new Team({
             members: app.team,
-            name: 'idk',
+            name: app.name || 'idk',
             submissions: [],
             notifications: []
           })
