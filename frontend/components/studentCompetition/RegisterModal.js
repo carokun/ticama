@@ -35,7 +35,8 @@ class RegisterModal extends React.Component {
         question: "question here",
         response: this.refs.response.value
       }],
-      competition: this.props.comp._id
+      competition: this.props.comp._id,
+      name: this.refs.name.value
     })
     .then(response => {
       console.log(response.data);
@@ -75,6 +76,13 @@ class RegisterModal extends React.Component {
                     }
                   </datalist>
                   <button className="button is-info" onClick={() => this.addTeammate()}>Add Teammate</button>
+              </div>
+            </div>
+
+            <div className="field">
+              <label className="label">Team Name</label>
+              <div className="control">
+                <input className="input" type="text" ref='name'/>
               </div>
             </div>
 
