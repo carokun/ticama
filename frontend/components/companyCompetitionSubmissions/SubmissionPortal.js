@@ -23,7 +23,6 @@ class SubmissionPortal extends Component {
               </span>
               <span className="title is-4">
                 Download Final Submission
-                {/* comment */}
               </span>
             </button>
           </div>
