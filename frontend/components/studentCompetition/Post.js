@@ -7,7 +7,8 @@ class Post extends Component {
     super(props);
     this.state = {
       fname: '',
-      lname: ''
+      lname: '',
+      image: ''
     }
   }
 
@@ -16,7 +17,8 @@ class Post extends Component {
     .then(response => {
       this.setState({
         fname: response.data.user.fname,
-        lname: response.data.user.lname
+        lname: response.data.user.lname,
+        image: response.data.user.image
       })
     })
   }
@@ -28,7 +30,7 @@ class Post extends Component {
         <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
-              <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image"/>
+              <img src={this.state.image} alt="Image" className="cover"/>
             </figure>
           </div>
           <div className="media-content" style={{paddingTop: '16px'}}>

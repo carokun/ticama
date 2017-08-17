@@ -64,7 +64,7 @@ class BasicStudent extends Component {
                   </span>
                 </div>
                 <div className='tile is-child is-10'>
-                  {this.props.user.linkedin}
+                  <a href={this.props.user.linkedin} target="_blank">{this.props.user.linkedin}</a>
                 </div>
               </div>
               <div className='tile is-parent'>
@@ -74,7 +74,7 @@ class BasicStudent extends Component {
                   </span>
                 </div>
                 <div className='tile is-child is-10'>
-                  {this.props.user.website}
+                  <a href={this.props.user.website} target="_blank">{this.props.user.website}</a>
                 </div>
               </div>
             </article>

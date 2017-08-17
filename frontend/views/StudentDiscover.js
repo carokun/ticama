@@ -14,7 +14,7 @@ class Card extends Component {
         <div className="media-left">
           <figure className="image is-64x64">
             {/* after populating company field, link their profile image here */}
-            <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image" />
+            <img src={comp.company.image} alt="Image" />
           </figure>
           <div style={{marginTop: '5px'}}>
             <button onClick={() => this.props.onClick()} className="button is-info">
