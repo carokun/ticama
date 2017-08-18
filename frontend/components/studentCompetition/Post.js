@@ -30,7 +30,7 @@ class Post extends Component {
         <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
-              <img src={this.state.image} alt="Image" className="cover"/>
+              <img src={this.state.image || 'https://s3-us-west-2.amazonaws.com/mirathon/defaultpp.png'} alt="Image" className="cover"/>
             </figure>
           </div>
           <div className="media-content" style={{paddingTop: '16px'}}>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../views/Loading';
 
 class ErrorScreen extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class ErrorScreen extends Component {
   }
   render() {
     return(
-      <div>ERROR THO</div>
+      <Loading />
     )
   }
 }

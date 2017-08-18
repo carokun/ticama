@@ -11,41 +11,42 @@ class SubmissionPortal extends Component {
   }
 
   render() {
-    if (!this.props.comp) {
-      return (
-        <div className='notification' style={{backgroundColor: 'white', height: '500%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <div className='tile is-parent is-vertical'>
-            <article className="tile is-child">
-              <p style={{textAlign: 'center'}}>You have no competitions</p>
-            </article>
-          </div>
-        </div>
-      )
-    } else {
+    // if (!this.props.comp) {
+    //   return (
+    //     <div className='notification' style={{backgroundColor: 'white', height: '500%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+    //       <div className='tile is-parent is-vertical'>
+    //         <article className="tile is-child">
+    //           <p style={{textAlign: 'center'}}>You have no competitions</p>
+    //         </article>
+    //       </div>
+    //     </div>
+    //   )
+    // } else {
       return (
         <div className='notification' style={{backgroundColor: 'white', height: '500%'}}>
           <div className='tile is-parent is-vertical'>
             <article className="tile is-child">
-                <p className="title is-3">{this.props.comp.title}</p>
+                <p className="title is-3">BCG Undergraduate Case Competition</p>
             </article>
             </div>
             <div className='tile is-parent'>
             <div className='tile is-child is-10'>
-              <button className='button is-primary' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
+              <a href="https://s3-us-west-2.amazonaws.com/mirathon/bcgcase.pdf" target="_blank"
+                className='button is-primary' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100px', height:'50px'}}>
                 <span className="icon">
                   <i className="fa fa-download"></i>
                 </span>
                 <span className="title is-4">
-                  Case
+                  <span >Case</span>
                 </span>
-              </button>
+              </a>
             </div>
             <div className='tile is-child is-2' style={{display: 'flex', justifyContent: 'flex-end'}}>
-              <button className='button is-info' style={{width: '60px', height: '50px'}}>
+              <a className='button is-info' style={{width: '60px', height: '50px'}}>
                 <span className="icon" style={{transform: 'scale(0.75)'}}>
                   <i className="fa fa-question"></i>
                 </span>
-              </button>
+              </a>
               <span style={{width: '4px'}}> </span>
               <button className='button is-danger' style={{width: '60px', height: '50px'}}>
                 <span className="icon" style={{transform: 'scale(0.75)'}}>
@@ -58,7 +59,9 @@ class SubmissionPortal extends Component {
                 <tbody>
                   <tr>
                     <td>
+                      <a href="https://s3-us-west-2.amazonaws.com/mirathon/examplecase.pdf" target="_blank">
                       Team4_Powerpoint_V5.ppt
+                      </a>
                     </td>
                   </tr>
                   <tr>
@@ -75,7 +78,7 @@ class SubmissionPortal extends Component {
               </table>
         </div>
       )
-    }
+    // }
 
   }
 }

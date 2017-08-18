@@ -15,7 +15,7 @@ class SubmissionPortal extends Component {
         <p className="title is-2"><strong>Team {this.props.index}</strong></p>
         <div className='tile is-parent'>
           <div className='tile is-child'>
-            <button className='button is-success' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100%', height:'50px'}}>
+            <button className='button is-info' style={{justifyContent: 'center', alignItems: 'center', display: 'flex', color: 'white', width: '100%', height:'50px'}}>
               <span className="icon">
                 <i className="fa fa-download"></i>
               </span>
@@ -31,12 +31,16 @@ class SubmissionPortal extends Component {
               <tbody>
                 <tr>
                   <td>
-                    Team4_Powerpoint_V5.ppt
+                    <a href="https://s3-us-west-2.amazonaws.com/mirathon/examplecase.pdf" target="_blank">
+                      Team4_Powerpoint_V5.ppt
+                    </a>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    Team4_Powerpoint_V4.ppt
+                    <a href="https://s3-us-west-2.amazonaws.com/mirathon/examplecase.pdf" target="_blank">
+                      Team4_Powerpoint_V4.ppt
+                    </a>
                   </td>
                 </tr>
                 <tr>
@@ -59,7 +63,7 @@ class SubmissionPortal extends Component {
             </div>
             <div className='tile is-child level'>
               <div className='level-right'>
-                <button className='button is-success'>Submit</button>
+                <button className='button is-danger'>Submit</button>
               </div>
             </div>
       </div>

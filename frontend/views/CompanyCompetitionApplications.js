@@ -36,9 +36,9 @@ class CompanyCompetitionApplications extends Component {
         <div className="tile is-ancestor">
           <div className="tile is-parent is-4 is-vertical">
             <article className="tile is-child notification">
-              <p className="title is-2"><strong>Google Code Jam</strong></p>
-              <p>05/14/2017 – 05/16/2017</p>
-              <p>123 5th Street <br/> New York, NY 19102</p>
+              <p className="title is-2"><strong>BCG Undergraduate Case Competition</strong></p>
+              <p>08/25/2017 – 08/27/2017</p>
+              <p>John M. Huntsman Hall <br/> 345 Walnut St. <br/> Philadelphia, PA 19102</p>
             </article>
 
             <TeamApplication application={this.state.applicationViewed} index={this.state.index}/>

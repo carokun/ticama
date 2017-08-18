@@ -27,13 +27,13 @@ class CurrentCompetition extends Component {
         <article className="media">
           <div className="media-left">
             <figure className="image is-32x32">
-              <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image" />
+              <img src="https://s3-us-west-2.amazonaws.com/mirathon/bcg-bcg.png" alt="Image" />
             </figure>
           </div>
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{this.props.comp.title}</strong>
+                <strong>BCG Undergraduate Case COmpetiion</strong>
                 <br />
                 <nav className="level is-mobile">
                   <div className="level-left">

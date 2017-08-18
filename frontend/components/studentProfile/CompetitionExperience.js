@@ -24,9 +24,9 @@ class CompetitionExperience extends Component {
             </div>
           </div>
           <div className='level-right' style={{marginTop: '30px'}}>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
-            <img src="http://bulma.io/images/placeholders/32x32.png" style={{margin: '0px 5px', borderRadius: '100px'}}/>
+            <img src="https://s3-us-west-2.amazonaws.com/mirathon/carokun-IMG_2320.png" style={{height: '24px', width: '24px', margin: '0px 5px', borderRadius: '100px'}}/>
+            <img src="https://s3-us-west-2.amazonaws.com/mirathon/evan-Screen+Shot+2017-08-16+at+5.24.56+PM.png" style={{height: '24px', width: '24px', margin: '0px 5px', borderRadius: '100px'}}/>
+            <img src="https://s3-us-west-2.amazonaws.com/mirathon/tifchang-tiff_bio.png" style={{height: '24px', width: '24px', margin: '0px 5px', borderRadius: '100px'}}/>
           </div>
         </td>
         </Link>
@@ -44,11 +44,20 @@ class CompetitionExperience extends Component {
         <article className='media'>
           <table className='table is-fullwidth'>
             <tbody>
-              {this.props.competitionExperience.map((item) => this.renderCompetitionExperience(item))}
+              {/* {
+                (this.props.competitionExperience.length > 0) ? (this.props.competitionExperience.map((item) =>  */}
+                {this.renderCompetitionExperience({title: 'Accenture Undergraduate Case Competition', startDate:'09/19/2015', endDate: '09/18/2015', location: 'New York, NY'})}
+              {/* // ))
+                : <div style={{textAlign: 'center', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                  <h2 style={{fontSize: '20px'}}>You don't have any competition experience.
+                    <br/><p style={{fontSize: '40px'}}>☹️</p><br/>
+                    Visit <strong>Discover</strong> to get started!</h2>
+                </div>
+              } */}
             </tbody>
           </table>
         </article>
-        <nav className="pagination">
+        {/* <nav className="pagination">
           <a className="pagination-previous">Previous</a>
           <a className="pagination-next">Next page</a>
           <ul className="pagination-list">
@@ -62,7 +71,7 @@ class CompetitionExperience extends Component {
               <a className="pagination-link is-current">3</a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </article>
     )
   }
