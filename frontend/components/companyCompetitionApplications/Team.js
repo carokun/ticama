@@ -82,19 +82,23 @@ class Team extends Component {
         <div className="column is-6">
           {this.state.members.map((member, index) => {
             if (index === this.state.members.length - 1) {
-              return <div key={member._id}>
-                {member.fname}
-              </div>
+              return <span key={member._id}>
+                {member.fname + ' '}
+              </span>
             }
-            return <div key={member._id}>
-              {member.fname}, 
-            </div>
+            return <span key={member._id}>
+              {member.fname + ', '}
+            </span>
           })}
         </div>
         <div className="column">
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <button className='button is-primary is-outlined' style={{width: '55px'}} onClick={this.tempAccepted.bind(this)}>√</button>
-            <button className='button is-danger is-outlined' style={{width: '55px'}} onClick={this.tempRejected.bind(this)}>X</button>
+            <button className='button is-primary is-outlined' style={{width: '55px'}} onClick={this.tempAccepted.bind(this)}>
+              <i className="fa fa-check"></i>
+            </button>
+            <button className='button is-danger is-outlined' style={{width: '55px'}} onClick={this.tempRejected.bind(this)}>
+              <i className="fa fa-times"></i>
+            </button>
           </div>
           <div style={{height: '5px'}}>
 
